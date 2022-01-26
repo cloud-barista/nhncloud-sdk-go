@@ -1,0 +1,8 @@
+**/*.swp
+.idea
+.vscode
+testing_*.coverprofile
+
+*.log
+
+.history/
