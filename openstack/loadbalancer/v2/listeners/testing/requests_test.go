@@ -3,11 +3,11 @@ package testing
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/loadbalancer/v2/listeners"
-	fake "github.com/gophercloud/gophercloud/openstack/loadbalancer/v2/testhelper"
-	"github.com/gophercloud/gophercloud/pagination"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners"
+	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestListListeners(t *testing.T) {

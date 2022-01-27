@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/loadbalancer/v2/monitors"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/monitors"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // SessionPersistence represents the session persistence feature of the load

@@ -6,11 +6,11 @@ package v2
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/floatingips"
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/extensions/floatingips"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/servers"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestFloatingIPsCreateDelete(t *testing.T) {

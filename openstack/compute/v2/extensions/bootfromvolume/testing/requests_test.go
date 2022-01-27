@@ -3,7 +3,7 @@ package testing
 import (
 	"testing"
 
-	th "github.com/gophercloud/gophercloud/testhelper"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestBootFromNewVolume(t *testing.T) {

@@ -1,8 +1,8 @@
 package qos
 
 import (
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // QoS contains all the information associated with an OpenStack QoS specification.

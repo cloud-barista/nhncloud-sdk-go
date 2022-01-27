@@ -1,7 +1,7 @@
 package diagnostics
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 type serverDiagnosticsResult struct {

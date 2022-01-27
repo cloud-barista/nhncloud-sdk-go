@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gophercloud/gophercloud/openstack/objectstorage/v1/objects"
-	th "github.com/gophercloud/gophercloud/testhelper"
-	fake "github.com/gophercloud/gophercloud/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/objectstorage/v1/objects"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
 )
 
 // HandleDownloadObjectSuccessfully creates an HTTP handler at `/testContainer/testObject` on the test handler mux that

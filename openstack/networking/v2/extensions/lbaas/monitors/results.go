@@ -1,8 +1,8 @@
 package monitors
 
 import (
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // Monitor represents a load balancer health monitor. A health monitor is used

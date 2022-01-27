@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/subnets"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/subnets"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestHostRoute(t *testing.T) {

@@ -1,6 +1,6 @@
 package drivers
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 func driversURL(client *gophercloud.ServiceClient) string {
 	return client.ServiceURL("drivers")

@@ -1,6 +1,6 @@
 package accounts
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 func getURL(c *gophercloud.ServiceClient) string {
 	return c.Endpoint

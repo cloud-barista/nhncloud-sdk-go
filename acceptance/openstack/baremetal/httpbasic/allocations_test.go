@@ -6,11 +6,11 @@ package httpbasic
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	v1 "github.com/gophercloud/gophercloud/acceptance/openstack/baremetal/v1"
-	"github.com/gophercloud/gophercloud/openstack/baremetal/v1/allocations"
-	"github.com/gophercloud/gophercloud/pagination"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	v1 "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/baremetal/v1"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/allocations"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestAllocationsCreateDestroy(t *testing.T) {

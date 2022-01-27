@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	th "github.com/gophercloud/gophercloud/testhelper"
-	"github.com/gophercloud/gophercloud/testhelper/client"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
 )
 
 func MockListResponse(t *testing.T) {

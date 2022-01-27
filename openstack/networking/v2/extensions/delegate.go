@@ -1,9 +1,9 @@
 package extensions
 
 import (
-	"github.com/gophercloud/gophercloud"
-	common "github.com/gophercloud/gophercloud/openstack/common/extensions"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	common "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/common/extensions"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // Extension is a single OpenStack extension.

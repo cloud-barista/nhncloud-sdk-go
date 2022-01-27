@@ -6,10 +6,10 @@ package v1
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/orchestration/v1/stacks"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/orchestration/v1/stacks"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestStacksCRUD(t *testing.T) {

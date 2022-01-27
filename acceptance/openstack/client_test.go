@@ -8,14 +8,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack"
-	"github.com/gophercloud/gophercloud/openstack/identity/v3/credentials"
-	"github.com/gophercloud/gophercloud/openstack/identity/v3/extensions/ec2tokens"
-	"github.com/gophercloud/gophercloud/openstack/identity/v3/tokens"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/credentials"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/extensions/ec2tokens"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/tokens"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestAuthenticatedClient(t *testing.T) {

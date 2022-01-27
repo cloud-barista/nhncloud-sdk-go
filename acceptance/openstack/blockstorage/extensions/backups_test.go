@@ -6,11 +6,11 @@ package extensions
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/extensions/backups"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/backups"
 
-	blockstorage "github.com/gophercloud/gophercloud/acceptance/openstack/blockstorage/v3"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	blockstorage "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/blockstorage/v3"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestBackupsCRUD(t *testing.T) {

@@ -6,11 +6,11 @@ package extensions
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	blockstorage "github.com/gophercloud/gophercloud/acceptance/openstack/blockstorage/v3"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/extensions/volumetenants"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/v3/volumes"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	blockstorage "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/blockstorage/v3"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/volumetenants"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumes"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestVolumeTenants(t *testing.T) {

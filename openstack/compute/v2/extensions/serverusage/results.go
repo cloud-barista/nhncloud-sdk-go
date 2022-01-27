@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // UsageExt represents OS-SRV-USG server response fields.

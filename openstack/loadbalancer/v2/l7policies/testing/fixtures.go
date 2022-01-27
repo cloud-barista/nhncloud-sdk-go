@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/gophercloud/gophercloud/openstack/loadbalancer/v2/l7policies"
-	th "github.com/gophercloud/gophercloud/testhelper"
-	"github.com/gophercloud/gophercloud/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/l7policies"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
 )
 
 // SingleL7PolicyBody is the canned body of a Get request on an existing l7policy.

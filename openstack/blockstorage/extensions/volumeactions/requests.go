@@ -1,7 +1,7 @@
 package volumeactions
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // AttachOptsBuilder allows extensions to add additional parameters to the

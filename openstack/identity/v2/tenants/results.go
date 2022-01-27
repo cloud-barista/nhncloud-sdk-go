@@ -1,8 +1,8 @@
 package tenants
 
 import (
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // Tenant is a grouping of users in the identity service.

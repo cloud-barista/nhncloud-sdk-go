@@ -3,10 +3,10 @@ package testing
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/openstack/baremetalintrospection/v1/introspection"
-	"github.com/gophercloud/gophercloud/pagination"
-	th "github.com/gophercloud/gophercloud/testhelper"
-	"github.com/gophercloud/gophercloud/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetalintrospection/v1/introspection"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
 )
 
 func TestListIntrospections(t *testing.T) {

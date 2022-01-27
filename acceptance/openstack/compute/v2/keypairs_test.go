@@ -6,12 +6,12 @@ package v2
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	identity "github.com/gophercloud/gophercloud/acceptance/openstack/identity/v3"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/keypairs"
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	identity "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/identity/v3"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/extensions/keypairs"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/servers"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 	"golang.org/x/crypto/ssh"
 )
 

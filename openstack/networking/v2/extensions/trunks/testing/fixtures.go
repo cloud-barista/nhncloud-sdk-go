@@ -3,7 +3,7 @@ package testing
 import (
 	"time"
 
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/trunks"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/trunks"
 )
 
 const CreateRequest = `

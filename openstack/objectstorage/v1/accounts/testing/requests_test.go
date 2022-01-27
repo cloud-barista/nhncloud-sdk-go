@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gophercloud/gophercloud/openstack/objectstorage/v1/accounts"
-	th "github.com/gophercloud/gophercloud/testhelper"
-	fake "github.com/gophercloud/gophercloud/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/objectstorage/v1/accounts"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
 )
 
 func TestUpdateAccount(t *testing.T) {

@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gophercloud/gophercloud/openstack/workflow/v2/crontriggers"
-	"github.com/gophercloud/gophercloud/pagination"
-	th "github.com/gophercloud/gophercloud/testhelper"
-	fake "github.com/gophercloud/gophercloud/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/workflow/v2/crontriggers"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
 )
 
 func TestCreateCronTrigger(t *testing.T) {

@@ -3,7 +3,7 @@ package noauth
 import (
 	"fmt"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // EndpointOpts specifies a "noauth" Ironic Inspector Endpoint.

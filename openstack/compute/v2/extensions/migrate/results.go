@@ -1,7 +1,7 @@
 package migrate
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // MigrateResult is the response from a Migrate operation. Call its ExtractErr

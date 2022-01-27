@@ -1,6 +1,6 @@
 package networkipavailabilities
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 const resourcePath = "network-ip-availabilities"
 

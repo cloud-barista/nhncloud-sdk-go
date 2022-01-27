@@ -1,7 +1,7 @@
 package volumes
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // WaitForStatus will continually poll the resource, checking for a particular

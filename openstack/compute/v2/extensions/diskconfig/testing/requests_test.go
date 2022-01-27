@@ -3,9 +3,9 @@ package testing
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/diskconfig"
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/extensions/diskconfig"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/servers"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestCreateOpts(t *testing.T) {

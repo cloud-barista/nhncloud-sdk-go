@@ -3,7 +3,7 @@ package imagedata
 import (
 	"io"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // Upload uploads an image file.

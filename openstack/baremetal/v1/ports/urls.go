@@ -1,6 +1,6 @@
 package ports
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 func createURL(client *gophercloud.ServiceClient) string {
 	return client.ServiceURL("ports")

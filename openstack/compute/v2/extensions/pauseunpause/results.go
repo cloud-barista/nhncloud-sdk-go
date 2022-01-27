@@ -1,6 +1,6 @@
 package pauseunpause
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 // PauseResult is the response from a Pause operation. Call its ExtractErr
 // method to determine if the request succeeded or failed.

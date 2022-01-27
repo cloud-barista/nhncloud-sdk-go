@@ -3,7 +3,7 @@ package schedulerhints
 import (
 	"regexp"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // SchedulerHints represents a set of scheduling hints that are passed to the

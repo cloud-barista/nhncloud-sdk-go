@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/loadbalancer/v2/listeners"
-	"github.com/gophercloud/gophercloud/openstack/loadbalancer/v2/pools"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // LoadBalancer is the primary load balancing configuration object that

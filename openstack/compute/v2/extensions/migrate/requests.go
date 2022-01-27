@@ -1,8 +1,8 @@
 package migrate
 
 import (
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/extensions"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/extensions"
 )
 
 // Migrate will initiate a migration of the instance to another host.

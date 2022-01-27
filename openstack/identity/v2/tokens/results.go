@@ -3,8 +3,8 @@ package tokens
 import (
 	"time"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/identity/v2/tenants"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tenants"
 )
 
 // Token provides only the most basic information related to an authentication

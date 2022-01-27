@@ -8,11 +8,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/actions"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/clusters"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/actions"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/clusters"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestClustersCRUD(t *testing.T) {

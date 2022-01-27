@@ -3,9 +3,9 @@ package trusts
 import (
 	"time"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/identity/v3/tokens"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/tokens"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // AuthOptsExt extends the base Identity v3 tokens AuthOpts with a TrustID.

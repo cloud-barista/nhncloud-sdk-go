@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // Template is a structure that represents OpenStack Heat templates

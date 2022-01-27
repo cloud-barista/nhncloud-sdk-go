@@ -6,11 +6,11 @@ package v1
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/openstack/baremetal/v1/ports"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/ports"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 
-	th "github.com/gophercloud/gophercloud/testhelper"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestPortsCreateDestroy(t *testing.T) {

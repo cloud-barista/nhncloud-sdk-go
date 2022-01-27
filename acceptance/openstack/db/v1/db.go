@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/db/v1/databases"
-	"github.com/gophercloud/gophercloud/openstack/db/v1/instances"
-	"github.com/gophercloud/gophercloud/openstack/db/v1/users"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/databases"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/instances"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/users"
 )
 
 // CreateDatabase will create a database with a randomly generated name.

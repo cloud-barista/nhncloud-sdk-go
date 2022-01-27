@@ -1,6 +1,6 @@
 package sharetypes
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 func createURL(c *gophercloud.ServiceClient) string {
 	return c.ServiceURL("types")

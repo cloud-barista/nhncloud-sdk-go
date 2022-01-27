@@ -5,7 +5,7 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // Capabilities represents the information of an individual StoragePool.

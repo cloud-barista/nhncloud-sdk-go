@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/gophercloud/gophercloud/openstack/messaging/v2/queues"
-	th "github.com/gophercloud/gophercloud/testhelper"
-	fake "github.com/gophercloud/gophercloud/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/messaging/v2/queues"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
 )
 
 // QueueName is the name of the queue

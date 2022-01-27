@@ -4,8 +4,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/utils"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/utils"
 )
 
 // `listURL` is a pure function. `listURL(c)` is a URL for which a GET

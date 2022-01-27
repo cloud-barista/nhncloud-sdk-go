@@ -7,12 +7,12 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	v2 "github.com/gophercloud/gophercloud/acceptance/openstack/networking/v2"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/attributestags"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/trunks"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	v2 "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/networking/v2"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/attributestags"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/trunks"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestTrunkCRUD(t *testing.T) {

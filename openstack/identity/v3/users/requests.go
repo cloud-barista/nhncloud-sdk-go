@@ -4,10 +4,10 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/identity/v3/groups"
-	"github.com/gophercloud/gophercloud/openstack/identity/v3/projects"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/groups"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/projects"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 // Option is a specific option defined at the API to enable features
