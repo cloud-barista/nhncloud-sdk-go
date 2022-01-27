@@ -1,6 +1,6 @@
 package rbacpolicies
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 func resourceURL(c *gophercloud.ServiceClient, id string) string {
 	return c.ServiceURL("rbac-policies", id)

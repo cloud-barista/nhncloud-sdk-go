@@ -6,13 +6,13 @@ package v3
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/v3/qos"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/v3/snapshots"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/v3/volumes"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/v3/volumetypes"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/qos"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/snapshots"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumes"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumetypes"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 // CreateSnapshot will create a snapshot of the specified volume.

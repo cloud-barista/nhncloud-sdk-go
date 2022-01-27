@@ -1,6 +1,6 @@
 package actions
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 var apiVersion = "v1"
 var apiName = "actions"

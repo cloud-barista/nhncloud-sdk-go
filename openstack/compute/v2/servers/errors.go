@@ -3,7 +3,7 @@ package servers
 import (
 	"fmt"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // ErrNeitherImageIDNorImageNameProvided is the error when neither the image

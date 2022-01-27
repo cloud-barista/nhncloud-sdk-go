@@ -1,7 +1,7 @@
 package clusters
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 var apiName = "clusters"

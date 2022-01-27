@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/bgp/speakers"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/networks"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/bgp/speakers"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/networks"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
 type commonResult struct {

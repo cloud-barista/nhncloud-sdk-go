@@ -5,12 +5,12 @@ package v2
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/identity/v2/extensions/admin/roles"
-	"github.com/gophercloud/gophercloud/openstack/identity/v2/tenants"
-	"github.com/gophercloud/gophercloud/openstack/identity/v2/users"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/extensions/admin/roles"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tenants"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/users"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 // AddUserRole will grant a role to a user in a tenant. An error will be

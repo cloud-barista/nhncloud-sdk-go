@@ -6,10 +6,10 @@ package v3
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	compute "github.com/gophercloud/gophercloud/acceptance/openstack/compute/v2"
-	"github.com/gophercloud/gophercloud/openstack/blockstorage/v3/volumes"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	compute "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/compute/v2"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumes"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestVolumeAttachments(t *testing.T) {

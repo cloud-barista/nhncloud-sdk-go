@@ -1,7 +1,7 @@
 package buildinfo
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // Revision represents the API/Engine revision of a Heat deployment.

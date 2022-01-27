@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"testing"
 
-	common "github.com/gophercloud/gophercloud/openstack/common/extensions"
-	fake "github.com/gophercloud/gophercloud/openstack/networking/v2/common"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/extensions"
-	"github.com/gophercloud/gophercloud/pagination"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	common "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/common/extensions"
+	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/common"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 func TestList(t *testing.T) {

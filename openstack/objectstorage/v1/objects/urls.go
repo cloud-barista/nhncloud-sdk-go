@@ -1,7 +1,7 @@
 package objects
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 func listURL(c *gophercloud.ServiceClient, container string) string {

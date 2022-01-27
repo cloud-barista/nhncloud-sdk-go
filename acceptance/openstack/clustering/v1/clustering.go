@@ -6,16 +6,16 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/actions"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/clusters"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/nodes"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/policies"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/profiles"
-	"github.com/gophercloud/gophercloud/openstack/clustering/v1/receivers"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/actions"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/clusters"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/nodes"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/policies"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/profiles"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/receivers"
+	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 var TestPolicySpec = policies.Spec{

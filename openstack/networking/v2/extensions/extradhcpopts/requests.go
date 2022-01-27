@@ -1,8 +1,8 @@
 package extradhcpopts
 
 import (
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/ports"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/ports"
 )
 
 // CreateOptsExt adds extra DHCP options to the base ports.CreateOpts.

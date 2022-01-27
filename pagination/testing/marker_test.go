@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gophercloud/gophercloud/pagination"
-	"github.com/gophercloud/gophercloud/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
 )
 
 // MarkerPager sample and test cases.

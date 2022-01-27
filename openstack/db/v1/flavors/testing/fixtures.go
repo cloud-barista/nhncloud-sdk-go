@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/gophercloud/gophercloud/testhelper/fixture"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/fixture"
 )
 
 const flavor = `

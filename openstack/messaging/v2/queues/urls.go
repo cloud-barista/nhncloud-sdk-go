@@ -3,7 +3,7 @@ package queues
 import (
 	"net/url"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 const (

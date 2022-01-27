@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 	yaml "gopkg.in/yaml.v2"
 )
 

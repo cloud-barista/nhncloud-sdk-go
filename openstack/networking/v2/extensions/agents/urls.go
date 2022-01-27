@@ -1,6 +1,6 @@
 package agents
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 const resourcePath = "agents"
 const dhcpNetworksResourcePath = "dhcp-networks"

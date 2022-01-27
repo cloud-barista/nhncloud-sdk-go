@@ -6,10 +6,10 @@ package lbaas
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/acceptance/clients"
-	networking "github.com/gophercloud/gophercloud/acceptance/openstack/networking/v2"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
-	"github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/lbaas/pools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
+	networking "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/networking/v2"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas/pools"
 )
 
 func TestPoolsList(t *testing.T) {

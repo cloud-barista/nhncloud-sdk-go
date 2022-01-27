@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 type commonResult struct {

@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/servers"
 )
 
 // SchedulerHints represents a set of scheduling hints that are passed to the

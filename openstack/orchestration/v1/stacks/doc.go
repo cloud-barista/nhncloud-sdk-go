@@ -11,9 +11,9 @@ Prepare required import packages
 
 import (
   "fmt"
-  "github.com/gophercloud/gophercloud"
-  "github.com/gophercloud/gophercloud/openstack"
-  "github.com/gophercloud/gophercloud/openstack/orchestration/v1/stacks"
+  "github.com/cloud-barista/nhncloud-sdk-for-drv"
+  "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack"
+  "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/orchestration/v1/stacks"
 )
 
 Example of Preparing Orchestration client:

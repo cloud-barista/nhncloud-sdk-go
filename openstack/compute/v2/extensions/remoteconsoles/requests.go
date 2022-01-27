@@ -1,7 +1,7 @@
 package remoteconsoles
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // ConsoleProtocol represents valid remote console protocol.

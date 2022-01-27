@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-// 	"github.com/gophercloud/gophercloud"
+// 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 var (

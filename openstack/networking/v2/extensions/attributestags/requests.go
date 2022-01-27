@@ -1,7 +1,7 @@
 package attributestags
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // ReplaceAllOptsBuilder allows extensions to add additional parameters to

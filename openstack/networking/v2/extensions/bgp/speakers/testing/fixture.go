@@ -1,6 +1,6 @@
 package testing
 
-import "github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/bgp/speakers"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/bgp/speakers"
 
 const ListBGPSpeakerResult = `
 {

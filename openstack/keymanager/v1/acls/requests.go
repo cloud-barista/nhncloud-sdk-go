@@ -1,7 +1,7 @@
 package acls
 
 import (
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // GetContainerACL retrieves the ACL of a container.

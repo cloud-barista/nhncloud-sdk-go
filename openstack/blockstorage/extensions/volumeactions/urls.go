@@ -1,6 +1,6 @@
 package volumeactions
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 func actionURL(c *gophercloud.ServiceClient, id string) string {
 	return c.ServiceURL("volumes", id, "action")

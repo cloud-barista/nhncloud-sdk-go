@@ -3,7 +3,7 @@ package openstack
 import (
 	"fmt"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 )
 
 // ErrEndpointNotFound is the error when no suitable endpoint can be found

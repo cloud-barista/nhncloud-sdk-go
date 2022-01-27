@@ -1,6 +1,6 @@
 package quotas
 
-import "github.com/gophercloud/gophercloud"
+import "github.com/cloud-barista/nhncloud-sdk-for-drv"
 
 // Get returns Networking Quotas for a project.
 func Get(client *gophercloud.ServiceClient, projectID string) (r GetResult) {
