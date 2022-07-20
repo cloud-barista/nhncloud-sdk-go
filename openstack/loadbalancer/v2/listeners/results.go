@@ -1,9 +1,11 @@
+// Modified by Sean Oh in ETRI
+
 package listeners
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/l7policies"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/l7policies"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
@@ -15,81 +17,47 @@ type LoadBalancerID struct {
 // the loadbalancer and port on which client traffic is received, as well
 // as other details such as the load balancing method to be use, protocol, etc.
 type Listener struct {
-	// The unique ID for the Listener.
-	ID string `json:"id"`
-
-	// Owner of the Listener.
-	ProjectID string `json:"project_id"`
-
-	// Human-readable name for the Listener. Does not have to be unique.
-	Name string `json:"name"`
-
-	// Human-readable description for the Listener.
-	Description string `json:"description"`
-
-	// The protocol to loadbalance. A valid value is TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
-	Protocol string `json:"protocol"`
-
-	// The port on which to listen to client traffic that is associated with the
-	// Loadbalancer. A valid value is from 0 to 65535.
-	ProtocolPort int `json:"protocol_port"`
-
 	// The UUID of default pool. Must have compatible protocol with listener.
 	DefaultPoolID string `json:"default_pool_id"`
 
-	// The default pool with which the Listener is associated.
-	DefaultPool *pools.Pool `json:"default_pool"`
+	// The protocol to loadbalance. A valid value is TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
+	Protocol Protocol `json:"protocol"` // by Sean Oh
+	// Defined at ./nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners/requests.go
+	
+	// Human-readable description for the Listener.
+	Description string `json:"description"`
+	
+	// Human-readable name for the Listener. Does not have to be unique.
+	Name string `json:"name"`
 
 	// A list of load balancer IDs.
 	Loadbalancers []LoadBalancerID `json:"loadbalancers"`
+
+	// Owner of the LoadBalancer.
+	TenantID string `json:"tenant_id"`  // by Sean. Oh.
+
+	// The administrative state of the Listener. A valid value is true (UP) or false (DOWN).
+	AdminStateUp bool `json:"admin_state_up"`
 
 	// The maximum number of connections allowed for the Loadbalancer.
 	// Default is -1, meaning no limit.
 	ConnLimit int `json:"connection_limit"`
 
-	// The list of references to TLS secrets.
-	SniContainerRefs []string `json:"sni_container_refs"`
+	// Timeout in milliseconds
+	KeepaliveTimeout int `json:"keepalive_timeout"`
 
 	// A reference to a Barbican container of TLS secrets.
 	DefaultTlsContainerRef string `json:"default_tls_container_ref"`
 
-	// The administrative state of the Listener. A valid value is true (UP) or false (DOWN).
-	AdminStateUp bool `json:"admin_state_up"`
+	// The list of references to TLS secrets.
+	SniContainerRefs []string `json:"sni_container_refs"`
 
-	// Pools are the pools which are part of this listener.
-	Pools []pools.Pool `json:"pools"`
+	// The port on which to listen to client traffic that is associated with the
+	// Loadbalancer. A valid value is from 0 to 65535.
+	ProtocolPort int `json:"protocol_port"`
 
-	// L7policies are the L7 policies which are part of this listener.
-	L7Policies []l7policies.L7Policy `json:"l7policies"`
-
-	// The provisioning status of the Listener.
-	// This value is ACTIVE, PENDING_* or ERROR.
-	ProvisioningStatus string `json:"provisioning_status"`
-
-	// Frontend client inactivity timeout in milliseconds
-	TimeoutClientData int `json:"timeout_client_data"`
-
-	// Backend member inactivity timeout in milliseconds
-	TimeoutMemberData int `json:"timeout_member_data"`
-
-	// Backend member connection timeout in milliseconds
-	TimeoutMemberConnect int `json:"timeout_member_connect"`
-
-	// Time, in milliseconds, to wait for additional TCP packets for content inspection
-	TimeoutTCPInspect int `json:"timeout_tcp_inspect"`
-
-	// A dictionary of optional headers to insert into the request before it is sent to the backend member.
-	InsertHeaders map[string]string `json:"insert_headers"`
-
-	// A list of IPv4, IPv6 or mix of both CIDRs
-	AllowedCIDRs []string `json:"allowed_cidrs"`
-
-	// A list of TLS protocol versions. Available from microversion 2.17
-	TLSVersions []string `json:"tls_versions"`
-
-	// Tags is a list of resource tags. Tags are arbitrarily defined strings
-	// attached to the resource. New in version 2.5
-	Tags []string `json:"tags"`
+	// The unique ID for the Listener.
+	ID string `json:"id"`
 }
 
 type Stats struct {
