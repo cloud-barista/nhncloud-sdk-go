@@ -1,14 +1,20 @@
+// Modified by ETRI Team, 2022.07
+
 package loadbalancers
 
 import (
-	"encoding/json"
-	"time"
+	// "encoding/json"
+	// "time"
 
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 )
+
+type IpACLGroup struct {  // by Sean. Oh.
+	IpACLGroupID string `json:"ipacl_group_id"`
+}
 
 // LoadBalancer is the primary load balancing configuration object that
 // specifies the virtual IP address on which client traffic is received, as well
@@ -17,21 +23,21 @@ type LoadBalancer struct {
 	// Human-readable description for the Loadbalancer.
 	Description string `json:"description"`
 
-	// The administrative state of the Loadbalancer.
-	// A valid value is true (UP) or false (DOWN).
-	AdminStateUp bool `json:"admin_state_up"`
-
-	// Owner of the LoadBalancer.
-	ProjectID string `json:"project_id"`
-
-	// UpdatedAt and CreatedAt contain ISO-8601 timestamps of when the state of the
-	// loadbalancer last changed, and when it was created.
-	UpdatedAt time.Time `json:"-"`
-	CreatedAt time.Time `json:"-"`
-
 	// The provisioning status of the LoadBalancer.
 	// This value is ACTIVE, PENDING_CREATE or ERROR.
 	ProvisioningStatus string `json:"provisioning_status"`
+
+	// Owner of the LoadBalancer.
+	TenantID string `json:"tenant_id"`  // by Sean. Oh.
+	
+	// The name of the provider.
+	Provider string `json:"provider"`
+
+	// Human-readable name for the LoadBalancer. Does not have to be unique.
+	Name string `json:"name"`
+
+	// Listeners are the listeners related to this Loadbalancer.
+	Listeners []listeners.Listener `json:"listeners"`
 
 	// The IP address of the Loadbalancer.
 	VipAddress string `json:"vip_address"`
@@ -42,77 +48,61 @@ type LoadBalancer struct {
 	// The UUID of the subnet on which to allocate the virtual IP for the
 	// Loadbalancer address.
 	VipSubnetID string `json:"vip_subnet_id"`
-
-	// The UUID of the network on which to allocate the virtual IP for the
-	// Loadbalancer address.
-	VipNetworkID string `json:"vip_network_id"`
-
+	
 	// The unique ID for the LoadBalancer.
 	ID string `json:"id"`
 
 	// The operating status of the LoadBalancer. This value is ONLINE or OFFLINE.
 	OperatingStatus string `json:"operating_status"`
 
-	// Human-readable name for the LoadBalancer. Does not have to be unique.
-	Name string `json:"name"`
+	// The administrative state of the Loadbalancer.
+	// A valid value is true (UP) or false (DOWN).
+	AdminStateUp bool `json:"admin_state_up"`
 
-	// The UUID of a flavor if set.
-	FlavorID string `json:"flavor_id"`
+	IpACLGroups []IpACLGroup `json:"ipacl_groups"`
 
-	// The name of an Octavia availability zone if set.
-	AvailabilityZone string `json:"availability_zone"`
+	IpACLAction string `json:"ipacl_action"` //  Action	of IP ACL Groups : null, DENY or ALLOW
 
-	// The name of the provider.
-	Provider string `json:"provider"`
-
-	// Listeners are the listeners related to this Loadbalancer.
-	Listeners []listeners.Listener `json:"listeners"`
-
-	// Pools are the pools related to this Loadbalancer.
-	Pools []pools.Pool `json:"pools"`
-
-	// Tags is a list of resource tags. Tags are arbitrarily defined strings
-	// attached to the resource.
-	Tags []string `json:"tags"`
+	LoadBalancerType string `json:"loadbalancer_type"`
 }
 
-func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
-	type tmp LoadBalancer
+// func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
+// 	type tmp LoadBalancer
 
-	// Support for older neutron time format
-	var s1 struct {
-		tmp
-		CreatedAt gophercloud.JSONRFC3339NoZ `json:"created_at"`
-		UpdatedAt gophercloud.JSONRFC3339NoZ `json:"updated_at"`
-	}
+// 	// Support for older neutron time format
+// 	var s1 struct {
+// 		tmp
+// 		CreatedAt gophercloud.JSONRFC3339NoZ `json:"created_at"`
+// 		UpdatedAt gophercloud.JSONRFC3339NoZ `json:"updated_at"`
+// 	}
 
-	err := json.Unmarshal(b, &s1)
-	if err == nil {
-		*r = LoadBalancer(s1.tmp)
-		r.CreatedAt = time.Time(s1.CreatedAt)
-		r.UpdatedAt = time.Time(s1.UpdatedAt)
+// 	err := json.Unmarshal(b, &s1)
+// 	if err == nil {
+// 		*r = LoadBalancer(s1.tmp)
+// 		r.CreatedAt = time.Time(s1.CreatedAt)
+// 		r.UpdatedAt = time.Time(s1.UpdatedAt)
 
-		return nil
-	}
+// 		return nil
+// 	}
 
-	// Support for newer neutron time format
-	var s2 struct {
-		tmp
-		CreatedAt time.Time `json:"created_at"`
-		UpdatedAt time.Time `json:"updated_at"`
-	}
+// 	// Support for newer neutron time format
+// 	var s2 struct {
+// 		tmp
+// 		CreatedAt time.Time `json:"created_at"`
+// 		UpdatedAt time.Time `json:"updated_at"`
+// 	}
 
-	err = json.Unmarshal(b, &s2)
-	if err != nil {
-		return err
-	}
+// 	err = json.Unmarshal(b, &s2)
+// 	if err != nil {
+// 		return err
+// 	}
 
-	*r = LoadBalancer(s2.tmp)
-	r.CreatedAt = time.Time(s2.CreatedAt)
-	r.UpdatedAt = time.Time(s2.UpdatedAt)
+// 	*r = LoadBalancer(s2.tmp)
+// 	r.CreatedAt = time.Time(s2.CreatedAt)
+// 	r.UpdatedAt = time.Time(s2.UpdatedAt)
 
-	return nil
-}
+// 	return nil
+// }
 
 // StatusTree represents the status of a loadbalancer.
 type StatusTree struct {
