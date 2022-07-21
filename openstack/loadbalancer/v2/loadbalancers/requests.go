@@ -1,3 +1,5 @@
+// Modified by ETRI Team, 2022.07
+
 package loadbalancers
 
 import (
@@ -13,34 +15,23 @@ type ListOptsBuilder interface {
 	ToLoadBalancerListQuery() (string, error)
 }
 
+
 // ListOpts allows the filtering and sorting of paginated collections through
 // the API. Filtering is achieved by passing in struct field values that map to
 // the Loadbalancer attributes you want to see returned. SortKey allows you to
 // sort by a particular attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {
-	Description        string   `q:"description"`
-	AdminStateUp       *bool    `q:"admin_state_up"`
-	ProjectID          string   `q:"project_id"`
+
+type ListOpts struct {   // Modified by Sean Oh, 2022.07
+	ID                 string   `q:"id"`
+	Name               string   `q:"name"`
 	ProvisioningStatus string   `q:"provisioning_status"`
+	Description        string   `q:"description"`
 	VipAddress         string   `q:"vip_address"`
 	VipPortID          string   `q:"vip_port_id"`
 	VipSubnetID        string   `q:"vip_subnet_id"`
-	VipNetworkID       string   `q:"vip_network_id"`
-	ID                 string   `q:"id"`
 	OperatingStatus    string   `q:"operating_status"`
-	Name               string   `q:"name"`
-	FlavorID           string   `q:"flavor_id"`
-	AvailabilityZone   string   `q:"availability_zone"`
-	Provider           string   `q:"provider"`
-	Limit              int      `q:"limit"`
-	Marker             string   `q:"marker"`
-	SortKey            string   `q:"sort_key"`
-	SortDir            string   `q:"sort_dir"`
-	Tags               []string `q:"tags"`
-	TagsAny            []string `q:"tags-any"`
-	TagsNot            []string `q:"not-tags"`
-	TagsNotAny         []string `q:"not-tags-any"`
+	LoadbalancerType   string   `q:"loadbalancer_type"`    // shared or dedicated
 }
 
 // ToLoadBalancerListQuery formats a ListOpts into a query string.
