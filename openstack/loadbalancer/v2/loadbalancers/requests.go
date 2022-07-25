@@ -4,9 +4,9 @@ package loadbalancers
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 )
 
 // ListOptsBuilder allows extensions to add additional parameters to the
@@ -22,7 +22,7 @@ type ListOptsBuilder interface {
 // sort by a particular attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
 
-type ListOpts struct {   // Modified by Sean Oh, 2022.07
+type ListOpts struct {   // Modified by ETRI Team
 	ID                 string   `q:"id"`
 	Name               string   `q:"name"`
 	ProvisioningStatus string   `q:"provisioning_status"`
@@ -68,66 +68,26 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {
+type CreateOpts struct {   // Modified by ETRI Team.
 	// Human-readable name for the Loadbalancer. Does not have to be unique.
-	Name string `json:"name,omitempty"`
+	Name 				string `json:"name,omitempty"`
 
 	// Human-readable description for the Loadbalancer.
-	Description string `json:"description,omitempty"`
-
-	// Providing a neutron port ID for the vip_port_id tells Octavia to use this
-	// port for the VIP. If the port has more than one subnet you must specify
-	// either the vip_subnet_id or vip_address to clarify which address should
-	// be used for the VIP.
-	VipPortID string `json:"vip_port_id,omitempty"`
+	Description 	 	string `json:"description,omitempty"`
 
 	// The subnet on which to allocate the Loadbalancer's address. A project can
 	// only create Loadbalancers on networks authorized by policy (e.g. networks
 	// that belong to them or networks that are shared).
-	VipSubnetID string `json:"vip_subnet_id,omitempty"`
-
-	// The network on which to allocate the Loadbalancer's address. A tenant can
-	// only create Loadbalancers on networks authorized by policy (e.g. networks
-	// that belong to them or networks that are shared).
-	VipNetworkID string `json:"vip_network_id,omitempty"`
-
-	// ProjectID is the UUID of the project who owns the Loadbalancer.
-	// Only administrative users can specify a project UUID other than their own.
-	ProjectID string `json:"project_id,omitempty"`
+	VipSubnetID 	 	string `json:"vip_subnet_id" required:"true"`
 
 	// The IP address of the Loadbalancer.
-	VipAddress string `json:"vip_address,omitempty"`
+	VipAddress 		 	string `json:"vip_address,omitempty"`
 
 	// The administrative state of the Loadbalancer. A valid value is true (UP)
 	// or false (DOWN).
-	AdminStateUp *bool `json:"admin_state_up,omitempty"`
-
-	// The UUID of a flavor.
-	FlavorID string `json:"flavor_id,omitempty"`
-
-	// The name of an Octavia availability zone.
-	// Requires Octavia API version 2.14 or later.
-	AvailabilityZone string `json:"availability_zone,omitempty"`
-
-	// The name of the provider.
-	Provider string `json:"provider,omitempty"`
-
-	// Listeners is a slice of listeners.CreateOpts which allows a set
-	// of listeners to be created at the same time the Loadbalancer is created.
-	//
-	// This is only possible to use when creating a fully populated
-	// load balancer.
-	Listeners []listeners.CreateOpts `json:"listeners,omitempty"`
-
-	// Pools is a slice of pools.CreateOpts which allows a set of pools
-	// to be created at the same time the Loadbalancer is created.
-	//
-	// This is only possible to use when creating a fully populated
-	// load balancer.
-	Pools []pools.CreateOpts `json:"pools,omitempty"`
-
-	// Tags is a set of resource tags.
-	Tags []string `json:"tags,omitempty"`
+	AdminStateUp 	 	bool `json:"admin_state_up,omitempty"`
+	
+	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`
 }
 
 // ToLoadBalancerCreateMap builds a request body from CreateOpts.
