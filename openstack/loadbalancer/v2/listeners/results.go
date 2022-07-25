@@ -1,4 +1,4 @@
-// Modified by Sean Oh in ETRI
+// Modified by ETRI Team.
 
 package listeners
 
@@ -18,46 +18,46 @@ type LoadBalancerID struct {
 // as other details such as the load balancing method to be use, protocol, etc.
 type Listener struct {
 	// The UUID of default pool. Must have compatible protocol with listener.
-	DefaultPoolID string `json:"default_pool_id"`
+	DefaultPoolID 			string `json:"default_pool_id"`
 
 	// The protocol to loadbalance. A valid value is TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
-	Protocol Protocol `json:"protocol"` // by Sean Oh
+	Protocol 				Protocol `json:"protocol"` // by Sean Oh
 	// Defined at ./nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners/requests.go
 	
 	// Human-readable description for the Listener.
-	Description string `json:"description"`
+	Description 			string `json:"description"`
 	
 	// Human-readable name for the Listener. Does not have to be unique.
-	Name string `json:"name"`
+	Name 					string `json:"name"`
 
 	// A list of load balancer IDs.
-	Loadbalancers []LoadBalancerID `json:"loadbalancers"`
+	Loadbalancers 			[]LoadBalancerID `json:"loadbalancers"`
 
 	// Owner of the LoadBalancer.
-	TenantID string `json:"tenant_id"`  // by Sean. Oh.
+	TenantID 				string `json:"tenant_id"`  // by Sean. Oh.
 
 	// The administrative state of the Listener. A valid value is true (UP) or false (DOWN).
-	AdminStateUp bool `json:"admin_state_up"`
+	AdminStateUp 			bool `json:"admin_state_up"`
 
 	// The maximum number of connections allowed for the Loadbalancer.
 	// Default is -1, meaning no limit.
-	ConnLimit int `json:"connection_limit"`
+	ConnLimit 				int `json:"connection_limit"`
 
 	// Timeout in milliseconds
-	KeepaliveTimeout int `json:"keepalive_timeout"`
+	KeepaliveTimeout 		int `json:"keepalive_timeout"`
 
 	// A reference to a Barbican container of TLS secrets.
-	DefaultTlsContainerRef string `json:"default_tls_container_ref"`
+	DefaultTlsContainerRef 	string `json:"default_tls_container_ref"`
 
 	// The list of references to TLS secrets.
-	SniContainerRefs []string `json:"sni_container_refs"`
+	SniContainerRefs 		[]string `json:"sni_container_refs"`
 
 	// The port on which to listen to client traffic that is associated with the
 	// Loadbalancer. A valid value is from 0 to 65535.
-	ProtocolPort int `json:"protocol_port"`
+	ProtocolPort 			int `json:"protocol_port"`
 
 	// The unique ID for the Listener.
-	ID string `json:"id"`
+	ID 						string `json:"id"`
 }
 
 type Stats struct {

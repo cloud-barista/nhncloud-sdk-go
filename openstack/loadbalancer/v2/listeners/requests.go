@@ -1,10 +1,12 @@
+// Modified by ETRI Team, 2022.07
+
 package listeners
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/l7policies"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/l7policies"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 )
 
 // Type Protocol represents a listener protocol.
@@ -44,24 +46,16 @@ type ListOptsBuilder interface {
 // the floating IP attributes you want to see returned. SortKey allows you to
 // sort by a particular listener attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {
-	ID                   string `q:"id"`
-	Name                 string `q:"name"`
-	AdminStateUp         *bool  `q:"admin_state_up"`
-	ProjectID            string `q:"project_id"`
-	LoadbalancerID       string `q:"loadbalancer_id"`
+type ListOpts struct {    // Modified by ETRI Team
 	DefaultPoolID        string `q:"default_pool_id"`
 	Protocol             string `q:"protocol"`
-	ProtocolPort         int    `q:"protocol_port"`
+	Description          string `q:"description"`
+	Name                 string `q:"name"`
+	AdminStateUp         bool   `q:"admin_state_up"`
 	ConnectionLimit      int    `q:"connection_limit"`
-	Limit                int    `q:"limit"`
-	Marker               string `q:"marker"`
-	SortKey              string `q:"sort_key"`
-	SortDir              string `q:"sort_dir"`
-	TimeoutClientData    *int   `q:"timeout_client_data"`
-	TimeoutMemberData    *int   `q:"timeout_member_data"`
-	TimeoutMemberConnect *int   `q:"timeout_member_connect"`
-	TimeoutTCPInspect    *int   `q:"timeout_tcp_inspect"`
+	KeepAliveTimeout 	 int    `q:"keep_alive_timeout"`
+	ProtocolPort         int    `q:"protocol_port"`
+	ID                   string `q:"id"`
 }
 
 // ToListenerListQuery formats a ListOpts into a query string.
@@ -97,79 +91,36 @@ type CreateOptsBuilder interface {
 }
 
 // CreateOpts represents options for creating a listener.
-type CreateOpts struct {
-	// The load balancer on which to provision this listener.
-	LoadbalancerID string `json:"loadbalancer_id,omitempty"`
-
+type CreateOpts struct {   // Modified by ETRI Team.
 	// The protocol - can either be TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
-	Protocol Protocol `json:"protocol" required:"true"`
-
-	// The port on which to listen for client traffic.
-	ProtocolPort int `json:"protocol_port" required:"true"`
-
-	// ProjectID is only required if the caller has an admin role and wants
-	// to create a pool for another project.
-	ProjectID string `json:"project_id,omitempty"`
-
-	// Human-readable name for the Listener. Does not have to be unique.
-	Name string `json:"name,omitempty"`
-
-	// The ID of the default pool with which the Listener is associated.
-	DefaultPoolID string `json:"default_pool_id,omitempty"`
-
-	// DefaultPool an instance of pools.CreateOpts which allows a
-	// (default) pool to be created at the same time the listener is created.
-	//
-	// This is only possible to use when creating a fully populated
-	// load balancer.
-	DefaultPool *pools.CreateOpts `json:"default_pool,omitempty"`
+	Protocol 				Protocol `json:"protocol" required:"true"`
 
 	// Human-readable description for the Listener.
-	Description string `json:"description,omitempty"`
+	Description 			string `json:"description,omitempty"`
+	
+	// Human-readable name for the Listener. Does not have to be unique.
+	Name 					string `json:"name,omitempty"`
 
-	// The maximum number of connections allowed for the Listener.
-	ConnLimit *int `json:"connection_limit,omitempty"`
-
-	// A reference to a Barbican container of TLS secrets.
-	DefaultTlsContainerRef string `json:"default_tls_container_ref,omitempty"`
-
-	// A list of references to TLS secrets.
-	SniContainerRefs []string `json:"sni_container_refs,omitempty"`
+	// The load balancer on which to provision this listener.
+	LoadbalancerID 			string `json:"loadbalancer_id" required:"true"`
 
 	// The administrative state of the Listener. A valid value is true (UP)
 	// or false (DOWN).
-	AdminStateUp *bool `json:"admin_state_up,omitempty"`
+	AdminStateUp 		   	bool `json:"admin_state_up,omitempty"`
 
-	// L7Policies is a slice of l7policies.CreateOpts which allows a set
-	// of policies to be created at the same time the listener is created.
-	//
-	// This is only possible to use when creating a fully populated
-	// Loadbalancer.
-	L7Policies []l7policies.CreateOpts `json:"l7policies,omitempty"`
+	// The maximum number of connections allowed for the Listener.
+	ConnLimit 			   	int `json:"connection_limit,omitempty"`
 
-	// Frontend client inactivity timeout in milliseconds
-	TimeoutClientData *int `json:"timeout_client_data,omitempty"`
+	KeepAliveTimeout 	   	int `json:"keepalive_timeout,omitempty"`
 
-	// Backend member inactivity timeout in milliseconds
-	TimeoutMemberData *int `json:"timeout_member_data,omitempty"`
+	// A reference to a Barbican container of TLS secrets.
+	DefaultTlsContainerRef 	string `json:"default_tls_container_ref,omitempty"`
 
-	// Backend member connection timeout in milliseconds
-	TimeoutMemberConnect *int `json:"timeout_member_connect,omitempty"`
+	// A list of references to TLS secrets.
+	SniContainerRefs 	   	[]string `json:"sni_container_refs,omitempty"`
 
-	// Time, in milliseconds, to wait for additional TCP packets for content inspection
-	TimeoutTCPInspect *int `json:"timeout_tcp_inspect,omitempty"`
-
-	// A dictionary of optional headers to insert into the request before it is sent to the backend member.
-	InsertHeaders map[string]string `json:"insert_headers,omitempty"`
-
-	// A list of IPv4, IPv6 or mix of both CIDRs
-	AllowedCIDRs []string `json:"allowed_cidrs,omitempty"`
-
-	// A list of TLS protocol versions. Available from microversion 2.17
-	TLSVersions []TLSVersion `json:"tls_versions,omitempty"`
-
-	// Tags is a set of resource tags. New in version 2.5
-	Tags []string `json:"tags,omitempty"`
+	// The port on which to listen for client traffic.
+	ProtocolPort 		   	int `json:"protocol_port" required:"true"`
 }
 
 // ToListenerCreateMap builds a request body from CreateOpts.

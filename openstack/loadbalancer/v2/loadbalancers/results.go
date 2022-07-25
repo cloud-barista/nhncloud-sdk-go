@@ -21,49 +21,49 @@ type IpACLGroup struct {  // by Sean. Oh.
 // as other details such as the load balancing method to be use, protocol, etc.
 type LoadBalancer struct {
 	// Human-readable description for the Loadbalancer.
-	Description string `json:"description"`
+	Description 		string `json:"description"`
 
 	// The provisioning status of the LoadBalancer.
 	// This value is ACTIVE, PENDING_CREATE or ERROR.
-	ProvisioningStatus string `json:"provisioning_status"`
+	ProvisioningStatus 	string `json:"provisioning_status"`
 
 	// Owner of the LoadBalancer.
-	TenantID string `json:"tenant_id"`  // by Sean. Oh.
+	TenantID 			string `json:"tenant_id"`  // by Sean. Oh.
 	
 	// The name of the provider.
-	Provider string `json:"provider"`
+	Provider 			string `json:"provider"`
 
 	// Human-readable name for the LoadBalancer. Does not have to be unique.
-	Name string `json:"name"`
+	Name 				string `json:"name"`
 
 	// Listeners are the listeners related to this Loadbalancer.
-	Listeners []listeners.Listener `json:"listeners"`
+	Listeners 			[]listeners.Listener `json:"listeners"`
 
 	// The IP address of the Loadbalancer.
-	VipAddress string `json:"vip_address"`
+	VipAddress 			string `json:"vip_address"`
 
 	// The UUID of the port associated with the IP address.
-	VipPortID string `json:"vip_port_id"`
+	VipPortID 			string `json:"vip_port_id"`
 
 	// The UUID of the subnet on which to allocate the virtual IP for the
 	// Loadbalancer address.
-	VipSubnetID string `json:"vip_subnet_id"`
+	VipSubnetID 		string `json:"vip_subnet_id"`
 	
 	// The unique ID for the LoadBalancer.
-	ID string `json:"id"`
+	ID 					string `json:"id"`
 
 	// The operating status of the LoadBalancer. This value is ONLINE or OFFLINE.
-	OperatingStatus string `json:"operating_status"`
+	OperatingStatus 	string `json:"operating_status"`
 
 	// The administrative state of the Loadbalancer.
 	// A valid value is true (UP) or false (DOWN).
-	AdminStateUp bool `json:"admin_state_up"`
+	AdminStateUp 		bool `json:"admin_state_up"`
 
-	IpACLGroups []IpACLGroup `json:"ipacl_groups"`
+	IpACLGroups 		[]IpACLGroup `json:"ipacl_groups"`
 
-	IpACLAction string `json:"ipacl_action"` //  Action	of IP ACL Groups : null, DENY or ALLOW
+	IpACLAction 		string `json:"ipacl_action"` //  Action	of IP ACL Groups : null, DENY or ALLOW
 
-	LoadBalancerType string `json:"loadbalancer_type"`
+	LoadBalancerType 	string `json:"loadbalancer_type"`
 }
 
 // func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
