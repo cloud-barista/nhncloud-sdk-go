@@ -1,4 +1,12 @@
-// Modified by ETRI Team, 2022.07
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
 
 package listeners
 
@@ -46,7 +54,7 @@ type ListOptsBuilder interface {
 // the floating IP attributes you want to see returned. SortKey allows you to
 // sort by a particular listener attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {    // Modified by ETRI Team
+type ListOpts struct {    									// Modified by B.T. Oh
 	DefaultPoolID        string `q:"default_pool_id"`
 	Protocol             string `q:"protocol"`
 	Description          string `q:"description"`
@@ -91,7 +99,7 @@ type CreateOptsBuilder interface {
 }
 
 // CreateOpts represents options for creating a listener.
-type CreateOpts struct {   // Modified by ETRI Team.
+type CreateOpts struct {   									// Modified by B.T. Oh
 	// The protocol - can either be TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
 	Protocol 				Protocol `json:"protocol" required:"true"`
 

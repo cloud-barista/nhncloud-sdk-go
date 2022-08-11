@@ -1,4 +1,12 @@
-// Modified by ETRI Team, 2022.07
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
 
 package loadbalancers
 
@@ -15,14 +23,13 @@ type ListOptsBuilder interface {
 	ToLoadBalancerListQuery() (string, error)
 }
 
-
 // ListOpts allows the filtering and sorting of paginated collections through
 // the API. Filtering is achieved by passing in struct field values that map to
 // the Loadbalancer attributes you want to see returned. SortKey allows you to
 // sort by a particular attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
 
-type ListOpts struct {   // Modified by ETRI Team
+type ListOpts struct {   									// Modified by B.T. Oh
 	ID                 string   `q:"id"`
 	Name               string   `q:"name"`
 	ProvisioningStatus string   `q:"provisioning_status"`
@@ -68,7 +75,7 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {   // Modified by ETRI Team.
+type CreateOpts struct {   											// Modified by B.T. Oh
 	// Human-readable name for the Loadbalancer. Does not have to be unique.
 	Name 				string `json:"name,omitempty"`
 

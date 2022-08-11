@@ -1,3 +1,13 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package monitors
 
 import (
@@ -27,63 +37,44 @@ type PoolID struct {
 // unhealthy, then the member status is changed to INACTIVE and the member
 // won't participate in its pool's load balancing. In other words, ALL monitors
 // must declare the member to be healthy for it to stay ACTIVE.
-type Monitor struct {
-	// The unique ID for the Monitor.
-	ID string `json:"id"`
-
-	// The Name of the Monitor.
-	Name string `json:"name"`
-
-	// The owner of the Monitor.
-	ProjectID string `json:"project_id"`
-
-	// The type of probe sent by the load balancer to verify the member state,
-	// which is PING, TCP, HTTP, HTTPS, TLS-HELLO, UDP-CONNECT or SCTP.
-	Type string `json:"type"`
+type Monitor struct {											// Modified by B.T. Oh
+	// The administrative state of the health monitor, which is up (true) or
+	// down (false).
+	AdminStateUp bool `json:"admin_state_up"`
 
 	// The time, in seconds, between sending probes to members.
 	Delay int `json:"delay"`
+
+	// Expected HTTP codes for a passing HTTP(S) monitor.
+	ExpectedCodes string `json:"expected_codes"`
+
+	// Number of allowed connection failures before changing the status of the
+	// member to INACTIVE. A valid value is from 1 to 10.
+	MaxRetries int `json:"max_retries"`
+
+	// The HTTP method that the monitor uses for requests.
+	HTTPMethod string `json:"http_method"`
 
 	// The maximum number of seconds for a monitor to wait for a connection to be
 	// established before it times out. This value must be less than the delay
 	// value.
 	Timeout int `json:"timeout"`
 
-	// Number of allowed connection failures before changing the status of the
-	// member to INACTIVE. A valid value is from 1 to 10.
-	MaxRetries int `json:"max_retries"`
-
-	// Number of allowed connection failures before changing the status of the
-	// member to Error. A valid value is from 1 to 10.
-	MaxRetriesDown int `json:"max_retries_down"`
-
-	// The HTTP method that the monitor uses for requests.
-	HTTPMethod string `json:"http_method"`
+	// List of pools that are associated with the health monitor.
+	Pools []PoolID `json:"pools"`
 
 	// The HTTP path of the request sent by the monitor to test the health of a
 	// member. Must be a string beginning with a forward slash (/).
 	URLPath string `json:"url_path" `
 
-	// Expected HTTP codes for a passing HTTP(S) monitor.
-	ExpectedCodes string `json:"expected_codes"`
+	// The type of probe sent by the load balancer to verify the member state,
+	// which is PING, TCP, HTTP, HTTPS, TLS-HELLO, UDP-CONNECT or SCTP.
+	Type string `json:"type"`
 
-	// The administrative state of the health monitor, which is up (true) or
-	// down (false).
-	AdminStateUp bool `json:"admin_state_up"`
+	// The unique ID for the Monitor.
+	ID string `json:"id"`
 
-	// The status of the health monitor. Indicates whether the health monitor is
-	// operational.
-	Status string `json:"status"`
-
-	// List of pools that are associated with the health monitor.
-	Pools []PoolID `json:"pools"`
-
-	// The provisioning status of the Monitor.
-	// This value is ACTIVE, PENDING_* or ERROR.
-	ProvisioningStatus string `json:"provisioning_status"`
-
-	// The operating status of the monitor.
-	OperatingStatus string `json:"operating_status"`
+	HostHeader string `json:"host_header"`						// Added by B.T. Oh
 }
 
 // MonitorPage is the page returned by a pager when traversing over a

@@ -1,3 +1,13 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package monitors
 
 import (
@@ -18,26 +28,17 @@ type ListOptsBuilder interface {
 // the Monitor attributes you want to see returned. SortKey allows you to
 // sort by a particular Monitor attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {
+type ListOpts struct {								// Modified by B.T. Oh
 	ID             string `q:"id"`
-	Name           string `q:"name"`
-	TenantID       string `q:"tenant_id"`
-	ProjectID      string `q:"project_id"`
-	PoolID         string `q:"pool_id"`
-	Type           string `q:"type"`
-	Delay          int    `q:"delay"`
-	Timeout        int    `q:"timeout"`
-	MaxRetries     int    `q:"max_retries"`
-	MaxRetriesDown int    `q:"max_retries_down"`
-	HTTPMethod     string `q:"http_method"`
-	URLPath        string `q:"url_path"`
-	ExpectedCodes  string `q:"expected_codes"`
 	AdminStateUp   *bool  `q:"admin_state_up"`
-	Status         string `q:"status"`
-	Limit          int    `q:"limit"`
-	Marker         string `q:"marker"`
-	SortKey        string `q:"sort_key"`
-	SortDir        string `q:"sort_dir"`
+	Delay          int    `q:"delay"`
+	ExpectedCodes  string `q:"expected_codes"`
+	MaxRetries     int    `q:"max_retries"`
+	HTTPMethod     string `q:"http_method"`
+	Timeout        int    `q:"timeout"`
+	URLPath        string `q:"url_path"`
+	Type           string `q:"type"`
+	HostHeader     string `q:"host_header"`			// Added by B.T. Oh
 }
 
 // ToMonitorListQuery formats a ListOpts into a query string.
@@ -92,55 +93,44 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {
+type CreateOpts struct {												// Modified by B.T. Oh
 	// The Pool to Monitor.
-	PoolID string `json:"pool_id,omitempty"`
+	PoolID string `json:"pool_id" required:"true"`
 
-	// The type of probe, which is PING, TCP, HTTP, or HTTPS, that is
-	// sent by the load balancer to verify the member state.
-	Type string `json:"type" required:"true"`
+	// The administrative state of the Monitor. A valid value is true (UP)
+	// or false (DOWN).
+	AdminStateUp *bool `json:"admin_state_up,omitempty"`
+
+	HealthCheckPort int `json:"health_check_port,omitempty"`			// Added by B.T. Oh
 
 	// The time, in seconds, between sending probes to members.
 	Delay int `json:"delay" required:"true"`
-
-	// Maximum number of seconds for a Monitor to wait for a ping reply
-	// before it times out. The value must be less than the delay value.
-	Timeout int `json:"timeout" required:"true"`
-
-	// Number of permissible ping failures before changing the member's
-	// status to INACTIVE. Must be a number between 1 and 10.
-	MaxRetries int `json:"max_retries" required:"true"`
-
-	// Number of permissible ping failures befor changing the member's
-	// status to ERROR. Must be a number between 1 and 10.
-	MaxRetriesDown int `json:"max_retries_down,omitempty"`
-
-	// URI path that will be accessed if Monitor type is HTTP or HTTPS.
-	URLPath string `json:"url_path,omitempty"`
-
-	// The HTTP method used for requests by the Monitor. If this attribute
-	// is not specified, it defaults to "GET". Required for HTTP(S) types.
-	HTTPMethod string `json:"http_method,omitempty"`
-
+	
 	// Expected HTTP codes for a passing HTTP(S) Monitor. You can either specify
 	// a single status like "200", a range like "200-202", or a combination like
 	// "200-202, 401".
 	ExpectedCodes string `json:"expected_codes,omitempty"`
 
-	// TenantID is the UUID of the project who owns the Monitor.
-	// Only administrative users can specify a project UUID other than their own.
-	TenantID string `json:"tenant_id,omitempty"`
+	// Number of permissible ping failures before changing the member's
+	// status to INACTIVE. Must be a number between 1 and 10.
+	MaxRetries int `json:"max_retries" required:"true"`
 
-	// ProjectID is the UUID of the project who owns the Monitor.
-	// Only administrative users can specify a project UUID other than their own.
-	ProjectID string `json:"project_id,omitempty"`
+	// The HTTP method used for requests by the Monitor. If this attribute
+	// is not specified, it defaults to "GET". Required for HTTP(S) types.
+	HTTPMethod string `json:"http_method,omitempty"`
 
-	// The Name of the Monitor.
-	Name string `json:"name,omitempty"`
+	// Maximum number of seconds for a Monitor to wait for a ping reply
+	// before it times out. The value must be less than the delay value.
+	Timeout int `json:"timeout" required:"true"`
 
-	// The administrative state of the Monitor. A valid value is true (UP)
-	// or false (DOWN).
-	AdminStateUp *bool `json:"admin_state_up,omitempty"`
+	// URI path that will be accessed if Monitor type is HTTP or HTTPS.
+	URLPath string `json:"url_path,omitempty"`
+
+	// The type of probe, which is PING, TCP, HTTP, or HTTPS, that is
+	// sent by the load balancer to verify the member state.
+	Type string `json:"type" required:"true"`
+
+	HostHeader string `json:"host_header,omitempty"`		 		// Added by B.T. Oh
 }
 
 // ToMonitorCreateMap builds a request body from CreateOpts.

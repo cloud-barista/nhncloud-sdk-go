@@ -1,8 +1,18 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package pools
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/monitors"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/monitors"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
@@ -17,18 +27,14 @@ type ListOptsBuilder interface {
 // the Pool attributes you want to see returned. SortKey allows you to
 // sort by a particular Pool attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {
+type ListOpts struct {								// Modified by B.T. Oh
+	ID             string `q:"id"`
+	Name           string `q:"name"`
 	LBMethod       string `q:"lb_algorithm"`
 	Protocol       string `q:"protocol"`
-	ProjectID      string `q:"project_id"`
 	AdminStateUp   *bool  `q:"admin_state_up"`
-	Name           string `q:"name"`
-	ID             string `q:"id"`
 	LoadbalancerID string `q:"loadbalancer_id"`
-	Limit          int    `q:"limit"`
-	Marker         string `q:"marker"`
-	SortKey        string `q:"sort_key"`
-	SortDir        string `q:"sort_dir"`
+	MonitorID string `q:"healthmonitor_id"`			// Added by B.T. Oh
 }
 
 // ToPoolListQuery formats a ListOpts into a query string.
@@ -86,6 +92,10 @@ type CreateOptsBuilder interface {
 // CreateOpts is the common options struct used in this package's Create
 // operation.
 type CreateOpts struct {
+	// The Listener on which the members of the pool will be associated with.
+	// Note: one of LoadbalancerID or ListenerID must be provided.
+	ListenerID string `json:"listener_id" required:"true"`
+
 	// The algorithm used to distribute load between the members of the pool. The
 	// current specification supports LBMethodRoundRobin, LBMethodLeastConnections
 	// and LBMethodSourceIp as valid values for this attribute.
@@ -96,48 +106,22 @@ type CreateOpts struct {
 	// ProtocolSCTP or ProtocolPROXYV2.
 	Protocol Protocol `json:"protocol" required:"true"`
 
-	// The Loadbalancer on which the members of the pool will be associated with.
-	// Note: one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerID string `json:"loadbalancer_id,omitempty"`
-
-	// The Listener on which the members of the pool will be associated with.
-	// Note: one of LoadbalancerID or ListenerID must be provided.
-	ListenerID string `json:"listener_id,omitempty"`
-
-	// ProjectID is the UUID of the project who owns the Pool.
-	// Only administrative users can specify a project UUID other than their own.
-	ProjectID string `json:"project_id,omitempty"`
-
-	// Name of the pool.
-	Name string `json:"name,omitempty"`
-
 	// Human-readable description for the pool.
 	Description string `json:"description,omitempty"`
-
-	// Persistence is the session persistence of the pool.
-	// Omit this field to prevent session persistence.
-	Persistence *SessionPersistence `json:"session_persistence,omitempty"`
 
 	// The administrative state of the Pool. A valid value is true (UP)
 	// or false (DOWN).
 	AdminStateUp *bool `json:"admin_state_up,omitempty"`
 
-	// Members is a slice of BatchUpdateMemberOpts which allows a set of
-	// members to be created at the same time the pool is created.
-	//
-	// This is only possible to use when creating a fully populated
-	// Loadbalancer.
-	Members []BatchUpdateMemberOpts `json:"members,omitempty"`
+	// Member's port for receiving. Deliver traffic to this port. The default value is -1.
+	MemberPort int `json:"member_port,omitempty"`	  					// Added by BT.OH
 
-	// Monitor is an instance of monitors.CreateOpts which allows a monitor
-	// to be created at the same time the pool is created.
-	//
-	// This is only possible to use when creating a fully populated
-	// Loadbalancer.
-	Monitor *monitors.CreateOpts `json:"healthmonitor,omitempty"`
+	// Persistence is the session persistence of the pool.
+	// Omit this field to prevent session persistence.
+	Persistence *SessionPersistence `json:"session_persistence,omitempty"`
 
-	// Tags is a set of resource tags. New in version 2.5
-	Tags []string `json:"tags,omitempty"`
+	// Name of the pool.
+	Name string `json:"name,omitempty"`
 }
 
 // ToPoolCreateMap builds a request body from CreateOpts.

@@ -1,11 +1,21 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package pools
 
 import (
 	"encoding/json"
-	"time"
+	// "time"
 
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/monitors"
+	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/monitors"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
@@ -46,7 +56,7 @@ type ListenerID struct {
 // group together to receive and process traffic. The load balancing function
 // chooses a Member of the Pool according to the configured load balancing
 // method to handle the new requests or connections received on the VIP address.
-type Pool struct {
+type Pool struct {																// Modified by B.T. Oh
 	// The load-balancer algorithm, which is round-robin, least-connections, and
 	// so on. This value, which must be supported, is dependent on the provider.
 	// Round-robin must be supported.
@@ -58,54 +68,30 @@ type Pool struct {
 	// Description for the Pool.
 	Description string `json:"description"`
 
+	// The administrative state of the Pool, which is up (true) or down (false).
+	AdminStateUp bool `json:"admin_state_up"`
+
+	// Owner of the Pool.
+	TenantID string `json:"tenant_id"`						// Added by B.T. Oh
+
+	// Indicates whether connections in the same session will be processed by the
+	// same Pool member or not.
+	Persistence SessionPersistence `json:"session_persistence"`
+
+	// The ID of associated health monitor.
+	MonitorID string `json:"healthmonitor_id"`
+
 	// A list of listeners objects IDs.
 	Listeners []ListenerID `json:"listeners"` //[]map[string]interface{}
 
 	// A list of member objects IDs.
 	Members []Member `json:"members"`
 
-	// The ID of associated health monitor.
-	MonitorID string `json:"healthmonitor_id"`
-
-	// The network on which the members of the Pool will be located. Only members
-	// that are on this network can be added to the Pool.
-	SubnetID string `json:"subnet_id"`
-
-	// Owner of the Pool.
-	ProjectID string `json:"project_id"`
-
-	// The administrative state of the Pool, which is up (true) or down (false).
-	AdminStateUp bool `json:"admin_state_up"`
-
-	// Pool name. Does not have to be unique.
-	Name string `json:"name"`
-
 	// The unique ID for the Pool.
 	ID string `json:"id"`
 
-	// A list of load balancer objects IDs.
-	Loadbalancers []LoadBalancerID `json:"loadbalancers"`
-
-	// Indicates whether connections in the same session will be processed by the
-	// same Pool member or not.
-	Persistence SessionPersistence `json:"session_persistence"`
-
-	// The load balancer provider.
-	Provider string `json:"provider"`
-
-	// The Monitor associated with this Pool.
-	Monitor monitors.Monitor `json:"healthmonitor"`
-
-	// The provisioning status of the pool.
-	// This value is ACTIVE, PENDING_* or ERROR.
-	ProvisioningStatus string `json:"provisioning_status"`
-
-	// The operating status of the pool.
-	OperatingStatus string `json:"operating_status"`
-
-	// Tags is a list of resource tags. Tags are arbitrarily defined strings
-	// attached to the resource. New in version 2.5
-	Tags []string `json:"tags"`
+	// Pool name. Does not have to be unique.
+	Name string `json:"name"`
 }
 
 // PoolPage is the page returned by a pager when traversing over a
@@ -183,24 +169,18 @@ type DeleteResult struct {
 }
 
 // Member represents the application running on a backend server.
-type Member struct {
-	// Name of the Member.
-	Name string `json:"name"`
-
+type Member struct {										// Modified by B.T. Oh
 	// Weight of Member.
 	Weight int `json:"weight"`
 
 	// The administrative state of the member, which is up (true) or down (false).
 	AdminStateUp bool `json:"admin_state_up"`
 
-	// Owner of the Member.
-	ProjectID string `json:"project_id"`
-
 	// Parameter value for the subnet UUID.
 	SubnetID string `json:"subnet_id"`
 
-	// The Pool to which the Member belongs.
-	PoolID string `json:"pool_id"`
+	// Owner of the Pool.
+	TenantID string `json:"tenant_id"`						// Added by B.T. Oh
 
 	// The IP address of the Member.
 	Address string `json:"address"`
@@ -211,31 +191,8 @@ type Member struct {
 	// The unique ID for the Member.
 	ID string `json:"id"`
 
-	// The provisioning status of the pool.
-	// This value is ACTIVE, PENDING_* or ERROR.
-	ProvisioningStatus string `json:"provisioning_status"`
-
-	// DateTime when the member was created
-	CreatedAt time.Time `json:"-"`
-
-	// DateTime when the member was updated
-	UpdatedAt time.Time `json:"-"`
-
 	// The operating status of the member
 	OperatingStatus string `json:"operating_status"`
-
-	// Is the member a backup? Backup members only receive traffic when all non-backup members are down.
-	Backup bool `json:"backup"`
-
-	// An alternate IP address used for health monitoring a backend member.
-	MonitorAddress string `json:"monitor_address"`
-
-	// An alternate protocol port used for health monitoring a backend member.
-	MonitorPort int `json:"monitor_port"`
-
-	// A list of simple strings assigned to the resource.
-	// Requires microversion 2.5 or later.
-	Tags []string `json:"tags"`
 }
 
 // MemberPage is the page returned by a pager when traversing over a
@@ -291,8 +248,8 @@ func (r *Member) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	*r = Member(s.tmp)
-	r.CreatedAt = time.Time(s.CreatedAt)
-	r.UpdatedAt = time.Time(s.UpdatedAt)
+	// r.CreatedAt = time.Time(s.CreatedAt)
+	// r.UpdatedAt = time.Time(s.UpdatedAt)
 	return nil
 }
 

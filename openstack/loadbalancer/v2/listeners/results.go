@@ -1,4 +1,12 @@
-// Modified by ETRI Team.
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
 
 package listeners
 
@@ -21,7 +29,7 @@ type Listener struct {
 	DefaultPoolID 			string `json:"default_pool_id"`
 
 	// The protocol to loadbalance. A valid value is TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
-	Protocol 				Protocol `json:"protocol"` // by Sean Oh
+	Protocol 				Protocol `json:"protocol"` 					// Modified by B.T. Oh
 	// Defined at ./nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners/requests.go
 	
 	// Human-readable description for the Listener.
@@ -34,7 +42,7 @@ type Listener struct {
 	Loadbalancers 			[]LoadBalancerID `json:"loadbalancers"`
 
 	// Owner of the LoadBalancer.
-	TenantID 				string `json:"tenant_id"`  // by Sean. Oh.
+	TenantID 				string `json:"tenant_id"`  					// Modified by B.T. Oh
 
 	// The administrative state of the Listener. A valid value is true (UP) or false (DOWN).
 	AdminStateUp 			bool `json:"admin_state_up"`
