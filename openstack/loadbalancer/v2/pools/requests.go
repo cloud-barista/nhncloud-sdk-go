@@ -91,7 +91,7 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {
+type CreateOpts struct {											// Modified by B.T. Oh
 	// The Listener on which the members of the pool will be associated with.
 	// Note: one of LoadbalancerID or ListenerID must be provided.
 	ListenerID string `json:"listener_id" required:"true"`
@@ -114,7 +114,7 @@ type CreateOpts struct {
 	AdminStateUp *bool `json:"admin_state_up,omitempty"`
 
 	// Member's port for receiving. Deliver traffic to this port. The default value is -1.
-	MemberPort int `json:"member_port,omitempty"`	  					// Added by BT.OH
+	MemberPort int `json:"member_port,omitempty"`	  					// Added by B.T. Oh
 
 	// Persistence is the session persistence of the pool.
 	// Omit this field to prevent session persistence.
@@ -214,18 +214,16 @@ type ListMembersOptsBuilder interface {
 // that map to the Member attributes you want to see returned. SortKey allows
 // you to sort by a particular Member attribute. SortDir sets the direction,
 // and is either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListMembersOpts struct {
-	Name         string `q:"name"`
-	Weight       int    `q:"weight"`
-	AdminStateUp *bool  `q:"admin_state_up"`
-	ProjectID    string `q:"project_id"`
-	Address      string `q:"address"`
-	ProtocolPort int    `q:"protocol_port"`
-	ID           string `q:"id"`
-	Limit        int    `q:"limit"`
-	Marker       string `q:"marker"`
-	SortKey      string `q:"sort_key"`
-	SortDir      string `q:"sort_dir"`
+type ListMembersOpts struct {								// Modified by B.T. Oh
+	PoolID          string `q:"poolId"`						// ????????
+	ID           	string `q:"id"`
+	Weight       	int    `q:"weight"`
+	AdminStateUp 	*bool  `q:"admin_state_up"`
+	SubnetID     	string `q:"subnet_id"`					// Added by B.T. Oh
+	TenantID     	string `q:"tenant_id"`					// Added by B.T. Oh
+	Address      	string `q:"address"`
+	ProtocolPort 	int    `q:"protocol_port"`
+	OperatingStatus	string `q:"operating_status	"`			// Added by B.T. Oh
 }
 
 // ToMemberListQuery formats a ListOpts into a query string.
@@ -262,48 +260,28 @@ type CreateMemberOptsBuilder interface {
 
 // CreateMemberOpts is the common options struct used in this package's CreateMember
 // operation.
-type CreateMemberOpts struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	Address string `json:"address" required:"true"`
-
-	// The port on which to listen for client traffic.
-	ProtocolPort int `json:"protocol_port" required:"true"`
-
-	// Name of the Member.
-	Name string `json:"name,omitempty"`
-
-	// ProjectID is the UUID of the project who owns the Member.
-	// Only administrative users can specify a project UUID other than their own.
-	ProjectID string `json:"project_id,omitempty"`
+type CreateMemberOpts struct {									// Modified by B.T. Oh
+	// PoolID string  `json:"poolId" required:"true"`			// Caution!! : This is unnecessary. NHN Cloud Open API Manual is Incorrect.
 
 	// A positive integer value that indicates the relative portion of traffic
 	// that this member should receive from the pool. For example, a member with
 	// a weight of 10 receives five times as much traffic as a member with a
 	// weight of 2.
-	Weight *int `json:"weight,omitempty"`
-
-	// If you omit this parameter, LBaaS uses the vip_subnet_id parameter value
-	// for the subnet UUID.
-	SubnetID string `json:"subnet_id,omitempty"`
+	Weight int `json:"weight,omitempty"`
 
 	// The administrative state of the Pool. A valid value is true (UP)
 	// or false (DOWN).
-	AdminStateUp *bool `json:"admin_state_up,omitempty"`
+	AdminStateUp bool `json:"admin_state_up,omitempty"`
 
-	// Is the member a backup? Backup members only receive traffic when all
-	// non-backup members are down.
-	// Requires microversion 2.1 or later.
-	Backup *bool `json:"backup,omitempty"`
+	// If you omit this parameter, LBaaS uses the vip_subnet_id parameter value
+	// for the subnet UUID.
+	SubnetID string `json:"subnet_id" required:"true"`
 
-	// An alternate IP address used for health monitoring a backend member.
-	MonitorAddress string `json:"monitor_address,omitempty"`
+	// The IP address of the member to receive traffic from the load balancer.
+	Address string `json:"address" required:"true"`
 
-	// An alternate protocol port used for health monitoring a backend member.
-	MonitorPort *int `json:"monitor_port,omitempty"`
-
-	// A list of simple strings assigned to the resource.
-	// Requires microversion 2.5 or later.
-	Tags []string `json:"tags,omitempty"`
+	// The port on which to listen for client traffic.
+	ProtocolPort int `json:"protocol_port" required:"true"`
 }
 
 // ToMemberCreateMap builds a request body from CreateMemberOpts.

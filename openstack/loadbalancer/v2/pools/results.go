@@ -72,7 +72,10 @@ type Pool struct {																// Modified by B.T. Oh
 	AdminStateUp bool `json:"admin_state_up"`
 
 	// Owner of the Pool.
-	TenantID string `json:"tenant_id"`						// Added by B.T. Oh
+	TenantID string `json:"tenant_id"`											// Added by B.T. Oh
+
+	// Member's port for receiving. Deliver traffic to this port. The default value is -1.
+	MemberPort int `json:"member_port"`	  										// Added by BT.OH   Not Exits on API Manual.
 
 	// Indicates whether connections in the same session will be processed by the
 	// same Pool member or not.

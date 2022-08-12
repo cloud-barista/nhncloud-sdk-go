@@ -42,6 +42,8 @@ type Monitor struct {											// Modified by B.T. Oh
 	// down (false).
 	AdminStateUp bool `json:"admin_state_up"`
 
+	HealthCheckPort int `json:"health_check_port"`			// Added by B.T. Oh.  Not exists on API manual.
+
 	// The time, in seconds, between sending probes to members.
 	Delay int `json:"delay"`
 
