@@ -183,8 +183,8 @@ type Server struct {																// Modified by B.T. Oh
 	// Current State of the instance
 	VMState string `json:"OS-EXT-STS:vm_state"`										// Added by B.T. Oh
 
-	// Last Booting Time of the instance
-	VMLaunchedAt time.Time `json:"OS-SRV-USG:launched_at"`							// Added by B.T. Oh
+	// // Last Booting Time of the instance
+	// VMLaunchedAt time.Time `json:"OS-SRV-USG:launched_at"`							// Added by B.T. Oh
 
 	// Last Deleting Time of the instance
 	VMTerminatedAt time.Time `json:"OS-SRV-USG:terminated_at"`						// Added by B.T. Oh
