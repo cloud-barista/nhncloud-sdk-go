@@ -27,14 +27,13 @@ type ListOptsBuilder interface {
 // the Pool attributes you want to see returned. SortKey allows you to
 // sort by a particular Pool attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {								// Modified by B.T. Oh
+type ListOpts struct {										// Modified by B.T. Oh
 	ID             string `q:"id"`
 	Name           string `q:"name"`
 	LBMethod       string `q:"lb_algorithm"`
 	Protocol       string `q:"protocol"`
-	AdminStateUp   *bool  `q:"admin_state_up"`
-	LoadbalancerID string `q:"loadbalancer_id"`
-	MonitorID string `q:"healthmonitor_id"`			// Added by B.T. Oh
+	AdminStateUp   bool   `q:"admin_state_up"`
+	MonitorID 	   string `q:"healthmonitor_id"`			// Added by B.T. Oh
 }
 
 // ToPoolListQuery formats a ListOpts into a query string.
@@ -91,7 +90,7 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {											// Modified by B.T. Oh
+type CreateOpts struct {												// Modified by B.T. Oh
 	// The Listener on which the members of the pool will be associated with.
 	// Note: one of LoadbalancerID or ListenerID must be provided.
 	ListenerID string `json:"listener_id" required:"true"`
@@ -111,7 +110,7 @@ type CreateOpts struct {											// Modified by B.T. Oh
 
 	// The administrative state of the Pool. A valid value is true (UP)
 	// or false (DOWN).
-	AdminStateUp *bool `json:"admin_state_up,omitempty"`
+	AdminStateUp bool `json:"admin_state_up,omitempty"`
 
 	// Member's port for receiving. Deliver traffic to this port. The default value is -1.
 	MemberPort int `json:"member_port,omitempty"`	  					// Added by B.T. Oh
@@ -157,24 +156,25 @@ type UpdateOptsBuilder interface {
 
 // UpdateOpts is the common options struct used in this package's Update
 // operation.
-type UpdateOpts struct {
-	// Name of the pool.
-	Name *string `json:"name,omitempty"`
-
-	// Human-readable description for the pool.
-	Description *string `json:"description,omitempty"`
-
+type UpdateOpts struct {													// Modified by B.T. Oh
 	// The algorithm used to distribute load between the members of the pool. The
 	// current specification supports LBMethodRoundRobin, LBMethodLeastConnections
 	// and LBMethodSourceIp as valid values for this attribute.
 	LBMethod LBMethod `json:"lb_algorithm,omitempty"`
 
+	// Human-readable description for the pool.
+	Description *string `json:"description,omitempty"`
+
 	// The administrative state of the Pool. A valid value is true (UP)
 	// or false (DOWN).
 	AdminStateUp *bool `json:"admin_state_up,omitempty"`
 
-	// Tags is a set of resource tags. New in version 2.5
-	Tags *[]string `json:"tags,omitempty"`
+	// Persistence is the session persistence of the pool.
+	// Omit this field to prevent session persistence.
+	Persistence *SessionPersistence `json:"session_persistence,omitempty"`  // Added by B.T. Oh
+
+	// Name of the pool.
+	Name *string `json:"name,omitempty"`
 }
 
 // ToPoolUpdateMap builds a request body from UpdateOpts.
@@ -215,7 +215,6 @@ type ListMembersOptsBuilder interface {
 // you to sort by a particular Member attribute. SortDir sets the direction,
 // and is either `asc' or `desc'. Marker and Limit are used for pagination.
 type ListMembersOpts struct {								// Modified by B.T. Oh
-	PoolID          string `q:"poolId"`						// ????????
 	ID           	string `q:"id"`
 	Weight       	int    `q:"weight"`
 	AdminStateUp 	*bool  `q:"admin_state_up"`
@@ -261,8 +260,6 @@ type CreateMemberOptsBuilder interface {
 // CreateMemberOpts is the common options struct used in this package's CreateMember
 // operation.
 type CreateMemberOpts struct {									// Modified by B.T. Oh
-	// PoolID string  `json:"poolId" required:"true"`			// Caution!! : This is unnecessary. NHN Cloud Open API Manual is Incorrect.
-
 	// A positive integer value that indicates the relative portion of traffic
 	// that this member should receive from the pool. For example, a member with
 	// a weight of 10 receives five times as much traffic as a member with a
@@ -317,9 +314,6 @@ type UpdateMemberOptsBuilder interface {
 // UpdateMemberOpts is the common options struct used in this package's Update
 // operation.
 type UpdateMemberOpts struct {
-	// Name of the Member.
-	Name *string `json:"name,omitempty"`
-
 	// A positive integer value that indicates the relative portion of traffic
 	// that this member should receive from the pool. For example, a member with
 	// a weight of 10 receives five times as much traffic as a member with a
@@ -329,21 +323,6 @@ type UpdateMemberOpts struct {
 	// The administrative state of the Pool. A valid value is true (UP)
 	// or false (DOWN).
 	AdminStateUp *bool `json:"admin_state_up,omitempty"`
-
-	// Is the member a backup? Backup members only receive traffic when all
-	// non-backup members are down.
-	// Requires microversion 2.1 or later.
-	Backup *bool `json:"backup,omitempty"`
-
-	// An alternate IP address used for health monitoring a backend member.
-	MonitorAddress *string `json:"monitor_address,omitempty"`
-
-	// An alternate protocol port used for health monitoring a backend member.
-	MonitorPort *int `json:"monitor_port,omitempty"`
-
-	// A list of simple strings assigned to the resource.
-	// Requires microversion 2.5 or later.
-	Tags []string `json:"tags,omitempty"`
 }
 
 // ToMemberUpdateMap builds a request body from UpdateMemberOpts.

@@ -79,7 +79,7 @@ type Pool struct {																// Modified by B.T. Oh
 
 	// Indicates whether connections in the same session will be processed by the
 	// same Pool member or not.
-	Persistence SessionPersistence `json:"session_persistence"`
+	Persistence *SessionPersistence `json:"session_persistence"`
 
 	// The ID of associated health monitor.
 	MonitorID string `json:"healthmonitor_id"`
