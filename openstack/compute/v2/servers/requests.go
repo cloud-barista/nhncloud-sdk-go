@@ -19,7 +19,10 @@ type ListOptsBuilder interface {
 // the API. Filtering is achieved by passing in struct field values that map to
 // the server attributes you want to see returned. Marker and Limit are used
 // for pagination.
-type ListOpts struct {
+type ListOpts struct {															// Modified by B.T. Oh
+	// Instance Creation Reservation ID.
+	ReservationID string `q:"reservation_id"`									// Added by B.T. Oh
+
 	// ChangesSince is a time/date stamp for when the server last changed status.
 	ChangesSince string `q:"changes-since"`
 
@@ -28,14 +31,6 @@ type ListOpts struct {
 
 	// Flavor is the name of the flavor in URL format.
 	Flavor string `q:"flavor"`
-
-	// IP is a regular expression to match the IPv4 address of the server.
-	IP string `q:"ip"`
-
-	// This requires the client to be set to microversion 2.5 or later, unless
-	// the user is an admin.
-	// IP is a regular expression to match the IPv6 address of the server.
-	IP6 string `q:"ip6"`
 
 	// Name of the server as a string; can be queried with regular expressions.
 	// Realize that ?name=bob returns both bob and bobb. If you need to match bob
@@ -47,45 +42,11 @@ type ListOpts struct {
 	// "ACTIVE" for example.
 	Status string `q:"status"`
 
-	// Host is the name of the host as a string.
-	Host string `q:"host"`
-
-	// Marker is a UUID of the server at which you want to set a marker.
-	Marker string `q:"marker"`
-
 	// Limit is an integer value for the limit of values to return.
 	Limit int `q:"limit"`
 
-	// AllTenants is a bool to show all tenants.
-	AllTenants bool `q:"all_tenants"`
-
-	// TenantID lists servers for a particular tenant.
-	// Setting "AllTenants = true" is required.
-	TenantID string `q:"tenant_id"`
-
-	// This requires the client to be set to microversion 2.83 or later, unless
-	// the user is an admin.
-	// UserID lists servers for a particular user.
-	UserID string `q:"user_id"`
-
-	// This requires the client to be set to microversion 2.26 or later.
-	// Tags filters on specific server tags. All tags must be present for the server.
-	Tags string `q:"tags"`
-
-	// This requires the client to be set to microversion 2.26 or later.
-	// TagsAny filters on specific server tags. At least one of the tags must be present for the server.
-	TagsAny string `q:"tags-any"`
-
-	// This requires the client to be set to microversion 2.26 or later.
-	// NotTags filters on specific server tags. All tags must be absent for the server.
-	NotTags string `q:"not-tags"`
-
-	// This requires the client to be set to microversion 2.26 or later.
-	// NotTagsAny filters on specific server tags. At least one of the tags must be absent for the server.
-	NotTagsAny string `q:"not-tags-any"`
-
-	// Display servers based on their availability zone (Admin only until microversion 2.82).
-	AvailabilityZone string `q:"availability_zone"`
+	// Marker is a UUID of the server at which you want to set a marker.
+	Marker string `q:"marker"`
 }
 
 // ToServerListQuery formats a ListOpts into a query string.
@@ -165,18 +126,7 @@ func (f *File) MarshalJSON() ([]byte, error) {
 }
 
 // CreateOpts specifies server creation parameters.
-type CreateOpts struct {
-	// Name is the name to assign to the newly launched server.
-	Name string `json:"name" required:"true"`
-
-	// ImageRef is the ID or full URL to the image that contains the
-	// server's OS and initial state.
-	// Also optional if using the boot-from-volume extension.
-	ImageRef string `json:"imageRef"`
-
-	// FlavorRef is the ID or full URL to the flavor that describes the server's specs.
-	FlavorRef string `json:"flavorRef"`
-
+type CreateOpts struct {														// Modified by B.T. Oh
 	// SecurityGroups lists the names of the security groups to which this server
 	// should belong.
 	SecurityGroups []string `json:"-"`
@@ -188,6 +138,14 @@ type CreateOpts struct {
 	// AvailabilityZone in which to launch the server.
 	AvailabilityZone string `json:"availability_zone,omitempty"`
 
+	// ImageRef is the ID or full URL to the image that contains the
+	// server's OS and initial state.
+	// Also optional if using the boot-from-volume extension.
+	ImageRef string `json:"imageRef"`
+
+	// FlavorRef is the ID or full URL to the flavor that describes the server's specs.
+	FlavorRef string `json:"flavorRef"`
+
 	// Networks dictates how this server will be attached to available networks.
 	// By default, the server will be attached to all isolated networks for the
 	// tenant.
@@ -195,26 +153,14 @@ type CreateOpts struct {
 	// string.
 	Networks interface{} `json:"-"`
 
+	// Name is the name to assign to the newly launched server.
+	Name string `json:"name" required:"true"`
+
 	// Metadata contains key-value pairs (up to 255 bytes each) to attach to the
 	// server.
 	Metadata map[string]string `json:"metadata,omitempty"`
 
-	// Personality includes files to inject into the server at launch.
-	// Create will base64-encode file contents for you.
-	Personality Personality `json:"personality,omitempty"`
-
-	// ConfigDrive enables metadata injection through a configuration drive.
-	ConfigDrive *bool `json:"config_drive,omitempty"`
-
-	// AdminPass sets the root user password. If not set, a randomly-generated
-	// password will be created and returned in the response.
-	AdminPass string `json:"adminPass,omitempty"`
-
-	// AccessIPv4 specifies an IPv4 address for the instance.
-	AccessIPv4 string `json:"accessIPv4,omitempty"`
-
-	// AccessIPv6 specifies an IPv6 address for the instance.
-	AccessIPv6 string `json:"accessIPv6,omitempty"`
+	KeyName string `json:"key_name,omitempty"`									// Added by B.T. Oh
 
 	// Min specifies Minimum number of servers to launch.
 	Min int `json:"min_count,omitempty"`
@@ -222,9 +168,7 @@ type CreateOpts struct {
 	// Max specifies Maximum number of servers to launch.
 	Max int `json:"max_count,omitempty"`
 
-	// Tags allows a server to be tagged with single-word metadata.
-	// Requires microversion 2.52 or later.
-	Tags []string `json:"tags,omitempty"`
+	ReturnReservationID bool `json:"return_reservation_id,omitempty"`			// Added by B.T. Oh
 }
 
 // ToServerCreateMap assembles a request body based on the contents of a
