@@ -168,52 +168,28 @@ type UpdateOptsBuilder interface {
 }
 
 // UpdateOpts represents options for updating a Listener.
-type UpdateOpts struct {
-	// Human-readable name for the Listener. Does not have to be unique.
-	Name *string `json:"name,omitempty"`
-
-	// The ID of the default pool with which the Listener is associated.
-	DefaultPoolID *string `json:"default_pool_id,omitempty"`
-
+type UpdateOpts struct {													// Modified by B.T. Oh
 	// Human-readable description for the Listener.
 	Description *string `json:"description,omitempty"`
 
+	// Human-readable name for the Listener. Does not have to be unique.
+	Name *string `json:"name,omitempty"`
+
+	// The administrative state of the Listener. A valid value is true (UP)
+	// or false (DOWN).
+	AdminStateUp *bool `json:"admin_state_up,omitempty"`
+
 	// The maximum number of connections allowed for the Listener.
 	ConnLimit *int `json:"connection_limit,omitempty"`
+
+	// Frontend client inactivity timeout in milliseconds
+	KeepAliveTimeout *int `json:"keepalive_timeout,omitempty"`				// Added by B.T. Oh
 
 	// A reference to a Barbican container of TLS secrets.
 	DefaultTlsContainerRef *string `json:"default_tls_container_ref,omitempty"`
 
 	// A list of references to TLS secrets.
 	SniContainerRefs *[]string `json:"sni_container_refs,omitempty"`
-
-	// The administrative state of the Listener. A valid value is true (UP)
-	// or false (DOWN).
-	AdminStateUp *bool `json:"admin_state_up,omitempty"`
-
-	// Frontend client inactivity timeout in milliseconds
-	TimeoutClientData *int `json:"timeout_client_data,omitempty"`
-
-	// Backend member inactivity timeout in milliseconds
-	TimeoutMemberData *int `json:"timeout_member_data,omitempty"`
-
-	// Backend member connection timeout in milliseconds
-	TimeoutMemberConnect *int `json:"timeout_member_connect,omitempty"`
-
-	// Time, in milliseconds, to wait for additional TCP packets for content inspection
-	TimeoutTCPInspect *int `json:"timeout_tcp_inspect,omitempty"`
-
-	// A dictionary of optional headers to insert into the request before it is sent to the backend member.
-	InsertHeaders *map[string]string `json:"insert_headers,omitempty"`
-
-	// A list of IPv4, IPv6 or mix of both CIDRs
-	AllowedCIDRs *[]string `json:"allowed_cidrs,omitempty"`
-
-	// A list of TLS protocol versions. Available from microversion 2.17
-	TLSVersions *[]TLSVersion `json:"tls_versions,omitempty"`
-
-	// Tags is a set of resource tags. New in version 2.5
-	Tags *[]string `json:"tags,omitempty"`
 }
 
 // ToListenerUpdateMap builds a request body from UpdateOpts.
