@@ -94,7 +94,7 @@ type CreateOpts struct {   											// Modified by B.T. Oh
 	// or false (DOWN).
 	AdminStateUp 	 	bool `json:"admin_state_up,omitempty"`
 	
-	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`
+	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`	// Added by B.T. Oh
 }
 
 // ToLoadBalancerCreateMap builds a request body from CreateOpts.
@@ -132,7 +132,7 @@ type UpdateOptsBuilder interface {
 
 // UpdateOpts is the common options struct used in this package's Update
 // operation.
-type UpdateOpts struct {
+type UpdateOpts struct {										// Modified by B.T. Oh
 	// Human-readable name for the Loadbalancer. Does not have to be unique.
 	Name *string `json:"name,omitempty"`
 
@@ -142,9 +142,6 @@ type UpdateOpts struct {
 	// The administrative state of the Loadbalancer. A valid value is true (UP)
 	// or false (DOWN).
 	AdminStateUp *bool `json:"admin_state_up,omitempty"`
-
-	// Tags is a set of resource tags.
-	Tags *[]string `json:"tags,omitempty"`
 }
 
 // ToLoadBalancerUpdateMap builds a request body from UpdateOpts.
