@@ -1,3 +1,13 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package floatingips
 
 import (
@@ -16,25 +26,17 @@ type ListOptsBuilder interface {
 // the floating IP attributes you want to see returned. SortKey allows you to
 // sort by a particular network attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {
+type ListOpts struct {											// Modified by B.T. Oh
 	ID                string `q:"id"`
-	Description       string `q:"description"`
+	Status            string `q:"status"`
+	TenantID          string `q:"tenant_id"`
 	FloatingNetworkID string `q:"floating_network_id"`
-	PortID            string `q:"port_id"`
 	FixedIP           string `q:"fixed_ip_address"`
 	FloatingIP        string `q:"floating_ip_address"`
-	TenantID          string `q:"tenant_id"`
-	ProjectID         string `q:"project_id"`
-	Limit             int    `q:"limit"`
-	Marker            string `q:"marker"`
-	SortKey           string `q:"sort_key"`
+	PortID            string `q:"port_id"`
 	SortDir           string `q:"sort_dir"`
-	RouterID          string `q:"router_id"`
-	Status            string `q:"status"`
-	Tags              string `q:"tags"`
-	TagsAny           string `q:"tags-any"`
-	NotTags           string `q:"not-tags"`
-	NotTagsAny        string `q:"not-tags-any"`
+	SortKey           string `q:"sort_key"`
+	Fields            string `q:"fields"`   // Field Name of the Floating IP Address. Added by B.T. Oh  
 }
 
 // ToNetworkListQuery formats a ListOpts into a query string.
@@ -69,15 +71,9 @@ type CreateOptsBuilder interface {
 // CreateOpts contains all the values needed to create a new floating IP
 // resource. The only required fields are FloatingNetworkID and PortID which
 // refer to the external network and internal port respectively.
-type CreateOpts struct {
-	Description       string `json:"description,omitempty"`
+type CreateOpts struct {										// Modified by B.T. Oh
 	FloatingNetworkID string `json:"floating_network_id" required:"true"`
-	FloatingIP        string `json:"floating_ip_address,omitempty"`
 	PortID            string `json:"port_id,omitempty"`
-	FixedIP           string `json:"fixed_ip_address,omitempty"`
-	SubnetID          string `json:"subnet_id,omitempty"`
-	TenantID          string `json:"tenant_id,omitempty"`
-	ProjectID         string `json:"project_id,omitempty"`
 }
 
 // ToFloatingIPCreateMap allows CreateOpts to satisfy the CreateOptsBuilder

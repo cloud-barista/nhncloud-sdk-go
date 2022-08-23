@@ -1,8 +1,18 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package floatingips
 
 import (
 	"encoding/json"
-	"time"
+	// "time"
 
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
@@ -14,74 +24,51 @@ import (
 // instance on a private network from an external network. For this reason,
 // floating IPs can only be defined on networks where the `router:external'
 // attribute (provided by the external network extension) is set to True.
-type FloatingIP struct {
-	// ID is the unique identifier for the floating IP instance.
-	ID string `json:"id"`
-
-	// Description for the floating IP instance.
-	Description string `json:"description"`
-
+type FloatingIP struct {									// Modified by B.T. Oh
 	// FloatingNetworkID is the UUID of the external network where the floating
 	// IP is to be created.
 	FloatingNetworkID string `json:"floating_network_id"`
 
-	// FloatingIP is the address of the floating IP on the external network.
-	FloatingIP string `json:"floating_ip_address"`
-
-	// PortID is the UUID of the port on an internal network that is associated
-	// with the floating IP.
-	PortID string `json:"port_id"`
+	// RouterID is the ID of the router used for this floating IP.
+	RouterID string `json:"router_id"`
 
 	// FixedIP is the specific IP address of the internal port which should be
 	// associated with the floating IP.
 	FixedIP string `json:"fixed_ip_address"`
 
+	// FloatingIP is the address of the floating IP on the external network.
+	FloatingIP string `json:"floating_ip_address"`
+
 	// TenantID is the project owner of the floating IP. Only admin users can
 	// specify a project identifier other than its own.
 	TenantID string `json:"tenant_id"`
 
-	// UpdatedAt and CreatedAt contain ISO-8601 timestamps of when the state of
-	// the floating ip last changed, and when it was created.
-	UpdatedAt time.Time `json:"-"`
-	CreatedAt time.Time `json:"-"`
-
-	// ProjectID is the project owner of the floating IP.
-	ProjectID string `json:"project_id"`
-
 	// Status is the condition of the API resource.
 	Status string `json:"status"`
 
-	// RouterID is the ID of the router used for this floating IP.
-	RouterID string `json:"router_id"`
+	// PortID is the UUID of the port on an internal network that is associated
+	// with the floating IP.
+	PortID string `json:"port_id"`
 
-	// Tags optionally set via extensions/attributestags
-	Tags []string `json:"tags"`
+	// ID is the unique identifier for the floating IP instance.
+	ID string `json:"id"`
 }
 
-func (r *FloatingIP) UnmarshalJSON(b []byte) error {
+func (r *FloatingIP) UnmarshalJSON(b []byte) error {		// Modified by B.T. Oh
 	type tmp FloatingIP
 
-	// Support for older neutron time format
 	var s1 struct {
 		tmp
-		CreatedAt gophercloud.JSONRFC3339NoZ `json:"created_at"`
-		UpdatedAt gophercloud.JSONRFC3339NoZ `json:"updated_at"`
 	}
 
 	err := json.Unmarshal(b, &s1)
 	if err == nil {
 		*r = FloatingIP(s1.tmp)
-		r.CreatedAt = time.Time(s1.CreatedAt)
-		r.UpdatedAt = time.Time(s1.UpdatedAt)
-
 		return nil
 	}
 
-	// Support for newer neutron time format
 	var s2 struct {
 		tmp
-		CreatedAt time.Time `json:"created_at"`
-		UpdatedAt time.Time `json:"updated_at"`
 	}
 
 	err = json.Unmarshal(b, &s2)
@@ -90,9 +77,6 @@ func (r *FloatingIP) UnmarshalJSON(b []byte) error {
 	}
 
 	*r = FloatingIP(s2.tmp)
-	r.CreatedAt = time.Time(s2.CreatedAt)
-	r.UpdatedAt = time.Time(s2.UpdatedAt)
-
 	return nil
 }
 
