@@ -1,3 +1,13 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package subnets
 
 import (
@@ -58,30 +68,28 @@ type HostRoute struct {
 
 // Subnet represents a subnet. See package documentation for a top-level
 // description of what this is.
-type Subnet struct {
-	// UUID representing the subnet.
-	ID string `json:"id"`
+type Subnet struct {											// Modified by B.T. Oh
+	// Human-readable name for the subnet. Might not be unique.
+	Name string `json:"name"`
+
+	// Specifies whether DHCP is enabled for this subnet or not.
+	EnableDHCP bool `json:"enable_dhcp"`
 
 	// UUID of the parent network.
 	NetworkID string `json:"network_id"`
 
-	// Human-readable name for the subnet. Might not be unique.
-	Name string `json:"name"`
+	// TenantID is the project owner of the subnet.
+	TenantID string `json:"tenant_id"`
 
-	// Description for the subnet.
-	Description string `json:"description"`
-
-	// IP version, either `4' or `6'.
-	IPVersion int `json:"ip_version"`
-
-	// CIDR representing IP range for this subnet, based on IP version.
-	CIDR string `json:"cidr"`
+	// DNS name servers used by hosts in this subnet.
+	DNSNameservers []string `json:"dns_nameservers"`
 
 	// Default gateway used by devices in this subnet.
 	GatewayIP string `json:"gateway_ip"`
 
-	// DNS name servers used by hosts in this subnet.
-	DNSNameservers []string `json:"dns_nameservers"`
+	// The IPv6 router advertisement specifies whether the networking service
+	// should transmit ICMPv6 packets.
+	IPv6RAMode string `json:"ipv6_ra_mode"`
 
 	// Sub-ranges of CIDR available for dynamic allocation to ports.
 	// See AllocationPool.
@@ -91,27 +99,20 @@ type Subnet struct {
 	// (not including local subnet route).
 	HostRoutes []HostRoute `json:"host_routes"`
 
-	// Specifies whether DHCP is enabled for this subnet or not.
-	EnableDHCP bool `json:"enable_dhcp"`
-
-	// TenantID is the project owner of the subnet.
-	TenantID string `json:"tenant_id"`
-
-	// ProjectID is the project owner of the subnet.
-	ProjectID string `json:"project_id"`
+	// IP version, either `4' or `6'.
+	IPVersion int `json:"ip_version"`
 
 	// The IPv6 address modes specifies mechanisms for assigning IPv6 IP addresses.
 	IPv6AddressMode string `json:"ipv6_address_mode"`
 
-	// The IPv6 router advertisement specifies whether the networking service
-	// should transmit ICMPv6 packets.
-	IPv6RAMode string `json:"ipv6_ra_mode"`
+	// CIDR representing IP range for this subnet, based on IP version.
+	CIDR string `json:"cidr"`
+
+	// UUID representing the subnet.
+	ID string `json:"id"`
 
 	// SubnetPoolID is the id of the subnet pool associated with the subnet.
 	SubnetPoolID string `json:"subnetpool_id"`
-
-	// Tags optionally set via extensions/attributestags
-	Tags []string `json:"tags"`
 }
 
 // SubnetPage is the page returned by a pager when traversing over a collection

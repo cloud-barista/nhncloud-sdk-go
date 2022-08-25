@@ -38,7 +38,7 @@ type ListOpts struct {   									// Modified by B.T. Oh
 	VipPortID          string   `q:"vip_port_id"`
 	VipSubnetID        string   `q:"vip_subnet_id"`
 	OperatingStatus    string   `q:"operating_status"`
-	LoadbalancerType   string   `q:"loadbalancer_type"`    // shared or dedicated
+	LoadbalancerType   string   `q:"loadbalancer_type"`    // 'shared' or 'dedicated'
 }
 
 // ToLoadBalancerListQuery formats a ListOpts into a query string.
@@ -94,7 +94,7 @@ type CreateOpts struct {   											// Modified by B.T. Oh
 	// or false (DOWN).
 	AdminStateUp 	 	bool `json:"admin_state_up,omitempty"`
 	
-	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`	// Added by B.T. Oh
+	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`	// 'shared' or 'dedicated'. (Added by B.T. Oh)
 }
 
 // ToLoadBalancerCreateMap builds a request body from CreateOpts.
