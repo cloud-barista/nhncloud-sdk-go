@@ -1,9 +1,17 @@
-// Modified by ETRI Team, 2022.07
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
 
 package loadbalancers
 
 import (
-	// "encoding/json"
+	"encoding/json"
 	// "time"
 
 	"github.com/cloud-barista/nhncloud-sdk-for-drv"
@@ -12,14 +20,14 @@ import (
 	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
 )
 
-type IpACLGroup struct {  // by Sean. Oh.
+type IpACLGroup struct {  // by B.T. Oh.
 	IpACLGroupID string `json:"ipacl_group_id"`
 }
 
 // LoadBalancer is the primary load balancing configuration object that
 // specifies the virtual IP address on which client traffic is received, as well
 // as other details such as the load balancing method to be use, protocol, etc.
-type LoadBalancer struct {
+type LoadBalancer struct {										// Modified by B.T. Oh
 	// Human-readable description for the Loadbalancer.
 	Description 		string `json:"description"`
 
@@ -28,7 +36,7 @@ type LoadBalancer struct {
 	ProvisioningStatus 	string `json:"provisioning_status"`
 
 	// Owner of the LoadBalancer.
-	TenantID 			string `json:"tenant_id"`  // by Sean. Oh.
+	TenantID 			string `json:"tenant_id"`  				// Added by B.T. Oh.
 	
 	// The name of the provider.
 	Provider 			string `json:"provider"`
@@ -61,48 +69,38 @@ type LoadBalancer struct {
 
 	IpACLGroups 		[]IpACLGroup `json:"ipacl_groups"`
 
-	IpACLAction 		string `json:"ipacl_action"` //  Action	of IP ACL Groups : null, DENY or ALLOW
+	IpACLAction 		string `json:"ipacl_action"` 			//  Action	of IP ACL Groups : null, DENY or ALLOW
 
 	LoadBalancerType 	string `json:"loadbalancer_type"`
 }
 
-// func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
-// 	type tmp LoadBalancer
+func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
+	type tmp LoadBalancer
 
-// 	// Support for older neutron time format
-// 	var s1 struct {
-// 		tmp
-// 		CreatedAt gophercloud.JSONRFC3339NoZ `json:"created_at"`
-// 		UpdatedAt gophercloud.JSONRFC3339NoZ `json:"updated_at"`
-// 	}
+	// Support for older neutron time format
+	var s1 struct {
+		tmp
+	}
 
-// 	err := json.Unmarshal(b, &s1)
-// 	if err == nil {
-// 		*r = LoadBalancer(s1.tmp)
-// 		r.CreatedAt = time.Time(s1.CreatedAt)
-// 		r.UpdatedAt = time.Time(s1.UpdatedAt)
+	err := json.Unmarshal(b, &s1)
+	if err == nil {
+		*r = LoadBalancer(s1.tmp)
+		return nil
+	}
 
-// 		return nil
-// 	}
+	// Support for newer neutron time format
+	var s2 struct {
+		tmp
+	}
 
-// 	// Support for newer neutron time format
-// 	var s2 struct {
-// 		tmp
-// 		CreatedAt time.Time `json:"created_at"`
-// 		UpdatedAt time.Time `json:"updated_at"`
-// 	}
+	err = json.Unmarshal(b, &s2)
+	if err != nil {
+		return err
+	}
 
-// 	err = json.Unmarshal(b, &s2)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	*r = LoadBalancer(s2.tmp)
-// 	r.CreatedAt = time.Time(s2.CreatedAt)
-// 	r.UpdatedAt = time.Time(s2.UpdatedAt)
-
-// 	return nil
-// }
+	*r = LoadBalancer(s2.tmp)
+	return nil
+}
 
 // StatusTree represents the status of a loadbalancer.
 type StatusTree struct {

@@ -1,3 +1,13 @@
+// Proof of Concepts of CB-Spider.
+// The CB-Spider is a sub-Framework of the Cloud-Barista Multi-Cloud Project.
+// The CB-Spider Mission is to connect all the clouds with a single interface.
+//
+//      * Cloud-Barista: https://github.com/cloud-barista
+//
+// This is a Cloud Driver Example for PoC Test.
+//
+// Modified by ETRI, 2022.07
+
 package subnets
 
 import (
@@ -16,28 +26,16 @@ type ListOptsBuilder interface {
 // the subnet attributes you want to see returned. SortKey allows you to sort
 // by a particular subnet attribute. SortDir sets the direction, and is either
 // `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {
+type ListOpts struct {									// Modified by B.T. Oh
+	ID              string `q:"id"`
 	Name            string `q:"name"`
-	Description     string `q:"description"`
 	EnableDHCP      *bool  `q:"enable_dhcp"`
 	NetworkID       string `q:"network_id"`
-	TenantID        string `q:"tenant_id"`
-	ProjectID       string `q:"project_id"`
-	IPVersion       int    `q:"ip_version"`
-	GatewayIP       string `q:"gateway_ip"`
 	CIDR            string `q:"cidr"`
-	IPv6AddressMode string `q:"ipv6_address_mode"`
-	IPv6RAMode      string `q:"ipv6_ra_mode"`
-	ID              string `q:"id"`
-	SubnetPoolID    string `q:"subnetpool_id"`
-	Limit           int    `q:"limit"`
-	Marker          string `q:"marker"`
-	SortKey         string `q:"sort_key"`
+	Shared          bool   `q:"shared"`	// Whether the subnet is shared. (Added by B.T. Oh)
 	SortDir         string `q:"sort_dir"`
-	Tags            string `q:"tags"`
-	TagsAny         string `q:"tags-any"`
-	NotTags         string `q:"not-tags"`
-	NotTagsAny      string `q:"not-tags-any"`
+	SortKey         string `q:"sort_key"`
+	Fields       	string `q:"fields"` // Field Name of the subnet
 }
 
 // ToSubnetListQuery formats a ListOpts into a query string.
