@@ -8,21 +8,18 @@ import (
 	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
 )
 
-type Attachment struct {
-	AttachedAt   time.Time `json:"-"`
-	AttachmentID string    `json:"attachment_id"`
-	Device       string    `json:"device"`
-	HostName     string    `json:"host_name"`
-	ID           string    `json:"id"`
+type Attachment struct {											// Modified by B.T. Oh
 	ServerID     string    `json:"server_id"`
+	AttachmentID string    `json:"attachment_id"`
 	VolumeID     string    `json:"volume_id"`
+	Device       string    `json:"device"`
+	ID           string    `json:"id"`
 }
 
 func (r *Attachment) UnmarshalJSON(b []byte) error {
 	type tmp Attachment
 	var s struct {
 		tmp
-		AttachedAt gophercloud.JSONRFC3339MilliNoZ `json:"attached_at"`
 	}
 	err := json.Unmarshal(b, &s)
 	if err != nil {
@@ -30,51 +27,66 @@ func (r *Attachment) UnmarshalJSON(b []byte) error {
 	}
 	*r = Attachment(s.tmp)
 
-	r.AttachedAt = time.Time(s.AttachedAt)
-
 	return err
 }
 
 // Volume contains all the information associated with an OpenStack Volume.
-type Volume struct {
-	// Unique identifier for the volume.
-	ID string `json:"id"`
-	// Current status of the volume.
-	Status string `json:"status"`
-	// Size of the volume in GB.
-	Size int `json:"size"`
-	// AvailabilityZone is which availability zone the volume is in.
-	AvailabilityZone string `json:"availability_zone"`
-	// The date when this volume was created.
-	CreatedAt time.Time `json:"-"`
-	// The date when this volume was last updated
-	UpdatedAt time.Time `json:"-"`
+type Volume struct {											// Modified by B.T. Oh
 	// Instances onto which the volume is attached.
 	Attachments []Attachment `json:"attachments"`
-	// Human-readable display name for the volume.
-	Name string `json:"name"`
-	// Human-readable description for the volume.
-	Description string `json:"description"`
-	// The type of volume to create, either SATA or SSD.
-	VolumeType string `json:"volume_type"`
-	// The ID of the snapshot from which the volume was created
-	SnapshotID string `json:"snapshot_id"`
-	// The ID of another block storage volume from which the current volume was created
-	SourceVolID string `json:"source_volid"`
-	// Arbitrary key-value pairs defined by the user.
-	Metadata map[string]string `json:"metadata"`
-	// UserID is the id of the user who created the volume.
-	UserID string `json:"user_id"`
-	// Indicates whether this is a bootable volume.
-	Bootable string `json:"bootable"`
+
+	// Links []Links `json:"links"`
+
+	// AvailabilityZone is which availability zone the volume is in.
+	AvailabilityZone string `json:"availability_zone"`
+
 	// Encrypted denotes if the volume is encrypted.
 	Encrypted bool `json:"encrypted"`
-	// ReplicationStatus is the status of replication.
-	ReplicationStatus string `json:"replication_status"`
-	// ConsistencyGroupID is the consistency group ID.
-	ConsistencyGroupID string `json:"consistencygroup_id"`
+
+	// The type of volume to create, either SATA or SSD.
+	VolumeType string `json:"volume_type"`
+
+	// The ID of the snapshot from which the volume was created
+	SnapshotID string `json:"snapshot_id"`
+
+	// Unique identifier for the volume.
+	ID string `json:"id"`
+
+	// Size of the volume in GB.
+	Size int `json:"size"`
+
+	// UserID is the id of the user who created the volume.
+	UserID string `json:"user_id"`
+
+	// Arbitrary key-value pairs defined by the user.
+	Metadata map[string]string `json:"metadata"`
+
+	// Current status of the volume.
+	Status string `json:"status"`
+
+	// Human-readable description for the volume.
+	Description string `json:"description"`
+
 	// Multiattach denotes if the volume is multi-attach capable.
 	Multiattach bool `json:"multiattach"`
+
+	// The ID of another block storage volume from which the current volume was created
+	SourceVolID string `json:"source_volid"`
+
+	// ConsistencyGroupID is the consistency group ID.
+	ConsistencyGroupID string `json:"consistencygroup_id"`
+
+	// Human-readable display name for the volume.
+	Name string `json:"name"`
+
+	// Indicates whether this is a bootable volume.
+	Bootable string `json:"bootable"`
+
+	// The date when this volume was created.
+	CreatedAt time.Time `json:"-"`
+
+	// ReplicationStatus is the status of replication.
+	ReplicationStatus string `json:"replication_status"`
 }
 
 func (r *Volume) UnmarshalJSON(b []byte) error {
@@ -82,7 +94,6 @@ func (r *Volume) UnmarshalJSON(b []byte) error {
 	var s struct {
 		tmp
 		CreatedAt gophercloud.JSONRFC3339MilliNoZ `json:"created_at"`
-		UpdatedAt gophercloud.JSONRFC3339MilliNoZ `json:"updated_at"`
 	}
 	err := json.Unmarshal(b, &s)
 	if err != nil {
@@ -91,7 +102,6 @@ func (r *Volume) UnmarshalJSON(b []byte) error {
 	*r = Volume(s.tmp)
 
 	r.CreatedAt = time.Time(s.CreatedAt)
-	r.UpdatedAt = time.Time(s.UpdatedAt)
 
 	return err
 }

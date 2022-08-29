@@ -14,30 +14,31 @@ type CreateOptsBuilder interface {
 // CreateOpts contains options for creating a Volume. This object is passed to
 // the volumes.Create function. For more information about these parameters,
 // see the Volume object.
-type CreateOpts struct {
+type CreateOpts struct {													// Modified by B.T. Oh
 	// The size of the volume, in GB
 	Size int `json:"size" required:"true"`
-	// The availability zone
-	AvailabilityZone string `json:"availability_zone,omitempty"`
-	// ConsistencyGroupID is the ID of a consistency group
-	ConsistencyGroupID string `json:"consistencygroup_id,omitempty"`
+
 	// The volume description
 	Description string `json:"description,omitempty"`
-	// One or more metadata key and value pairs to associate with the volume
-	Metadata map[string]string `json:"metadata,omitempty"`
+
+	// Whether to do multiple attachments
+    // If you set it to 'True', you can attach to multiple instances at the same time.
+	MultiAttach bool `json:"multiattach,omitempty"`							// Added by B.T. Oh
+
+	// The availability zone
+	AvailabilityZone string `json:"availability_zone,omitempty"`
+
 	// The volume name
 	Name string `json:"name,omitempty"`
-	// the ID of the existing volume snapshot
-	SnapshotID string `json:"snapshot_id,omitempty"`
-	// SourceReplica is a UUID of an existing volume to replicate with
-	SourceReplica string `json:"source_replica,omitempty"`
-	// the ID of the existing volume
-	SourceVolID string `json:"source_volid,omitempty"`
-	// The ID of the image from which you want to create the volume.
-	// Required to create a bootable volume.
-	ImageID string `json:"imageRef,omitempty"`
+
 	// The associated volume type
 	VolumeType string `json:"volume_type,omitempty"`
+
+	// the ID of the existing volume snapshot
+	SnapshotID string `json:"snapshot_id,omitempty"`
+
+	// One or more metadata key and value pairs to associate with the volume
+	Metadata map[string]string `json:"metadata,omitempty"`
 }
 
 // ToVolumeCreateMap assembles a request body based on the contents of a
@@ -113,23 +114,7 @@ type ListOptsBuilder interface {
 
 // ListOpts holds options for listing Volumes. It is passed to the volumes.List
 // function.
-type ListOpts struct {
-	// AllTenants will retrieve volumes of all tenants/projects.
-	AllTenants bool `q:"all_tenants"`
-
-	// Metadata will filter results based on specified metadata.
-	Metadata map[string]string `q:"metadata"`
-
-	// Name will filter by the specified volume name.
-	Name string `q:"name"`
-
-	// Status will filter by the specified status.
-	Status string `q:"status"`
-
-	// TenantID will filter by a specific tenant/project ID.
-	// Setting AllTenants is required for this.
-	TenantID string `q:"project_id"`
-
+type ListOpts struct {														// Modified by B.T. Oh
 	// Comma-separated list of sort keys and optional sort directions in the
 	// form of <key>[:<direction>].
 	Sort string `q:"sort"`
