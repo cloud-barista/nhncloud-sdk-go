@@ -55,7 +55,6 @@ type ZoneState struct {
 // AvailabilityZone contains all the information associated with an OpenStack
 // AvailabilityZone.
 type AvailabilityZone struct {
-	Hosts Hosts `json:"hosts"`
 	// The availability zone name
 	ZoneName  string    `json:"zoneName"`
 	ZoneState ZoneState `json:"zoneState"`
