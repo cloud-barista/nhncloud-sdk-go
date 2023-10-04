@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/cloud-barista/cb-log v0.7.0
 	github.com/cloud-barista/cb-spider v0.7.6-0.20230927010430-7ce64cbab9e6
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/crypto v0.0.0-20220817201139-bc19a97f63c8
 	gopkg.in/yaml.v2 v2.4.0
 )
