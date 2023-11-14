@@ -4,5 +4,6 @@
 testing_*.coverprofile
 
 *.log
+*.bak*
 
 .history/

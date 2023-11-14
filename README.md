@@ -1,13 +1,13 @@
-# nhncloud-sdk-for-drv
+# nhncloud-sdk-go
 
-nhncloud-sdk-for-drv is NHN Cloud SDK for Go.
+nhncloud-sdk-go is NHN Cloud Service SDK for Go.
 
-## How to install
+## How to import
 
-Reference a nhncloud-sdk-for-drv package in your code:
+Reference the nhncloud-sdk-go package in your code :
 
 ```Go
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 ```
 
 Then update your `go.mod`:
@@ -17,7 +17,9 @@ go mod tidy
 ```
 
 ## Original Source code : Gophercloud
-Gophercloud is an OpenStack Go SDK.
+The original source code, Gophercloud is an OpenStack Go SDK.
 [https://github.com/gophercloud/gophercloud](https://github.com/gophercloud/gophercloud)
 
-Licensed under the Apache License, Version 2.0
+< Licensed under the Apache License, Version 2.0 >
+
+This repository source code(nhncloud-sdk-go) follows the same license regulations as the Gophercloud.
