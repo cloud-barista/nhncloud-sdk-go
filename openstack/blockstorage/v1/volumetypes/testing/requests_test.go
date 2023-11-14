@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v1/volumetypes"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/v1/volumetypes"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestList(t *testing.T) {

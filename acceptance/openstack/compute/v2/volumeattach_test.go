@@ -6,10 +6,10 @@ package v2
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	bs "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/blockstorage/v2"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	bs "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/blockstorage/v2"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestVolumeAttachAttachment(t *testing.T) {

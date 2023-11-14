@@ -6,12 +6,12 @@ package rbacpolicies
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	projects "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/identity/v3"
-	networking "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/networking/v2"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/rbacpolicies"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	projects "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/identity/v3"
+	networking "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/networking/v2"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/rbacpolicies"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestRBACPolicyCRUD(t *testing.T) {

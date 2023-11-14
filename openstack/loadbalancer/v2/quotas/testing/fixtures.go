@@ -1,6 +1,6 @@
 package testing
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/quotas"
+import "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/quotas"
 
 const GetResponseRaw_1 = `
 {

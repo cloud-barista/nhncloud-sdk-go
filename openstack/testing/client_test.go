@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 const ID = "0123456789"

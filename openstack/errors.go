@@ -3,7 +3,7 @@ package openstack
 import (
 	"fmt"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // ErrEndpointNotFound is the error when no suitable endpoint can be found

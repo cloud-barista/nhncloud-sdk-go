@@ -6,10 +6,10 @@ package v2
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/messaging/v2/messages"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/messaging/v2/messages"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 func TestListMessages(t *testing.T) {

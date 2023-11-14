@@ -11,12 +11,12 @@ import (
 	"testing"
 	"time"
 
-	accountTesting "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/objectstorage/v1/accounts/testing"
-	containerTesting "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/objectstorage/v1/containers/testing"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/objectstorage/v1/objects"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	accountTesting "github.com/cloud-barista/nhncloud-sdk-go/openstack/objectstorage/v1/accounts/testing"
+	containerTesting "github.com/cloud-barista/nhncloud-sdk-go/openstack/objectstorage/v1/containers/testing"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/objectstorage/v1/objects"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestDownloadReader(t *testing.T) {

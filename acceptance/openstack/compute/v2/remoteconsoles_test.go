@@ -6,9 +6,9 @@ package v2
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestRemoteConsoleCreate(t *testing.T) {

@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/dns/v2/zones"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/dns/v2/zones"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 // List Output is a sample response to a List call.

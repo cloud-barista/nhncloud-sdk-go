@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fakeclient "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fakeclient "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 // HandleCreateImageMemberSuccessfully setup

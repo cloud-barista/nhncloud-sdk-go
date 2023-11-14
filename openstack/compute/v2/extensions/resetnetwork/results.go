@@ -1,7 +1,7 @@
 package resetnetwork
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // ResetResult is the response of a ResetNetwork operation. Call its ExtractErr

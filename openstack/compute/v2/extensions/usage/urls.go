@@ -1,6 +1,6 @@
 package usage
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 const resourcePath = "os-simple-tenant-usage"
 

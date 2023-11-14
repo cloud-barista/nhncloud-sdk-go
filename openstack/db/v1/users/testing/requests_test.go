@@ -3,11 +3,11 @@ package testing
 import (
 	"testing"
 
-	db "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/databases"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/users"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	db "github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/databases"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/users"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestCreate(t *testing.T) {

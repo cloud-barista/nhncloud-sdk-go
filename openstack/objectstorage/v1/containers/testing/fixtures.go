@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/objectstorage/v1/containers"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/objectstorage/v1/containers"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 // ExpectedListInfo is the result expected from a call to `List` when full

@@ -6,11 +6,11 @@ package vpnaas
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	layer3 "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/networking/v2/extensions/layer3"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/vpnaas/services"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	layer3 "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/networking/v2/extensions/layer3"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/vpnaas/services"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestServiceList(t *testing.T) {

@@ -1,7 +1,7 @@
 package limits
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 const resourcePath = "limits"

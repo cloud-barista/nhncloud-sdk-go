@@ -1,6 +1,6 @@
 package tokens
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // PasswordCredentialsV2 represents the required options to authenticate
 // with a username and password.

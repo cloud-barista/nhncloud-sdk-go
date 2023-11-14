@@ -1,7 +1,7 @@
 package clusters
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 var apiName = "clusters"

@@ -1,6 +1,6 @@
 package claims
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 const (
 	apiVersion = "v2"

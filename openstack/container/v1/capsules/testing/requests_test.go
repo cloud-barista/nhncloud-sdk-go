@@ -4,11 +4,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/container/v1/capsules"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fakeclient "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/container/v1/capsules"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fakeclient "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestGetCapsule_OldTime(t *testing.T) {

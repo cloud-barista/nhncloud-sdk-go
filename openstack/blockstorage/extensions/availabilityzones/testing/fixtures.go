@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
-	az "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/availabilityzones"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	az "github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/extensions/availabilityzones"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 const GetOutput = `

@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/qos/ruletypes"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/qos/ruletypes"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestListRuleTypes(t *testing.T) {

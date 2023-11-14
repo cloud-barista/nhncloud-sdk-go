@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/sharedfilesystems/v2/snapshots"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/sharedfilesystems/v2/snapshots"
 )
 
 // CreateSnapshot will create a snapshot from the share ID with a name. An error will

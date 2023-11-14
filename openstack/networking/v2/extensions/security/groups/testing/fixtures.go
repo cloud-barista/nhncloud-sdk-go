@@ -3,8 +3,8 @@ package testing
 import (
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/security/groups"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/security/rules"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/security/groups"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/security/rules"
 )
 
 const SecurityGroupListResponse = `

@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/placement/v1/resourceproviders"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/placement/v1/resourceproviders"
 
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 const ResourceProviderTestID = "99c09379-6e52-4ef8-9a95-b9ce6f68452e"

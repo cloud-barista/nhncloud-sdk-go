@@ -1,6 +1,6 @@
 package buildinfo
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // Get retreives data for the given stack template.
 func Get(c *gophercloud.ServiceClient) (r GetResult) {

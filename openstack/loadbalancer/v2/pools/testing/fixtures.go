@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 // PoolsListBody contains the canned body of a pool list response.

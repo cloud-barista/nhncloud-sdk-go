@@ -3,9 +3,9 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/extensions/diagnostics"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/compute/v2/extensions/diagnostics"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestGetDiagnostics(t *testing.T) {

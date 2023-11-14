@@ -1,9 +1,9 @@
 package openstack
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	tokens2 "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tokens"
-	tokens3 "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/tokens"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	tokens2 "github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/tokens"
+	tokens3 "github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/tokens"
 )
 
 /*

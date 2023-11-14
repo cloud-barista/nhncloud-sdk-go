@@ -3,7 +3,7 @@ package imagedata
 import (
 	"io"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // Upload uploads an image file.

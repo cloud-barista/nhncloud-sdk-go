@@ -3,13 +3,13 @@ package v2
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/dns/v2/recordsets"
-	transferAccepts "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/dns/v2/transfer/accept"
-	transferRequests "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/dns/v2/transfer/request"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/dns/v2/zones"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/dns/v2/recordsets"
+	transferAccepts "github.com/cloud-barista/nhncloud-sdk-go/openstack/dns/v2/transfer/accept"
+	transferRequests "github.com/cloud-barista/nhncloud-sdk-go/openstack/dns/v2/transfer/request"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/dns/v2/zones"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateRecordSet will create a RecordSet with a random name. An error will

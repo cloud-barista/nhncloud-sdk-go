@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // UpdateResult is returned from a call to the Update function.

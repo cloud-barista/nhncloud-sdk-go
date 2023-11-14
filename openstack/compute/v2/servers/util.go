@@ -1,6 +1,6 @@
 package servers
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // WaitForStatus will continually poll a server until it successfully
 // transitions to a specified status. It will do this for at most the number

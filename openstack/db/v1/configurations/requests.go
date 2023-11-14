@@ -1,9 +1,9 @@
 package configurations
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/instances"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/instances"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // List will list all of the available configurations.

@@ -1,8 +1,8 @@
 package networks
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // List returns a Pager that allows you to iterate over a collection of Network.

@@ -1,6 +1,6 @@
 package hypervisors
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 func hypervisorsListDetailURL(c *gophercloud.ServiceClient) string {
 	return c.ServiceURL("os-hypervisors", "detail")

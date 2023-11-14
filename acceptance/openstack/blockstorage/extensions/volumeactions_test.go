@@ -6,13 +6,13 @@ package extensions
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	blockstorage "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/blockstorage/v2"
-	blockstorageV3 "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/blockstorage/v3"
-	compute "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/compute/v2"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v2/volumes"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	blockstorage "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/blockstorage/v2"
+	blockstorageV3 "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/blockstorage/v3"
+	compute "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/compute/v2"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/v2/volumes"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestVolumeActionsUploadImageDestroy(t *testing.T) {

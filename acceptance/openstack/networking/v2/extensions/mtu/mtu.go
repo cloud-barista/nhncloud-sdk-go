@@ -3,11 +3,11 @@ package mtu
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/mtu"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/networks"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/mtu"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 type NetworkMTU struct {

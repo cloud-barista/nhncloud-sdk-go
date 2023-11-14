@@ -3,7 +3,7 @@ package openstack
 import (
 	"os"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 var nilOptions = gophercloud.AuthOptions{}

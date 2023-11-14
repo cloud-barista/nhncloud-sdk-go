@@ -4,10 +4,10 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/groups"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/projects"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/groups"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/projects"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // Option is a specific option defined at the API to enable features

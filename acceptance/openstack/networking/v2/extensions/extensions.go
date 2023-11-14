@@ -3,14 +3,14 @@ package extensions
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/external"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/security/groups"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/security/rules"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/networks"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/ports"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/external"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/security/groups"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/security/rules"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/ports"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateExternalNetwork will create an external network. An error will be

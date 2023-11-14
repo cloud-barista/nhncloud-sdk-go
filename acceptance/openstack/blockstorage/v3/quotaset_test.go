@@ -7,12 +7,12 @@ import (
 	"os"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/quotasets"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumetypes"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/extensions/quotasets"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/v3/volumetypes"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestQuotasetGet(t *testing.T) {

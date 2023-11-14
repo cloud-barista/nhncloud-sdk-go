@@ -6,8 +6,8 @@ package v2
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestServerRescueUnrescue(t *testing.T) {

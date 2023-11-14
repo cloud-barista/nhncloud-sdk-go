@@ -1,8 +1,8 @@
 package keypairs
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // KeyPair is an SSH key known to the OpenStack Cloud that is available to be

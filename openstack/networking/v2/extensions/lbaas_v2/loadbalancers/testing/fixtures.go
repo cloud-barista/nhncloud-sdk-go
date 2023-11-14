@@ -5,12 +5,12 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/listeners"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/loadbalancers"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/monitors"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/pools"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/listeners"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/loadbalancers"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/monitors"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/pools"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 // LoadbalancersListBody contains the canned body of a loadbalancer list response.

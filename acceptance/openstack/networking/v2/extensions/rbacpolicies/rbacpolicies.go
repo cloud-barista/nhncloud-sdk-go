@@ -3,9 +3,9 @@ package rbacpolicies
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/rbacpolicies"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/rbacpolicies"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateRBACPolicy will create a rbac-policy. An error will be returned if the

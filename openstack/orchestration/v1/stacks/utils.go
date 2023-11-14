@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 	yaml "gopkg.in/yaml.v2"
 )
 

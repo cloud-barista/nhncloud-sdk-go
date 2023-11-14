@@ -1,8 +1,8 @@
 package profiletypes
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // commonResult is the response of a base result.

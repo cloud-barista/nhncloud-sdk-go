@@ -4,10 +4,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/imageservice/v2/members"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fakeclient "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/imageservice/v2/members"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fakeclient "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 const createdAtString = "2013-09-20T19:22:19Z"

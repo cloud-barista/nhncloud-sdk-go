@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/quotas"
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/common"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/quotas"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/common"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestGet_1(t *testing.T) {

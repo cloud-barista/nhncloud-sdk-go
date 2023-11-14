@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/datastores"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/instances"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/fixture"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/datastores"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/instances"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/fixture"
 )
 
 var (

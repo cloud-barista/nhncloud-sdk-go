@@ -1,8 +1,8 @@
 package injectnetworkinfo
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/extensions"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/compute/v2/extensions"
 )
 
 // InjectNetworkInfo will inject the network info into a server

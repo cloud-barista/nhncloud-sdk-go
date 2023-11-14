@@ -5,7 +5,7 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // Capabilities represents the information of an individual StoragePool.

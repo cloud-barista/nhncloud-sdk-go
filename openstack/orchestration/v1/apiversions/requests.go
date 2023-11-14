@@ -1,8 +1,8 @@
 package apiversions
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // ListVersions lists all the Neutron API versions available to end-users

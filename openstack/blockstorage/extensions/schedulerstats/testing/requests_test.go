@@ -3,10 +3,10 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/schedulerstats"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/extensions/schedulerstats"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestListStoragePoolsDetail(t *testing.T) {

@@ -1,8 +1,8 @@
 package l7policies
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // L7Policy is a collection of L7 rules associated with a Listener, and which
@@ -44,12 +44,12 @@ type L7Policy struct {
 	// The provisioning status of the L7 policy.
 	// This value is ACTIVE, PENDING_* or ERROR.
 	// This field seems to only be returned during a call to a load balancer's /status
-	// see: https://github.com/cloud-barista/nhncloud-sdk-for-drv/issues/1362
+	// see: https://github.com/cloud-barista/nhncloud-sdk-go/issues/1362
 	ProvisioningStatus string `json:"provisioning_status"`
 
 	// The operating status of the L7 policy.
 	// This field seems to only be returned during a call to a load balancer's /status
-	// see: https://github.com/cloud-barista/nhncloud-sdk-for-drv/issues/1362
+	// see: https://github.com/cloud-barista/nhncloud-sdk-go/issues/1362
 	OperatingStatus string `json:"operating_status"`
 
 	// Rules are List of associated L7 rule IDs.
@@ -87,12 +87,12 @@ type Rule struct {
 	// The provisioning status of the L7 rule.
 	// This value is ACTIVE, PENDING_* or ERROR.
 	// This field seems to only be returned during a call to a load balancer's /status
-	// see: https://github.com/cloud-barista/nhncloud-sdk-for-drv/issues/1362
+	// see: https://github.com/cloud-barista/nhncloud-sdk-go/issues/1362
 	ProvisioningStatus string `json:"provisioning_status"`
 
 	// The operating status of the L7 policy.
 	// This field seems to only be returned during a call to a load balancer's /status
-	// see: https://github.com/cloud-barista/nhncloud-sdk-for-drv/issues/1362
+	// see: https://github.com/cloud-barista/nhncloud-sdk-go/issues/1362
 	OperatingStatus string `json:"operating_status"`
 }
 

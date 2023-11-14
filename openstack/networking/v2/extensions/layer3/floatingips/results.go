@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 	// "time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // FloatingIP represents a floating IP resource. A floating IP is an external

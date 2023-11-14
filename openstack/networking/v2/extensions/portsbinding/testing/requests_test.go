@@ -3,10 +3,10 @@ package testing
 import (
 	"testing"
 
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/common"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/portsbinding"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/ports"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/common"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/portsbinding"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/ports"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestList(t *testing.T) {

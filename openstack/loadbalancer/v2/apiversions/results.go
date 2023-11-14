@@ -1,6 +1,6 @@
 package apiversions
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+import "github.com/cloud-barista/nhncloud-sdk-go/pagination"
 
 // APIVersion represents an API version for load balancer. It contains
 // the status of the API, and its unique ID.

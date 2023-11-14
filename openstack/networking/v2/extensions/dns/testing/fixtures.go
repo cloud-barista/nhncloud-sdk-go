@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"testing"
 
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/common"
-	floatingiptest "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/layer3/floatingips/testing"
-	networktest "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/networks/testing"
-	porttest "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/ports/testing"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/common"
+	floatingiptest "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/layer3/floatingips/testing"
+	networktest "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks/testing"
+	porttest "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/ports/testing"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 const NetworkCreateRequest = `

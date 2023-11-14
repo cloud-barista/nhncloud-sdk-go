@@ -5,7 +5,7 @@ package openstack
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/common/extensions"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/common/extensions"
 )
 
 // PrintExtension prints an extension and all of its attributes.

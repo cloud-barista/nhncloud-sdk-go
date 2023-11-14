@@ -1,6 +1,6 @@
 package attachinterfaces
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 func listInterfaceURL(client *gophercloud.ServiceClient, serverID string) string {
 	return client.ServiceURL("servers", serverID, "os-interface")

@@ -5,11 +5,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/sharedfilesystems/v2/messages"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/sharedfilesystems/v2/shares"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/sharedfilesystems/v2/messages"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/sharedfilesystems/v2/shares"
 )
 
 // CreateShare will create a share with a name, and a size of 1Gb. An

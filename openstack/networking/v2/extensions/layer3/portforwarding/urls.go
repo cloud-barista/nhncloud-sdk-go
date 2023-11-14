@@ -1,6 +1,6 @@
 package portforwarding
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 const resourcePath = "floatingips"
 const portForwardingPath = "port_forwardings"

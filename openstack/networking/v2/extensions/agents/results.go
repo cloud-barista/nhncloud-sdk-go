@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/bgp/speakers"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/networks"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/bgp/speakers"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 type commonResult struct {

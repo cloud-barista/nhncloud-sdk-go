@@ -1,6 +1,6 @@
 package oauth1
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 func consumersURL(c *gophercloud.ServiceClient) string {
 	return c.ServiceURL("OS-OAUTH1", "consumers")

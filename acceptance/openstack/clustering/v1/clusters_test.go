@@ -8,11 +8,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/actions"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/clusters"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/actions"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/clusters"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestClustersCRUD(t *testing.T) {

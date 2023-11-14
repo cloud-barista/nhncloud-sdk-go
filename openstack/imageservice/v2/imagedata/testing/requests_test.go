@@ -6,9 +6,9 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/imageservice/v2/imagedata"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fakeclient "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/imageservice/v2/imagedata"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fakeclient "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestUpload(t *testing.T) {

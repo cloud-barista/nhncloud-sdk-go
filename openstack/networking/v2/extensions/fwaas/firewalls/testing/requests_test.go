@@ -5,12 +5,12 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	fake "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/common"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/fwaas/firewalls"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/fwaas/routerinsertion"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	fake "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/common"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/fwaas/firewalls"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/fwaas/routerinsertion"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestList(t *testing.T) {

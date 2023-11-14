@@ -3,7 +3,7 @@ package apiversions
 import (
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // APIVersion represents an API version for Cinder.

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/fixture"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/fixture"
 )
 
 const user1 = `

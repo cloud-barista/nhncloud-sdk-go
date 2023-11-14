@@ -1,6 +1,6 @@
 package networkipavailabilities
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 const resourcePath = "network-ip-availabilities"
 

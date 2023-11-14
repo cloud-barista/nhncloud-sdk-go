@@ -5,14 +5,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/l7policies"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/listeners"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/loadbalancers"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/monitors"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/pools"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/l7policies"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/listeners"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/loadbalancers"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/monitors"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/pools"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateListener will create a listener for a given load balancer on a random

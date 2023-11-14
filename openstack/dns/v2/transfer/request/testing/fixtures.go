@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	transferRequests "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/dns/v2/transfer/request"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	transferRequests "github.com/cloud-barista/nhncloud-sdk-go/openstack/dns/v2/transfer/request"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 // ListOutput is a sample response to a List call.

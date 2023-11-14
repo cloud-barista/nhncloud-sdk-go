@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/datastores"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/users"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/datastores"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/users"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // Volume represents information about an attached volume for a database instance.
