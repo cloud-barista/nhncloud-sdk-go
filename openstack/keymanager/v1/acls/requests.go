@@ -1,7 +1,7 @@
 package acls
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // GetContainerACL retrieves the ACL of a container.

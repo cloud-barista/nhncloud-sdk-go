@@ -3,9 +3,9 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/extensions/schedulerhints"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/servers"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/compute/v2/extensions/schedulerhints"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/compute/v2/servers"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestCreateOpts(t *testing.T) {

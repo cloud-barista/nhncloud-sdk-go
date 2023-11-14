@@ -11,10 +11,10 @@
 package listeners
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/l7policies"
-	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/l7policies"
+	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 )
 
 // Type Protocol represents a listener protocol.

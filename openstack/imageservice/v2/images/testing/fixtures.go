@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	fakeclient "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	fakeclient "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 type imageEntry struct {

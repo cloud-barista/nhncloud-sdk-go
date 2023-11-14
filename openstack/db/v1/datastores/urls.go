@@ -1,6 +1,6 @@
 package datastores
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 func baseURL(c *gophercloud.ServiceClient) string {
 	return c.ServiceURL("datastores")

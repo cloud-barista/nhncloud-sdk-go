@@ -1,7 +1,7 @@
 package workflows
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 func createURL(client *gophercloud.ServiceClient) string {

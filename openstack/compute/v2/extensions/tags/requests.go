@@ -1,6 +1,6 @@
 package tags
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // List all tags on a server.
 func List(client *gophercloud.ServiceClient, serverID string) (r ListResult) {

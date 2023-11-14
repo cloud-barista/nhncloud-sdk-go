@@ -1,6 +1,6 @@
 package firewalls
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 const (
 	rootPath     = "fw"

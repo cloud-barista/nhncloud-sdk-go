@@ -1,8 +1,8 @@
 package v2
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/quotas"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/quotas"
 )
 
 var quotaUpdateOpts = quotas.UpdateOpts{

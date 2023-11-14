@@ -3,14 +3,14 @@ package vpnaas
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/vpnaas/endpointgroups"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/vpnaas/ikepolicies"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/vpnaas/ipsecpolicies"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/vpnaas/services"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/vpnaas/siteconnections"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/vpnaas/endpointgroups"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/vpnaas/ikepolicies"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/vpnaas/ipsecpolicies"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/vpnaas/services"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/vpnaas/siteconnections"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateService will create a Service with a random name and a specified router ID

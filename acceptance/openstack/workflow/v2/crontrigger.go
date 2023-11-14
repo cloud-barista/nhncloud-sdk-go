@@ -4,11 +4,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/workflow/v2/crontriggers"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/workflow/v2/workflows"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/workflow/v2/crontriggers"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/workflow/v2/workflows"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateCronTrigger creates a cron trigger for the given workflow.

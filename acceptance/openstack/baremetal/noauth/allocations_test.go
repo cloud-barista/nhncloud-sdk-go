@@ -6,11 +6,11 @@ package noauth
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	v1 "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/baremetal/v1"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/allocations"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	v1 "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/baremetal/v1"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetal/v1/allocations"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestAllocationsCreateDestroy(t *testing.T) {

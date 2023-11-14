@@ -11,9 +11,9 @@ Prepare required import packages
 
 import (
   "fmt"
-  "github.com/cloud-barista/nhncloud-sdk-for-drv"
-  "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack"
-  "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/orchestration/v1/stacks"
+  "github.com/cloud-barista/nhncloud-sdk-go"
+  "github.com/cloud-barista/nhncloud-sdk-go/openstack"
+  "github.com/cloud-barista/nhncloud-sdk-go/openstack/orchestration/v1/stacks"
 )
 
 Example of Preparing Orchestration client:

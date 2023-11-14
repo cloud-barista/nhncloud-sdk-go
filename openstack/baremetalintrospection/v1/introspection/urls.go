@@ -1,6 +1,6 @@
 package introspection
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 func listIntrospectionsURL(client *gophercloud.ServiceClient) string {
 	return client.ServiceURL("introspection")

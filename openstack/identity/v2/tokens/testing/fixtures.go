@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tenants"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tokens"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	thclient "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/tenants"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/tokens"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	thclient "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 // ExpectedToken is the token that should be parsed from TokenCreationResponse.

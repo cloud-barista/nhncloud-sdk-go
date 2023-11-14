@@ -1,7 +1,7 @@
 package apiversions
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // List lists all the API versions available to end users.

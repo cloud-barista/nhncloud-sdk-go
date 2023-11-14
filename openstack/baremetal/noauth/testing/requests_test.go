@@ -3,8 +3,8 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/noauth"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetal/noauth"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestNoAuth(t *testing.T) {

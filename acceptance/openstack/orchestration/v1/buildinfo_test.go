@@ -6,9 +6,9 @@ package v1
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/orchestration/v1/buildinfo"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/orchestration/v1/buildinfo"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestBuildInfo(t *testing.T) {

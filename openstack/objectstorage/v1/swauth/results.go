@@ -1,7 +1,7 @@
 package swauth
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // GetAuthResult contains the response from the Auth request. Call its Extract

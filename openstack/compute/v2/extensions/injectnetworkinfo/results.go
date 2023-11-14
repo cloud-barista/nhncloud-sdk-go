@@ -1,7 +1,7 @@
 package injectnetworkinfo
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // InjectNetworkResult is the response of a InjectNetworkInfo operation. Call

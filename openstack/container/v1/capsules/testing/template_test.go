@@ -3,8 +3,8 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/container/v1/capsules"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/container/v1/capsules"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestTemplateParsing(t *testing.T) {

@@ -1,4 +1,4 @@
-module github.com/cloud-barista/nhncloud-sdk-for-drv
+module github.com/cloud-barista/nhncloud-sdk-go
 
 go 1.19
 

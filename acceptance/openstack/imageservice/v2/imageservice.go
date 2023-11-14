@@ -8,13 +8,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/imageservice/v2/imagedata"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/imageservice/v2/imageimport"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/imageservice/v2/images"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/imageservice/v2/tasks"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/imageservice/v2/imagedata"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/imageservice/v2/imageimport"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/imageservice/v2/images"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/imageservice/v2/tasks"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateEmptyImage will create an image, but with no actual image data.

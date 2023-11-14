@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetalintrospection/v1/introspection"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetalintrospection/v1/introspection"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestLLDPTLVErrors(t *testing.T) {

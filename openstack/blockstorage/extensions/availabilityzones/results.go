@@ -1,7 +1,7 @@
 package availabilityzones
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // ZoneState represents the current state of the availability zone.

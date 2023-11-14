@@ -6,15 +6,15 @@ client's Keystone token. It is returned from ProviderClient.GetAuthResult().
 
 The following types satisfy this interface:
 
-	github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tokens.CreateResult
-	github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/tokens.CreateResult
+	github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/tokens.CreateResult
+	github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/tokens.CreateResult
 
 Usage example:
 
 	import (
-		"github.com/cloud-barista/nhncloud-sdk-for-drv"
-		tokens2 "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tokens"
-		tokens3 "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/tokens"
+		"github.com/cloud-barista/nhncloud-sdk-go"
+		tokens2 "github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/tokens"
+		tokens3 "github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/tokens"
 	)
 
 	func GetAuthenticatedUserID(providerClient *gophercloud.ProviderClient) (string, error) {

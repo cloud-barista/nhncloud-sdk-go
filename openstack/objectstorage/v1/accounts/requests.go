@@ -1,6 +1,6 @@
 package accounts
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // GetOptsBuilder allows extensions to add additional headers to the Get
 // request.

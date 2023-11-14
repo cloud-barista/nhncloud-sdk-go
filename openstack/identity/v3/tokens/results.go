@@ -3,7 +3,7 @@ package tokens
 import (
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // Endpoint represents a single API endpoint offered by a service.

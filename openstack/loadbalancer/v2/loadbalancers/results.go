@@ -14,10 +14,10 @@ import (
 	"encoding/json"
 	// "time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/listeners"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	// "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/loadbalancer/v2/pools"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/listeners"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 )
 
 type IpACLGroup struct {  // by B.T. Oh.

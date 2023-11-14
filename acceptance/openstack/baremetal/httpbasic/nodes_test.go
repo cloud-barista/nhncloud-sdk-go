@@ -3,12 +3,12 @@ package httpbasic
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	v1 "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/baremetal/v1"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/nodes"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	v1 "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/baremetal/v1"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetal/v1/nodes"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestNodesCreateDestroy(t *testing.T) {

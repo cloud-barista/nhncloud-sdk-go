@@ -6,11 +6,11 @@ package v1
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/nodes"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetal/v1/nodes"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestNodesCreateDestroy(t *testing.T) {

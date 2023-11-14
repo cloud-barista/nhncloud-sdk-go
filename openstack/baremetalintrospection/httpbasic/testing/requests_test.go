@@ -4,8 +4,8 @@ import (
 	"encoding/base64"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetalintrospection/httpbasic"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetalintrospection/httpbasic"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestNoAuth(t *testing.T) {

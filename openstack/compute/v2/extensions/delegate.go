@@ -1,9 +1,9 @@
 package extensions
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	common "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/common/extensions"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	common "github.com/cloud-barista/nhncloud-sdk-go/openstack/common/extensions"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // ExtractExtensions interprets a Page as a slice of Extensions.

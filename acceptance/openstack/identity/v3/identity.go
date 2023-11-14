@@ -3,17 +3,17 @@ package v3
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/domains"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/extensions/trusts"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/groups"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/projects"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/regions"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/roles"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/services"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/users"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/domains"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/extensions/trusts"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/groups"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/projects"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/regions"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/roles"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/services"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/users"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateProject will create a project with a random name.

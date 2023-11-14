@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/objectstorage/v1/swauth"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/objectstorage/v1/swauth"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // AuthResult is the expected result of AuthOutput

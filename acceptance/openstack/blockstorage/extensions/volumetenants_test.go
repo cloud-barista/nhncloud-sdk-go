@@ -6,11 +6,11 @@ package extensions
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	blockstorage "github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/openstack/blockstorage/v3"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/volumetenants"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumes"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	blockstorage "github.com/cloud-barista/nhncloud-sdk-go/acceptance/openstack/blockstorage/v3"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/extensions/volumetenants"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/v3/volumes"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestVolumeTenants(t *testing.T) {

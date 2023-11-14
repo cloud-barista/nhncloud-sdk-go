@@ -6,16 +6,16 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/clients"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/actions"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/clusters"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/nodes"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/policies"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/profiles"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/clustering/v1/receivers"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/clients"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/actions"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/clusters"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/nodes"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/policies"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/profiles"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/clustering/v1/receivers"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 var TestPolicySpec = policies.Spec{

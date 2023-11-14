@@ -3,13 +3,13 @@ package dns
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/dns"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/layer3/floatingips"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/networks"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/ports"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/dns"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/layer3/floatingips"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/ports"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // PortWithDNSExt represents a port with the DNS fields

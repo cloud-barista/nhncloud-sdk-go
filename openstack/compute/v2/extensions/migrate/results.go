@@ -1,7 +1,7 @@
 package migrate
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // MigrateResult is the response from a Migrate operation. Call its ExtractErr

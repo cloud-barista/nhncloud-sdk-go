@@ -3,7 +3,7 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestExtractToken(t *testing.T) {

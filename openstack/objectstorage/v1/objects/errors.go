@@ -1,6 +1,6 @@
 package objects
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // ErrWrongChecksum is the error when the checksum generated for an object
 // doesn't match the ETAG header.

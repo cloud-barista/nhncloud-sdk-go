@@ -1,9 +1,9 @@
 package pools
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/lbaas_v2/monitors"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/lbaas_v2/monitors"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // SessionPersistence represents the session persistence feature of the load
@@ -99,7 +99,7 @@ type Pool struct {
 
 	// The operating status of the pool.
 	// This field seems to only be returned during a call to a load balancer's /status
-	// see: https://github.com/cloud-barista/nhncloud-sdk-for-drv/issues/1362
+	// see: https://github.com/cloud-barista/nhncloud-sdk-go/issues/1362
 	OperatingStatus string `json:"operating_status"`
 }
 
@@ -212,7 +212,7 @@ type Member struct {
 
 	// The operating status of the member.
 	// This field seems to only be returned during a call to a load balancer's /status
-	// see: https://github.com/cloud-barista/nhncloud-sdk-for-drv/issues/1362
+	// see: https://github.com/cloud-barista/nhncloud-sdk-go/issues/1362
 	OperatingStatus string `json:"operating_status"`
 }
 

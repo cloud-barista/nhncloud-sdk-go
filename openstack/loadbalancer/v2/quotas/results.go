@@ -3,7 +3,7 @@ package quotas
 import (
 	"encoding/json"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 type commonResult struct {

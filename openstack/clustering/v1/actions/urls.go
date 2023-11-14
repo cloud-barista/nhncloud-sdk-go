@@ -1,6 +1,6 @@
 package actions
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 var apiVersion = "v1"
 var apiName = "actions"

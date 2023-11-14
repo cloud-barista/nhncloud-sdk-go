@@ -1,7 +1,7 @@
 package snapshots
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // WaitForStatus will continually poll the resource, checking for a particular

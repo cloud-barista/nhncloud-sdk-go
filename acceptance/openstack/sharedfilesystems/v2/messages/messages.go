@@ -3,8 +3,8 @@ package messages
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/sharedfilesystems/v2/messages"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/sharedfilesystems/v2/messages"
 )
 
 // DeleteMessage will delete a message. An error will occur if

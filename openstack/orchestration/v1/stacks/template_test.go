@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 func TestTemplateValidation(t *testing.T) {

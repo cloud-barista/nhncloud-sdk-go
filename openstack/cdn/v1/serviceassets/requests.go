@@ -3,7 +3,7 @@ package serviceassets
 import (
 	"strings"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // DeleteOptsBuilder allows extensions to add additional parameters to the Delete

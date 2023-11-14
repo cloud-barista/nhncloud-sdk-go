@@ -3,11 +3,11 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack"
-	tokens2 "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/tokens"
-	tokens3 "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v3/tokens"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack"
+	tokens2 "github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/tokens"
+	tokens3 "github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/tokens"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // Service catalog fixtures take too much vertical space!

@@ -3,7 +3,7 @@ package servers
 import (
 	"fmt"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // ErrNeitherImageIDNorImageNameProvided is the error when neither the image

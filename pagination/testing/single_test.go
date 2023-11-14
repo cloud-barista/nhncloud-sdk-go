@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // SinglePage sample and test cases.

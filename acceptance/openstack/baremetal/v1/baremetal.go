@@ -3,11 +3,11 @@ package v1
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/allocations"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/nodes"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/baremetal/v1/ports"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetal/v1/allocations"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetal/v1/nodes"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/baremetal/v1/ports"
 )
 
 // CreateNode creates a basic node with a randomly generated name.

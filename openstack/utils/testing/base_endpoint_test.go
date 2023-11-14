@@ -3,8 +3,8 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/utils"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/utils"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 type endpointTestCases struct {

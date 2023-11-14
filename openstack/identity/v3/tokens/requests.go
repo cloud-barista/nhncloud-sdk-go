@@ -1,6 +1,6 @@
 package tokens
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // Scope allows a created token to be limited to a specific domain or project.
 type Scope struct {

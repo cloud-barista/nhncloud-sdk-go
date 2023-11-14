@@ -4,12 +4,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/messaging/v2/claims"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/messaging/v2/messages"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/messaging/v2/queues"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/messaging/v2/claims"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/messaging/v2/messages"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/messaging/v2/queues"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 func CreateQueue(t *testing.T, client *gophercloud.ServiceClient) (string, error) {

@@ -3,7 +3,7 @@ package quotasets
 import (
 	"fmt"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
+	"github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 // Get returns public data about a previously created QuotaSet.

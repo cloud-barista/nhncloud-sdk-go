@@ -3,10 +3,10 @@ package dns
 import (
 	"net/url"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/layer3/floatingips"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/networks"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/ports"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/layer3/floatingips"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/ports"
 )
 
 // PortListOptsExt adds the DNS options to the base port ListOpts.

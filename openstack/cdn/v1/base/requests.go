@@ -1,6 +1,6 @@
 package base
 
-import "github.com/cloud-barista/nhncloud-sdk-for-drv"
+import "github.com/cloud-barista/nhncloud-sdk-go"
 
 // Get retrieves the home document, allowing the user to discover the
 // entire API.

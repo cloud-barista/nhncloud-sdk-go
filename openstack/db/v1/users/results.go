@@ -1,9 +1,9 @@
 package users
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	db "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/db/v1/databases"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	db "github.com/cloud-barista/nhncloud-sdk-go/openstack/db/v1/databases"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
 // User represents a database user

@@ -3,11 +3,11 @@ package testing
 import (
 	"testing"
 
-	common "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/common/extensions/testing"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/identity/v2/extensions"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/pagination"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper/client"
+	common "github.com/cloud-barista/nhncloud-sdk-go/openstack/common/extensions/testing"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/extensions"
+	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
 )
 
 func TestList(t *testing.T) {

@@ -8,16 +8,16 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/backups"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/extensions/volumeactions"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v2/volumes"
-	v3 "github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumes"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/blockstorage/v3/volumetypes"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/images"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/compute/v2/servers"
-	th "github.com/cloud-barista/nhncloud-sdk-for-drv/testhelper"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/extensions/backups"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/extensions/volumeactions"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/v2/volumes"
+	v3 "github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/v3/volumes"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/blockstorage/v3/volumetypes"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/compute/v2/images"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/compute/v2/servers"
+	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 // CreateUploadImage will upload volume it as volume-baked image. An name of new image or err will be

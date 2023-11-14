@@ -1,8 +1,8 @@
 package testing
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-for-drv"
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/networkipavailabilities"
+	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/networkipavailabilities"
 )
 
 // NetworkIPAvailabilityListResult represents raw server response from a server to a list call.

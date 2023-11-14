@@ -3,7 +3,7 @@ package testing
 import (
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-for-drv/openstack/networking/v2/extensions/subnetpools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/subnetpools"
 )
 
 const SubnetPoolsListResult = `
