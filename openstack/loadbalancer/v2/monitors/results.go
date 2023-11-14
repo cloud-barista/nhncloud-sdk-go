@@ -37,12 +37,12 @@ type PoolID struct {
 // unhealthy, then the member status is changed to INACTIVE and the member
 // won't participate in its pool's load balancing. In other words, ALL monitors
 // must declare the member to be healthy for it to stay ACTIVE.
-type Monitor struct {											// Modified by B.T. Oh
+type Monitor struct {											// Modified 
 	// The administrative state of the health monitor, which is up (true) or
 	// down (false).
 	AdminStateUp bool `json:"admin_state_up"`
 
-	HealthCheckPort int `json:"health_check_port"`			// Added by B.T. Oh.  Not exists on API manual.
+	HealthCheckPort int `json:"health_check_port"`			// Added .  Not exists on API manual.
 
 	// The time, in seconds, between sending probes to members.
 	Delay int `json:"delay"`
@@ -76,7 +76,7 @@ type Monitor struct {											// Modified by B.T. Oh
 	// The unique ID for the Monitor.
 	ID string `json:"id"`
 
-	HostHeader string `json:"host_header"`						// Added by B.T. Oh
+	HostHeader string `json:"host_header"`						// Added 
 }
 
 // MonitorPage is the page returned by a pager when traversing over a

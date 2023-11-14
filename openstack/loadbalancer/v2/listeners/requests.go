@@ -54,7 +54,7 @@ type ListOptsBuilder interface {
 // the floating IP attributes you want to see returned. SortKey allows you to
 // sort by a particular listener attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {    									// Modified by B.T. Oh
+type ListOpts struct {    									// Modified 
 	DefaultPoolID        string `q:"default_pool_id"`
 	Protocol             string `q:"protocol"`
 	Description          string `q:"description"`
@@ -99,7 +99,7 @@ type CreateOptsBuilder interface {
 }
 
 // CreateOpts represents options for creating a listener.
-type CreateOpts struct {   									// Modified by B.T. Oh
+type CreateOpts struct {   									// Modified 
 	// The protocol - can either be TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
 	Protocol 				Protocol `json:"protocol" required:"true"`
 
@@ -168,7 +168,7 @@ type UpdateOptsBuilder interface {
 }
 
 // UpdateOpts represents options for updating a Listener.
-type UpdateOpts struct {													// Modified by B.T. Oh
+type UpdateOpts struct {													// Modified 
 	// Human-readable description for the Listener.
 	Description *string `json:"description,omitempty"`
 
@@ -183,7 +183,7 @@ type UpdateOpts struct {													// Modified by B.T. Oh
 	ConnLimit *int `json:"connection_limit,omitempty"`
 
 	// Frontend client inactivity timeout in milliseconds
-	KeepAliveTimeout *int `json:"keepalive_timeout,omitempty"`				// Added by B.T. Oh
+	KeepAliveTimeout *int `json:"keepalive_timeout,omitempty"`				// Added 
 
 	// A reference to a Barbican container of TLS secrets.
 	DefaultTlsContainerRef *string `json:"default_tls_container_ref,omitempty"`

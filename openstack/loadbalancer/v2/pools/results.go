@@ -56,7 +56,7 @@ type ListenerID struct {
 // group together to receive and process traffic. The load balancing function
 // chooses a Member of the Pool according to the configured load balancing
 // method to handle the new requests or connections received on the VIP address.
-type Pool struct {																// Modified by B.T. Oh
+type Pool struct {																// Modified 
 	// The load-balancer algorithm, which is round-robin, least-connections, and
 	// so on. This value, which must be supported, is dependent on the provider.
 	// Round-robin must be supported.
@@ -72,10 +72,10 @@ type Pool struct {																// Modified by B.T. Oh
 	AdminStateUp bool `json:"admin_state_up"`
 
 	// Owner of the Pool.
-	TenantID string `json:"tenant_id"`											// Added by B.T. Oh
+	TenantID string `json:"tenant_id"`											// Added 
 
 	// Member's port for receiving. Deliver traffic to this port. The default value is -1.
-	MemberPort int `json:"member_port"`	  										// Added by BT.OH   Not Exits on API Manual.
+	MemberPort int `json:"member_port"`	  										// Added    Not Exits on API Manual.
 
 	// Indicates whether connections in the same session will be processed by the
 	// same Pool member or not.
@@ -172,7 +172,7 @@ type DeleteResult struct {
 }
 
 // Member represents the application running on a backend server.
-type Member struct {										// Modified by B.T. Oh
+type Member struct {										// Modified 
 	// Weight of Member.
 	Weight int `json:"weight"`
 
@@ -183,7 +183,7 @@ type Member struct {										// Modified by B.T. Oh
 	SubnetID string `json:"subnet_id"`
 
 	// Owner of the Pool.
-	TenantID string `json:"tenant_id"`						// Added by B.T. Oh
+	TenantID string `json:"tenant_id"`						// Added 
 
 	// The IP address of the Member.
 	Address string `json:"address"`

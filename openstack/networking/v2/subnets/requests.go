@@ -26,13 +26,13 @@ type ListOptsBuilder interface {
 // the subnet attributes you want to see returned. SortKey allows you to sort
 // by a particular subnet attribute. SortDir sets the direction, and is either
 // `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {									// Modified by B.T. Oh
+type ListOpts struct {									// Modified 
 	ID              string `q:"id"`
 	Name            string `q:"name"`
 	EnableDHCP      *bool  `q:"enable_dhcp"`
 	NetworkID       string `q:"network_id"`
 	CIDR            string `q:"cidr"`
-	Shared          bool   `q:"shared"`	// Whether the subnet is shared. (Added by B.T. Oh)
+	Shared          bool   `q:"shared"`	// Whether the subnet is shared. (Added )
 	SortDir         string `q:"sort_dir"`
 	SortKey         string `q:"sort_key"`
 	Fields       	string `q:"fields"` // Field Name of the subnet

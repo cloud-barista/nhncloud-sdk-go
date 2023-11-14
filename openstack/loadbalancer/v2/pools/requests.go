@@ -27,13 +27,13 @@ type ListOptsBuilder interface {
 // the Pool attributes you want to see returned. SortKey allows you to
 // sort by a particular Pool attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {										// Modified by B.T. Oh
+type ListOpts struct {										// Modified 
 	ID             string `q:"id"`
 	Name           string `q:"name"`
 	LBMethod       string `q:"lb_algorithm"`
 	Protocol       string `q:"protocol"`
 	AdminStateUp   bool   `q:"admin_state_up"`
-	MonitorID 	   string `q:"healthmonitor_id"`			// Added by B.T. Oh
+	MonitorID 	   string `q:"healthmonitor_id"`			// Added 
 }
 
 // ToPoolListQuery formats a ListOpts into a query string.
@@ -90,7 +90,7 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {												// Modified by B.T. Oh
+type CreateOpts struct {												// Modified 
 	// The Listener on which the members of the pool will be associated with.
 	// Note: one of LoadbalancerID or ListenerID must be provided.
 	ListenerID string `json:"listener_id" required:"true"`
@@ -113,7 +113,7 @@ type CreateOpts struct {												// Modified by B.T. Oh
 	AdminStateUp bool `json:"admin_state_up,omitempty"`
 
 	// Member's port for receiving. Deliver traffic to this port. The default value is -1.
-	MemberPort int `json:"member_port,omitempty"`	  					// Added by B.T. Oh
+	MemberPort int `json:"member_port,omitempty"`	  					// Added 
 
 	// Persistence is the session persistence of the pool.
 	// Omit this field to prevent session persistence.
@@ -156,7 +156,7 @@ type UpdateOptsBuilder interface {
 
 // UpdateOpts is the common options struct used in this package's Update
 // operation.
-type UpdateOpts struct {													// Modified by B.T. Oh
+type UpdateOpts struct {													// Modified 
 	// The algorithm used to distribute load between the members of the pool. The
 	// current specification supports LBMethodRoundRobin, LBMethodLeastConnections
 	// and LBMethodSourceIp as valid values for this attribute.
@@ -171,7 +171,7 @@ type UpdateOpts struct {													// Modified by B.T. Oh
 
 	// Persistence is the session persistence of the pool.
 	// Omit this field to prevent session persistence.
-	Persistence *SessionPersistence `json:"session_persistence,omitempty"`  // Added by B.T. Oh
+	Persistence *SessionPersistence `json:"session_persistence,omitempty"`  // Added 
 
 	// Name of the pool.
 	Name *string `json:"name,omitempty"`
@@ -214,15 +214,15 @@ type ListMembersOptsBuilder interface {
 // that map to the Member attributes you want to see returned. SortKey allows
 // you to sort by a particular Member attribute. SortDir sets the direction,
 // and is either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListMembersOpts struct {								// Modified by B.T. Oh
+type ListMembersOpts struct {								// Modified 
 	ID           	string `q:"id"`
 	Weight       	int    `q:"weight"`
 	AdminStateUp 	*bool  `q:"admin_state_up"`
-	SubnetID     	string `q:"subnet_id"`					// Added by B.T. Oh
-	TenantID     	string `q:"tenant_id"`					// Added by B.T. Oh
+	SubnetID     	string `q:"subnet_id"`					// Added 
+	TenantID     	string `q:"tenant_id"`					// Added 
 	Address      	string `q:"address"`
 	ProtocolPort 	int    `q:"protocol_port"`
-	OperatingStatus	string `q:"operating_status	"`			// Added by B.T. Oh
+	OperatingStatus	string `q:"operating_status	"`			// Added 
 }
 
 // ToMemberListQuery formats a ListOpts into a query string.
@@ -259,7 +259,7 @@ type CreateMemberOptsBuilder interface {
 
 // CreateMemberOpts is the common options struct used in this package's CreateMember
 // operation.
-type CreateMemberOpts struct {									// Modified by B.T. Oh
+type CreateMemberOpts struct {									// Modified 
 	// A positive integer value that indicates the relative portion of traffic
 	// that this member should receive from the pool. For example, a member with
 	// a weight of 10 receives five times as much traffic as a member with a

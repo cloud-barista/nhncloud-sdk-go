@@ -26,7 +26,7 @@ type ListOptsBuilder interface {
 // the floating IP attributes you want to see returned. SortKey allows you to
 // sort by a particular network attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {											// Modified by B.T. Oh
+type ListOpts struct {											// Modified 
 	ID                string `q:"id"`
 	Status            string `q:"status"`
 	TenantID          string `q:"tenant_id"`
@@ -36,7 +36,7 @@ type ListOpts struct {											// Modified by B.T. Oh
 	PortID            string `q:"port_id"`
 	SortDir           string `q:"sort_dir"`
 	SortKey           string `q:"sort_key"`
-	Fields            string `q:"fields"`   // Field Name of the Floating IP Address. Added by B.T. Oh  
+	Fields            string `q:"fields"`   // Field Name of the Floating IP Address. Added   
 }
 
 // ToNetworkListQuery formats a ListOpts into a query string.
@@ -71,7 +71,7 @@ type CreateOptsBuilder interface {
 // CreateOpts contains all the values needed to create a new floating IP
 // resource. The only required fields are FloatingNetworkID and PortID which
 // refer to the external network and internal port respectively.
-type CreateOpts struct {										// Modified by B.T. Oh
+type CreateOpts struct {										// Modified 
 	FloatingNetworkID string `json:"floating_network_id" required:"true"`
 	PortID            string `json:"port_id,omitempty"`
 }

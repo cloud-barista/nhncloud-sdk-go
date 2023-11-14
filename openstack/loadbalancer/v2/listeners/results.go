@@ -29,7 +29,7 @@ type Listener struct {
 	DefaultPoolID 			string `json:"default_pool_id"`
 
 	// The protocol to loadbalance. A valid value is TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
-	Protocol 				Protocol `json:"protocol"` 					// Modified by B.T. Oh
+	Protocol 				Protocol `json:"protocol"` 					// Modified 
 	// Defined at ./nhncloud-sdk-go/openstack/loadbalancer/v2/listeners/requests.go
 	
 	// Human-readable description for the Listener.
@@ -42,7 +42,7 @@ type Listener struct {
 	Loadbalancers 			[]LoadBalancerID `json:"loadbalancers"`
 
 	// Owner of the LoadBalancer.
-	TenantID 				string `json:"tenant_id"`  					// Modified by B.T. Oh
+	TenantID 				string `json:"tenant_id"`  					// Modified 
 
 	// The administrative state of the Listener. A valid value is true (UP) or false (DOWN).
 	AdminStateUp 			bool `json:"admin_state_up"`

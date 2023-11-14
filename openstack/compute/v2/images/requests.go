@@ -45,7 +45,7 @@ func (opts ListOpts) ToImageListQuery() (string, error) {
 	return q.String(), err
 }
 
-// List enumerates the available images. // $$$ Added by BT.OH
+// List enumerates the available images. // $$$ Added 
 func List(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 
 	urlBefore := listURL(client)
@@ -81,7 +81,7 @@ func ListDetail(client *gophercloud.ServiceClient, opts ListOptsBuilder) paginat
 	url := listDetailURL(client)
 
 	//To Check!!
-	log.Println("\n### List Detail Query URL : ", url) // Added by BT.OH
+	log.Println("\n### List Detail Query URL : ", url) // Added 
 
 	if opts != nil {
 		query, err := opts.ToImageListQuery()
@@ -100,11 +100,11 @@ func ListDetail(client *gophercloud.ServiceClient, opts ListOptsBuilder) paginat
 func Get(client *gophercloud.ServiceClient, id string) (r GetResult) {
 
 	//Check!!
-	url := getURL(client, id)  // Modified by BT.OH
+	url := getURL(client, id)  // Modified 
 	log.Println("\n### Get Query URL : ", url)
 
 	// resp, err := client.Get(getURL(client, id), &r.Body, nil)
-	resp, err := client.Get(url, &r.Body, nil)  // Modified by BT.OH
+	resp, err := client.Get(url, &r.Body, nil)  // Modified 
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
 }

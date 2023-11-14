@@ -24,7 +24,7 @@ const (
 	// The version can be anything from v3 to v3.x.
 	v3 = "v3"
 
-	// Added by B.T. Oh.
+	// Added
 	K8S_KR1_Endpoint = "https://kr1-api-kubernetes.infrastructure.cloud.toast.com/v1/"   // Caution : Need to Add '/v1/' at the end of the endpoint
 	K8S_KR2_Endpoint = "https://kr2-api-kubernetes.infrastructure.cloud.toast.com/v1/"  // Caution : Need to Add '/v1/' at the end of the endpoint
 )
@@ -365,7 +365,7 @@ func initClientOpts(client *gophercloud.ProviderClient, eo gophercloud.EndpointO
 	sc.Type = clientType
 
 	var url string
-	if !strings.EqualFold(clientType, "kubernetes") {			// Added by B.T. Oh.
+	if !strings.EqualFold(clientType, "kubernetes") {			// Added .
 		var err error
 		url, err = client.EndpointLocator(eo)
 		if err != nil {
@@ -512,7 +512,7 @@ func NewKeyManagerV1(client *gophercloud.ProviderClient, eo gophercloud.Endpoint
 // NewContainerInfraV1 creates a ServiceClient that may be used with the v1 container infra management
 // package.
 func NewContainerInfraV1(client *gophercloud.ProviderClient, eo gophercloud.EndpointOpts) (*gophercloud.ServiceClient, error) {
-	return initClientOpts(client, eo, "kubernetes")  // Modified by B.T. Oh
+	return initClientOpts(client, eo, "kubernetes")  // Modified 
 }
 
 // NewWorkflowV2 creates a ServiceClient that may be used with the v2 workflow management package.

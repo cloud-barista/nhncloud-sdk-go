@@ -8,7 +8,7 @@ import (
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
-type Attachment struct {											// Modified by B.T. Oh
+type Attachment struct {											// Modified 
 	ServerID     string    `json:"server_id"`
 	AttachmentID string    `json:"attachment_id"`
 	VolumeID     string    `json:"volume_id"`
@@ -31,7 +31,7 @@ func (r *Attachment) UnmarshalJSON(b []byte) error {
 }
 
 // Volume contains all the information associated with an OpenStack Volume.
-type Volume struct {											// Modified by B.T. Oh
+type Volume struct {											// Modified 
 	// Instances onto which the volume is attached.
 	Attachments []Attachment `json:"attachments"`
 
