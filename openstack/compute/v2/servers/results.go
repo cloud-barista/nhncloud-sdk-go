@@ -144,7 +144,7 @@ func (r CreateImageResult) ExtractImageID() (string, error) {
 }
 
 // Server represents a server/instance in the OpenStack cloud.
-type Server struct {																// Modified by B.T. Oh
+type Server struct {																// Modified 
 	// Status contains the current operational status of the server,
 	// such as IN_PROGRESS or ACTIVE.
 	Status string `json:"status"`
@@ -178,16 +178,16 @@ type Server struct {																// Modified by B.T. Oh
 	Image map[string]interface{} `json:"-"`
 
 	// Instance Task State
-	TaskState string `json:"OS-EXT-STS:task_state"`									// Added by B.T. Oh
+	TaskState string `json:"OS-EXT-STS:task_state"`									// Added 
 
 	// Current State of the instance
-	VMState string `json:"OS-EXT-STS:vm_state"`										// Added by B.T. Oh
+	VMState string `json:"OS-EXT-STS:vm_state"`										// Added 
 
 	// // Last Booting Time of the instance
-	// VMLaunchedAt time.Time `json:"OS-SRV-USG:launched_at"`							// Added by B.T. Oh
+	// VMLaunchedAt time.Time `json:"OS-SRV-USG:launched_at"`							// Added 
 
 	// Last Deleting Time of the instance
-	VMTerminatedAt time.Time `json:"OS-SRV-USG:terminated_at"`						// Added by B.T. Oh
+	VMTerminatedAt time.Time `json:"OS-SRV-USG:terminated_at"`						// Added 
 
 	// Flavor refers to a JSON object, which itself indicates the hardware
 	// configuration of the deployed server.
@@ -210,7 +210,7 @@ type Server struct {																// Modified by B.T. Oh
 	AttachedVolumes []AttachedVolume `json:"os-extended-volumes:volumes_attached"`
 	
 	// Power State of the instance
-	VMPowerState int `json:"OS-EXT-STS:power_state"`								// Added by B.T. Oh
+	VMPowerState int `json:"OS-EXT-STS:power_state"`								// Added 
 
 	// Metadata includes a list of all user-specified key-value pairs attached
 	// to the server.

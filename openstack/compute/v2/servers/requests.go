@@ -19,9 +19,9 @@ type ListOptsBuilder interface {
 // the API. Filtering is achieved by passing in struct field values that map to
 // the server attributes you want to see returned. Marker and Limit are used
 // for pagination.
-type ListOpts struct {															// Modified by B.T. Oh
+type ListOpts struct {															// Modified 
 	// Instance Creation Reservation ID.
-	ReservationID string `q:"reservation_id"`									// Added by B.T. Oh
+	ReservationID string `q:"reservation_id"`									// Added 
 
 	// ChangesSince is a time/date stamp for when the server last changed status.
 	ChangesSince string `q:"changes-since"`
@@ -126,7 +126,7 @@ func (f *File) MarshalJSON() ([]byte, error) {
 }
 
 // CreateOpts specifies server creation parameters.
-type CreateOpts struct {														// Modified by B.T. Oh
+type CreateOpts struct {														// Modified 
 	// SecurityGroups lists the names of the security groups to which this server
 	// should belong.
 	SecurityGroups []string `json:"-"`
@@ -160,7 +160,7 @@ type CreateOpts struct {														// Modified by B.T. Oh
 	// server.
 	Metadata map[string]string `json:"metadata,omitempty"`
 
-	KeyName string `json:"key_name,omitempty"`									// Added by B.T. Oh
+	KeyName string `json:"key_name,omitempty"`									// Added 
 
 	// Min specifies Minimum number of servers to launch.
 	Min int `json:"min_count,omitempty"`
@@ -168,7 +168,7 @@ type CreateOpts struct {														// Modified by B.T. Oh
 	// Max specifies Maximum number of servers to launch.
 	Max int `json:"max_count,omitempty"`
 
-	ReturnReservationID bool `json:"return_reservation_id,omitempty"`			// Added by B.T. Oh
+	ReturnReservationID bool `json:"return_reservation_id,omitempty"`			// Added 
 }
 
 // ToServerCreateMap assembles a request body based on the contents of a

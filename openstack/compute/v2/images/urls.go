@@ -2,7 +2,7 @@ package images
 
 import "github.com/cloud-barista/nhncloud-sdk-go"
 
-// Added by BT.OH
+// Added 
 func listURL(client *gophercloud.ServiceClient) string {
 	return client.ServiceURL("images", "")
 }

@@ -14,7 +14,7 @@ type CreateOptsBuilder interface {
 // CreateOpts contains options for creating a Volume. This object is passed to
 // the volumes.Create function. For more information about these parameters,
 // see the Volume object.
-type CreateOpts struct {													// Modified by B.T. Oh
+type CreateOpts struct {													// Modified 
 	// The size of the volume, in GB
 	Size int `json:"size" required:"true"`
 
@@ -23,7 +23,7 @@ type CreateOpts struct {													// Modified by B.T. Oh
 
 	// Whether to do multiple attachments
     // If you set it to 'True', you can attach to multiple instances at the same time.
-	MultiAttach bool `json:"multiattach,omitempty"`							// Added by B.T. Oh
+	MultiAttach bool `json:"multiattach,omitempty"`							// Added 
 
 	// The availability zone
 	AvailabilityZone string `json:"availability_zone,omitempty"`
@@ -114,7 +114,7 @@ type ListOptsBuilder interface {
 
 // ListOpts holds options for listing Volumes. It is passed to the volumes.List
 // function.
-type ListOpts struct {														// Modified by B.T. Oh
+type ListOpts struct {														// Modified 
 	// Comma-separated list of sort keys and optional sort directions in the
 	// form of <key>[:<direction>].
 	Sort string `q:"sort"`

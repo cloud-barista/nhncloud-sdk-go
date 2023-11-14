@@ -24,7 +24,7 @@ import (
 // instance on a private network from an external network. For this reason,
 // floating IPs can only be defined on networks where the `router:external'
 // attribute (provided by the external network extension) is set to True.
-type FloatingIP struct {									// Modified by B.T. Oh
+type FloatingIP struct {									// Modified 
 	// FloatingNetworkID is the UUID of the external network where the floating
 	// IP is to be created.
 	FloatingNetworkID string `json:"floating_network_id"`
@@ -54,7 +54,7 @@ type FloatingIP struct {									// Modified by B.T. Oh
 	ID string `json:"id"`
 }
 
-func (r *FloatingIP) UnmarshalJSON(b []byte) error {		// Modified by B.T. Oh
+func (r *FloatingIP) UnmarshalJSON(b []byte) error {		// Modified 
 	type tmp FloatingIP
 
 	var s1 struct {

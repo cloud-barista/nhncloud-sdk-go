@@ -28,7 +28,7 @@ type ListOptsBuilder interface {
 // the Monitor attributes you want to see returned. SortKey allows you to
 // sort by a particular Monitor attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {								// Modified by B.T. Oh
+type ListOpts struct {								// Modified 
 	ID             string `q:"id"`
 	AdminStateUp   *bool  `q:"admin_state_up"`
 	Delay          int    `q:"delay"`
@@ -38,7 +38,7 @@ type ListOpts struct {								// Modified by B.T. Oh
 	Timeout        int    `q:"timeout"`
 	URLPath        string `q:"url_path"`
 	Type           string `q:"type"`
-	HostHeader     string `q:"host_header"`			// Added by B.T. Oh
+	HostHeader     string `q:"host_header"`			// Added 
 }
 
 // ToMonitorListQuery formats a ListOpts into a query string.
@@ -93,7 +93,7 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {												// Modified by B.T. Oh
+type CreateOpts struct {												// Modified 
 	// The Pool to Monitor.
 	PoolID string `json:"pool_id" required:"true"`
 
@@ -101,7 +101,7 @@ type CreateOpts struct {												// Modified by B.T. Oh
 	// or false (DOWN).
 	AdminStateUp *bool `json:"admin_state_up,omitempty"`
 
-	HealthCheckPort int `json:"health_check_port,omitempty"`			// Added by B.T. Oh
+	HealthCheckPort int `json:"health_check_port,omitempty"`			// Added 
 
 	// The time, in seconds, between sending probes to members.
 	Delay int `json:"delay" required:"true"`
@@ -130,7 +130,7 @@ type CreateOpts struct {												// Modified by B.T. Oh
 	// sent by the load balancer to verify the member state.
 	Type string `json:"type" required:"true"`
 
-	HostHeader string `json:"host_header,omitempty"`		 		// Added by B.T. Oh
+	HostHeader string `json:"host_header,omitempty"`		 		// Added 
 }
 
 // ToMonitorCreateMap builds a request body from CreateOpts.

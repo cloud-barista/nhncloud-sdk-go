@@ -20,14 +20,14 @@ import (
 	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 )
 
-type IpACLGroup struct {  // by B.T. Oh.
+type IpACLGroup struct {  // .
 	IpACLGroupID string `json:"ipacl_group_id"`
 }
 
 // LoadBalancer is the primary load balancing configuration object that
 // specifies the virtual IP address on which client traffic is received, as well
 // as other details such as the load balancing method to be use, protocol, etc.
-type LoadBalancer struct {										// Modified by B.T. Oh
+type LoadBalancer struct {										// Modified 
 	// Human-readable description for the Loadbalancer.
 	Description 		string `json:"description"`
 
@@ -36,7 +36,7 @@ type LoadBalancer struct {										// Modified by B.T. Oh
 	ProvisioningStatus 	string `json:"provisioning_status"`
 
 	// Owner of the LoadBalancer.
-	TenantID 			string `json:"tenant_id"`  				// Added by B.T. Oh.
+	TenantID 			string `json:"tenant_id"`  				// Added .
 	
 	// The name of the provider.
 	Provider 			string `json:"provider"`

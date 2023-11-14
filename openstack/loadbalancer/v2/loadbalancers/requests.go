@@ -29,7 +29,7 @@ type ListOptsBuilder interface {
 // sort by a particular attribute. SortDir sets the direction, and is
 // either `asc' or `desc'. Marker and Limit are used for pagination.
 
-type ListOpts struct {   									// Modified by B.T. Oh
+type ListOpts struct {   									// Modified 
 	ID                 string   `q:"id"`
 	Name               string   `q:"name"`
 	ProvisioningStatus string   `q:"provisioning_status"`
@@ -75,7 +75,7 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {   											// Modified by B.T. Oh
+type CreateOpts struct {   											// Modified 
 	// Human-readable name for the Loadbalancer. Does not have to be unique.
 	Name 				string `json:"name,omitempty"`
 
@@ -94,7 +94,7 @@ type CreateOpts struct {   											// Modified by B.T. Oh
 	// or false (DOWN).
 	AdminStateUp 	 	bool `json:"admin_state_up,omitempty"`
 	
-	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`	// 'shared' or 'dedicated'. (Added by B.T. Oh)
+	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`	// 'shared' or 'dedicated'. (Added )
 }
 
 // ToLoadBalancerCreateMap builds a request body from CreateOpts.
@@ -132,7 +132,7 @@ type UpdateOptsBuilder interface {
 
 // UpdateOpts is the common options struct used in this package's Update
 // operation.
-type UpdateOpts struct {										// Modified by B.T. Oh
+type UpdateOpts struct {										// Modified 
 	// Human-readable name for the Loadbalancer. Does not have to be unique.
 	Name *string `json:"name,omitempty"`
 

@@ -68,7 +68,7 @@ type HostRoute struct {
 
 // Subnet represents a subnet. See package documentation for a top-level
 // description of what this is.
-type Subnet struct {											// Modified by B.T. Oh
+type Subnet struct {											// Modified 
 	// Human-readable name for the subnet. Might not be unique.
 	Name string `json:"name"`
 

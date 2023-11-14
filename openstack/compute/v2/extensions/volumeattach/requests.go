@@ -19,7 +19,7 @@ type CreateOptsBuilder interface {
 }
 
 // CreateOpts specifies volume attachment creation or import parameters.
-type CreateOpts struct {										// Modified by B.T. Oh
+type CreateOpts struct {										// Modified 
 	// VolumeID is the ID of the volume to attach to the instance.
 	VolumeID string `json:"volumeId" required:"true"`
 }
