@@ -11,6 +11,7 @@
 package subnets
 
 import (
+	"fmt"
 	"github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
@@ -30,7 +31,7 @@ type ListOpts struct {									// Modified
 	ID              string `q:"id"`
 	Name            string `q:"name"`
 	EnableDHCP      *bool  `q:"enable_dhcp"`
-	NetworkID       string `q:"network_id"`
+	VPCID       	string `q:"vpc_id"`
 	CIDR            string `q:"cidr"`
 	Shared          bool   `q:"shared"`	// Whether the subnet is shared. (Added )
 	SortDir         string `q:"sort_dir"`
@@ -60,6 +61,9 @@ func List(c *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 		}
 		url += query
 	}
+
+	fmt.Printf("\n### Call URL : %s\n\n", url)
+
 	return pagination.NewPager(c, url, func(r pagination.PageResult) pagination.Page {
 		return SubnetPage{pagination.LinkedPageBase{PageResult: r}}
 	})
@@ -67,6 +71,8 @@ func List(c *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 
 // Get retrieves a specific subnet based on its unique ID.
 func Get(c *gophercloud.ServiceClient, id string) (r GetResult) {
+	fmt.Printf("\n### Call URL : %s\n\n", getURL(c, id))
+	
 	resp, err := c.Get(getURL(c, id), &r.Body, nil)
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
@@ -99,10 +105,6 @@ type CreateOpts struct {
 	// The UUID of the project who owns the Subnet. Only administrative users
 	// can specify a project UUID other than their own.
 	ProjectID string `json:"project_id,omitempty"`
-
-	// AllocationPools are IP Address pools that will be available for DHCP.
-	AllocationPools []AllocationPool `json:"allocation_pools,omitempty"`
-
 	// GatewayIP sets gateway information for the subnet. Setting to nil will
 	// cause a default gateway to automatically be created. Setting to an empty
 	// string will cause the subnet to be created with no gateway. Setting to
@@ -117,9 +119,6 @@ type CreateOpts struct {
 
 	// DNSNameservers are the nameservers to be set via DHCP.
 	DNSNameservers []string `json:"dns_nameservers,omitempty"`
-
-	// HostRoutes are any static host routes to be set via DHCP.
-	HostRoutes []HostRoute `json:"host_routes,omitempty"`
 
 	// The IPv6 address modes specifies mechanisms for assigning IPv6 IP addresses.
 	IPv6AddressMode string `json:"ipv6_address_mode,omitempty"`
@@ -178,9 +177,6 @@ type UpdateOpts struct {
 	// Description of the subnet.
 	Description *string `json:"description,omitempty"`
 
-	// AllocationPools are IP Address pools that will be available for DHCP.
-	AllocationPools []AllocationPool `json:"allocation_pools,omitempty"`
-
 	// GatewayIP sets gateway information for the subnet. Setting to nil will
 	// cause a default gateway to automatically be created. Setting to an empty
 	// string will cause the subnet to be created with no gateway. Setting to
@@ -189,9 +185,6 @@ type UpdateOpts struct {
 
 	// DNSNameservers are the nameservers to be set via DHCP.
 	DNSNameservers *[]string `json:"dns_nameservers,omitempty"`
-
-	// HostRoutes are any static host routes to be set via DHCP.
-	HostRoutes *[]HostRoute `json:"host_routes,omitempty"`
 
 	// EnableDHCP will either enable to disable the DHCP service.
 	EnableDHCP *bool `json:"enable_dhcp,omitempty"`
