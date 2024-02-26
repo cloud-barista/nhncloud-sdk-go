@@ -6,26 +6,26 @@
 //
 // This is a Cloud Driver Example for PoC Test.
 //
-// Modified by ETRI, 2024.02
+// Created by ETRI, 2024.02
 
-package subnets
+package vpcs
 
 import "github.com/cloud-barista/nhncloud-sdk-go"
 
 func resourceURL(c *gophercloud.ServiceClient, id string) string {
-	return c.ServiceURL("vpcsubnets", id) // Modified
+	return c.ServiceURL("vpcs", id)
 }
 
 func rootURL(c *gophercloud.ServiceClient) string {
-	return c.ServiceURL("vpcsubnets")	// Modified
-}
-
-func listURL(c *gophercloud.ServiceClient) string {
-	return rootURL(c)
+	return c.ServiceURL("vpcs")
 }
 
 func getURL(c *gophercloud.ServiceClient, id string) string {
 	return resourceURL(c, id)
+}
+
+func listURL(c *gophercloud.ServiceClient) string {
+	return rootURL(c)
 }
 
 func createURL(c *gophercloud.ServiceClient) string {

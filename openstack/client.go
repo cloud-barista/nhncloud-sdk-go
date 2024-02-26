@@ -31,7 +31,7 @@ const (
 
 func init() {
 	// cblog is a global variable.
-	cblogger = cblog.GetLogger("OpenStack Client")
+	cblogger = cblog.GetLogger("NHN Cloud Client")
 }
 
 /*
