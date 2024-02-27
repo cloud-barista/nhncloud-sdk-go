@@ -11,7 +11,6 @@
 package vpcs
 
 import (
-	"fmt"
 	"github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
@@ -65,8 +64,6 @@ func List(c *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 		url += query
 	}
 
-	fmt.Printf("\n### Call URL : %s\n\n", url)
-
 	return pagination.NewPager(c, url, func(r pagination.PageResult) pagination.Page {
 		return VPCPage{pagination.LinkedPageBase{PageResult: r}}
 	})
@@ -74,8 +71,6 @@ func List(c *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 
 // Get retrieves a specific network based on its unique ID.
 func Get(c *gophercloud.ServiceClient, id string) (r GetResult) {
-	fmt.Printf("\n### Call URL : %s\n\n", getURL(c, id))
-
 	resp, err := c.Get(getURL(c, id), &r.Body, nil)
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
@@ -87,16 +82,12 @@ type CreateOptsBuilder interface {
 	ToVPCCreateMap() (map[string]interface{}, error)
 }
 
-type NewVPC struct {
+// CreateOpts represents options used to create a network.
+type CreateOpts struct {
 	Name   				string  	`json:"name"`
 	CIDRv4				string  	`json:"cidrv4"`
 	TenantID			string 		`json:"tenant_id,omitempty"`
 	ExternalNetworkID 	string		`json:"external_network_id,omitempty"`
-}
-
-// CreateOpts represents options used to create a network.
-type CreateOpts struct {
-	VPC NewVPC `json:"vpc"`
 }
 
 // ToVPCCreateMap builds a request body from CreateOpts.
@@ -117,8 +108,6 @@ func Create(c *gophercloud.ServiceClient, opts CreateOptsBuilder) (r CreateResul
 		r.Err = err
 		return
 	}
-	fmt.Printf("\n### Map : %v\n", b)
-	fmt.Printf("\n### Body : %v\n\n", r)
 
 	resp, err := c.Post(createURL(c), b, &r.Body, nil)
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)

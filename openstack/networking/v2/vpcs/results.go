@@ -117,13 +117,13 @@ func (r *VPC) UnmarshalJSON(b []byte) error {
 	type tmp VPC
 
 	// Support for older neutron time format
-	var s1 struct {
+	var s struct {
 		tmp
 	}
 
-	err := json.Unmarshal(b, &s1)
+	err := json.Unmarshal(b, &s)
 	if err == nil {
-		*r = VPC(s1.tmp)
+		*r = VPC(s.tmp)
 		return nil
 	}
 

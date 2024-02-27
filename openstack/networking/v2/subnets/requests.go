@@ -11,7 +11,6 @@
 package subnets
 
 import (
-	"fmt"
 	"github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
@@ -62,8 +61,6 @@ func List(c *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 		url += query
 	}
 
-	fmt.Printf("\n### Call URL : %s\n\n", url)
-
 	return pagination.NewPager(c, url, func(r pagination.PageResult) pagination.Page {
 		return SubnetPage{pagination.LinkedPageBase{PageResult: r}}
 	})
@@ -71,8 +68,6 @@ func List(c *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 
 // Get retrieves a specific subnet based on its unique ID.
 func Get(c *gophercloud.ServiceClient, id string) (r GetResult) {
-	fmt.Printf("\n### Call URL : %s\n\n", getURL(c, id))
-	
 	resp, err := c.Get(getURL(c, id), &r.Body, nil)
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
@@ -87,63 +82,24 @@ type CreateOptsBuilder interface {
 // CreateOpts represents the attributes used when creating a new subnet.
 type CreateOpts struct {
 	// NetworkID is the UUID of the network the subnet will be associated with.
-	NetworkID string `json:"network_id" required:"true"`
+	VpcID string `json:"vpc_id" required:"true"`
 
 	// CIDR is the address CIDR of the subnet.
 	CIDR string `json:"cidr,omitempty"`
 
 	// Name is a human-readable name of the subnet.
 	Name string `json:"name,omitempty"`
-
-	// Description of the subnet.
-	Description string `json:"description,omitempty"`
-
+	
 	// The UUID of the project who owns the Subnet. Only administrative users
 	// can specify a project UUID other than their own.
-	TenantID string `json:"tenant_id,omitempty"`
-
-	// The UUID of the project who owns the Subnet. Only administrative users
-	// can specify a project UUID other than their own.
-	ProjectID string `json:"project_id,omitempty"`
-	// GatewayIP sets gateway information for the subnet. Setting to nil will
-	// cause a default gateway to automatically be created. Setting to an empty
-	// string will cause the subnet to be created with no gateway. Setting to
-	// an explicit address will set that address as the gateway.
-	GatewayIP *string `json:"gateway_ip,omitempty"`
-
-	// IPVersion is the IP version for the subnet.
-	IPVersion gophercloud.IPVersion `json:"ip_version,omitempty"`
-
-	// EnableDHCP will either enable to disable the DHCP service.
-	EnableDHCP *bool `json:"enable_dhcp,omitempty"`
-
-	// DNSNameservers are the nameservers to be set via DHCP.
-	DNSNameservers []string `json:"dns_nameservers,omitempty"`
-
-	// The IPv6 address modes specifies mechanisms for assigning IPv6 IP addresses.
-	IPv6AddressMode string `json:"ipv6_address_mode,omitempty"`
-
-	// The IPv6 router advertisement specifies whether the networking service
-	// should transmit ICMPv6 packets.
-	IPv6RAMode string `json:"ipv6_ra_mode,omitempty"`
-
-	// SubnetPoolID is the id of the subnet pool that subnet should be associated to.
-	SubnetPoolID string `json:"subnetpool_id,omitempty"`
-
-	// Prefixlen is used when user creates a subnet from the subnetpool. It will
-	// overwrite the "default_prefixlen" value of the referenced subnetpool.
-	Prefixlen int `json:"prefixlen,omitempty"`
+	TenantID string `json:"tenant_id,omitempty"`	
 }
 
 // ToSubnetCreateMap builds a request body from CreateOpts.
 func (opts CreateOpts) ToSubnetCreateMap() (map[string]interface{}, error) {
-	b, err := gophercloud.BuildRequestBody(opts, "subnet")
+	b, err := gophercloud.BuildRequestBody(opts, "vpcsubnet")
 	if err != nil {
 		return nil, err
-	}
-
-	if m := b["subnet"].(map[string]interface{}); m["gateway_ip"] == "" {
-		m["gateway_ip"] = nil
 	}
 
 	return b, nil
@@ -192,13 +148,9 @@ type UpdateOpts struct {
 
 // ToSubnetUpdateMap builds a request body from UpdateOpts.
 func (opts UpdateOpts) ToSubnetUpdateMap() (map[string]interface{}, error) {
-	b, err := gophercloud.BuildRequestBody(opts, "subnet")
+	b, err := gophercloud.BuildRequestBody(opts, "vpcsubnet")
 	if err != nil {
 		return nil, err
-	}
-
-	if m := b["subnet"].(map[string]interface{}); m["gateway_ip"] == "" {
-		m["gateway_ip"] = nil
 	}
 
 	return b, nil
