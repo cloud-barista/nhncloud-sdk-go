@@ -26,23 +26,14 @@ type ListOptsBuilder interface {
 // the network attributes you want to see returned. SortKey allows you to sort
 // by a particular network attribute. SortDir sets the direction, and is either
 // `asc' or `desc'. Marker and Limit are used for pagination.
-type ListOpts struct {
-	Status       string `q:"status"`
-	Name         string `q:"name"`
-	Description  string `q:"description"`
-	AdminStateUp *bool  `q:"admin_state_up"`
-	TenantID     string `q:"tenant_id"`
-	ProjectID    string `q:"project_id"`
-	Shared       *bool  `q:"shared"`
-	ID           string `q:"id"`
-	Marker       string `q:"marker"`
-	Limit        int    `q:"limit"`
-	SortKey      string `q:"sort_key"`
-	SortDir      string `q:"sort_dir"`
-	Tags         string `q:"tags"`
-	TagsAny      string `q:"tags-any"`
-	NotTags      string `q:"not-tags"`
-	NotTagsAny   string `q:"not-tags-any"`
+type ListOpts struct {								// New Options are Applied according to the API manual
+	TenantID     	string `q:"tenant_id"`
+	ID           	string `q:"id"`
+	Name         	string `q:"name"`
+	RouterExternal 	bool   `q:"router:external"`
+	Shared 			bool   `q:"shared"`
+	SortDir      	string `q:"sort_dir"`
+	SortKey      	string `q:"sort_key"`
 }
 
 // ToVPCListQuery formats a ListOpts into a query string.
