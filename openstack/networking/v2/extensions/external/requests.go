@@ -5,18 +5,18 @@ import (
 	"strconv"
 
 	"github.com/cloud-barista/nhncloud-sdk-go"
-	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/vpcs"
 )
 
 // ListOptsExt adds the external network options to the base ListOpts.
 type ListOptsExt struct {
-	networks.ListOptsBuilder
+	vpcs.ListOptsBuilder
 	External *bool `q:"router:external"`
 }
 
-// ToNetworkListQuery adds the router:external option to the base network
+// ToVPCListQuery adds the router:external option to the base network
 // list options.
-func (opts ListOptsExt) ToNetworkListQuery() (string, error) {
+func (opts ListOptsExt) ToVPCListQuery() (string, error) {
 	q, err := gophercloud.BuildQueryString(opts.ListOptsBuilder)
 	if err != nil {
 		return "", err
@@ -33,17 +33,17 @@ func (opts ListOptsExt) ToNetworkListQuery() (string, error) {
 }
 
 // CreateOptsExt is the structure used when creating new external network
-// resources. It embeds networks.CreateOpts and so inherits all of its required
+// resources. It embeds vpcs.CreateOpts and so inherits all of its required
 // and optional fields, with the addition of the External field.
 type CreateOptsExt struct {
-	networks.CreateOptsBuilder
+	vpcs.CreateOptsBuilder
 	External *bool `json:"router:external,omitempty"`
 }
 
-// ToNetworkCreateMap adds the router:external options to the base network
+// ToVPCCreateMap adds the router:external options to the base network
 // creation options.
-func (opts CreateOptsExt) ToNetworkCreateMap() (map[string]interface{}, error) {
-	base, err := opts.CreateOptsBuilder.ToNetworkCreateMap()
+func (opts CreateOptsExt) ToVPCCreateMap() (map[string]interface{}, error) {
+	base, err := opts.CreateOptsBuilder.ToVPCCreateMap()
 	if err != nil {
 		return nil, err
 	}
@@ -59,16 +59,16 @@ func (opts CreateOptsExt) ToNetworkCreateMap() (map[string]interface{}, error) {
 }
 
 // UpdateOptsExt is the structure used when updating existing external network
-// resources. It embeds networks.UpdateOpts and so inherits all of its required
+// resources. It embeds vpcs.UpdateOpts and so inherits all of its required
 // and optional fields, with the addition of the External field.
 type UpdateOptsExt struct {
-	networks.UpdateOptsBuilder
+	vpcs.UpdateOptsBuilder
 	External *bool `json:"router:external,omitempty"`
 }
 
-// ToNetworkUpdateMap casts an UpdateOpts struct to a map.
-func (opts UpdateOptsExt) ToNetworkUpdateMap() (map[string]interface{}, error) {
-	base, err := opts.UpdateOptsBuilder.ToNetworkUpdateMap()
+// ToVPCUpdateMap casts an UpdateOpts struct to a map.
+func (opts UpdateOptsExt) ToVPCUpdateMap() (map[string]interface{}, error) {
+	base, err := opts.UpdateOptsBuilder.ToVPCUpdateMap()
 	if err != nil {
 		return nil, err
 	}
