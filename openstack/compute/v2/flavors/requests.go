@@ -2,8 +2,8 @@ package flavors
 
 import (
 	"log"
-	
-	"github.com/cloud-barista/nhncloud-sdk-go"
+
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -14,12 +14,12 @@ type ListOptsBuilder interface {
 }
 
 /*
-	AccessType maps to OpenStack's Flavor.is_public field. Although the is_public
-	field is boolean, the request options are ternary, which is why AccessType is
-	a string. The following values are allowed:
+AccessType maps to OpenStack's Flavor.is_public field. Although the is_public
+field is boolean, the request options are ternary, which is why AccessType is
+a string. The following values are allowed:
 
-	The AccessType arguement is optional, and if it is not supplied, OpenStack
-	returns the PublicAccess flavors.
+The AccessType arguement is optional, and if it is not supplied, OpenStack
+returns the PublicAccess flavors.
 */
 type AccessType string
 
@@ -37,12 +37,12 @@ const (
 )
 
 /*
-	ListOpts filters the results returned by the List() function.
-	For example, a flavor with a minDisk field of 10 will not be returned if you
-	specify MinDisk set to 20.
+ListOpts filters the results returned by the List() function.
+For example, a flavor with a minDisk field of 10 will not be returned if you
+specify MinDisk set to 20.
 
-	Typically, software will use the last ID of the previous call to List to set
-	the Marker for the current call.
+Typically, software will use the last ID of the previous call to List to set
+the Marker for the current call.
 */
 type ListOpts struct {
 	// ChangesSince, if provided, instructs List to return only those things which
@@ -81,11 +81,30 @@ func (opts ListOpts) ToFlavorListQuery() (string, error) {
 	return q.String(), err
 }
 
-// ListDetail instructs OpenStack to provide a list of flavors.
+// List instructs OpenStack to provide a list of flavors.
 // You may provide criteria by which List curtails its results for easier
 // processing.
-func ListDetail(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
+func List(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 	url := listURL(client)
+
+	// //Check!!
+	log.Println("\n### List Query URL : ", url)
+
+	if opts != nil {
+		query, err := opts.ToFlavorListQuery()
+		if err != nil {
+			return pagination.Pager{Err: err}
+		}
+		url += query
+	}
+	return pagination.NewPager(client, url, func(r pagination.PageResult) pagination.Page {
+		return FlavorPage{pagination.LinkedPageBase{PageResult: r}}
+	})
+}
+
+// ListDetail - Return a list flavors with complete details
+func ListDetail(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
+	url := listDetailURL(client)
 
 	// //Check!!
 	log.Println("\n### List Detail Query URL : ", url)

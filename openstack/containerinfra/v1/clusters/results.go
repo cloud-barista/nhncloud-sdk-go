@@ -3,7 +3,7 @@ package clusters
 import (
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -49,6 +49,11 @@ type ResizeResult struct {
 	commonResult
 }
 
+// ConfigResult is the response of a get config operation.
+type ConfigResult struct {
+	commonResult
+}
+
 func (r CreateResult) Extract() (string, error) {
 	var s struct {
 		UUID string
@@ -81,9 +86,17 @@ func (r ResizeResult) Extract() (string, error) {
 	return s.UUID, err
 }
 
+func (r ConfigResult) Extract() (string, error) {
+	var s struct {
+		Config string
+	}
+	err := r.ExtractInto(&s)
+	return s.Config, err
+}
+
 type Cluster struct {
 	APIAddress         string                 `json:"api_address"`
-	COEVersion         string                 `json:"coe_version"`
+	COEVersion         string                 `json:"coe_version"` // COEVersion is sometimes not valid, especially after upgrading a cluster
 	ClusterTemplateID  string                 `json:"cluster_template_id"`
 	ContainerVersion   string                 `json:"container_version"`
 	CreateTimeout      int                    `json:"create_timeout"`

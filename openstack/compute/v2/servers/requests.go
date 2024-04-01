@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -19,17 +19,20 @@ type ListOptsBuilder interface {
 // the API. Filtering is achieved by passing in struct field values that map to
 // the server attributes you want to see returned. Marker and Limit are used
 // for pagination.
-type ListOpts struct {															// Modified 
+
+// NHN Cloud Query Options:
+// https://docs.nhncloud.com/ko/Compute/Instance/ko/public-api/#_27
+type ListOpts struct {
 	// Instance Creation Reservation ID.
-	ReservationID string `q:"reservation_id"`									// Added 
+	ReservationID string `q:"reservation_id"`
 
 	// ChangesSince is a time/date stamp for when the server last changed status.
 	ChangesSince string `q:"changes-since"`
 
-	// Image is the name of the image in URL format.
+	// Image is the UUID of the image.
 	Image string `q:"image"`
 
-	// Flavor is the name of the flavor in URL format.
+	// Flavor is the UUID of the flavor.
 	Flavor string `q:"flavor"`
 
 	// Name of the server as a string; can be queried with regular expressions.
@@ -126,7 +129,7 @@ func (f *File) MarshalJSON() ([]byte, error) {
 }
 
 // CreateOpts specifies server creation parameters.
-type CreateOpts struct {														// Modified 
+type CreateOpts struct { // Modified
 	// SecurityGroups lists the names of the security groups to which this server
 	// should belong.
 	SecurityGroups []string `json:"-"`
@@ -160,7 +163,7 @@ type CreateOpts struct {														// Modified
 	// server.
 	Metadata map[string]string `json:"metadata,omitempty"`
 
-	KeyName string `json:"key_name,omitempty"`									// Added 
+	KeyName string `json:"key_name,omitempty"` // Added
 
 	// Min specifies Minimum number of servers to launch.
 	Min int `json:"min_count,omitempty"`
@@ -168,7 +171,7 @@ type CreateOpts struct {														// Modified
 	// Max specifies Maximum number of servers to launch.
 	Max int `json:"max_count,omitempty"`
 
-	ReturnReservationID bool `json:"return_reservation_id,omitempty"`			// Added 
+	ReturnReservationID bool `json:"return_reservation_id,omitempty"` // Added
 }
 
 // ToServerCreateMap assembles a request body based on the contents of a
@@ -356,19 +359,19 @@ func (opts RebootOpts) ToServerRebootMap() (map[string]interface{}, error) {
 }
 
 /*
-	Reboot requests that a given server reboot.
+Reboot requests that a given server reboot.
 
-	Two methods exist for rebooting a server:
+Two methods exist for rebooting a server:
 
-	HardReboot (aka PowerCycle) starts the server instance by physically cutting
-	power to the machine, or if a VM, terminating it at the hypervisor level.
-	It's done. Caput. Full stop.
-	Then, after a brief while, power is restored or the VM instance restarted.
+HardReboot (aka PowerCycle) starts the server instance by physically cutting
+power to the machine, or if a VM, terminating it at the hypervisor level.
+It's done. Caput. Full stop.
+Then, after a brief while, power is restored or the VM instance restarted.
 
-	SoftReboot (aka OSReboot) simply tells the OS to restart under its own
-	procedure.
-	E.g., in Linux, asking it to enter runlevel 6, or executing
-	"sudo shutdown -r now", or by asking Windows to rtart the machine.
+SoftReboot (aka OSReboot) simply tells the OS to restart under its own
+procedure.
+E.g., in Linux, asking it to enter runlevel 6, or executing
+"sudo shutdown -r now", or by asking Windows to rtart the machine.
 */
 func Reboot(client *gophercloud.ServiceClient, id string, opts RebootOptsBuilder) (r ActionResult) {
 	b, err := opts.ToServerRebootMap()

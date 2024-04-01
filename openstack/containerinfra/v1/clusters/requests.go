@@ -1,7 +1,7 @@
 package clusters
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -229,6 +229,13 @@ func Resize(client *gophercloud.ServiceClient, id string, opts ResizeOptsBuilder
 	resp, err := client.Post(resizeURL(client, id), b, &r.Body, &gophercloud.RequestOpts{
 		OkCodes: []int{200, 202},
 	})
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}
+
+// Get retrieves a specific cluster's kubeconfig based on its unique ID.
+func GetConfig(client *gophercloud.ServiceClient, id string) (r ConfigResult) {
+	resp, err := client.Get(configURL(client, id), &r.Body, &gophercloud.RequestOpts{OkCodes: []int{200}})
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
 }

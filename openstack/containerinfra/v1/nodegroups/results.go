@@ -3,7 +3,7 @@ package nodegroups
 import (
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -39,6 +39,58 @@ type UpdateResult struct {
 // Use the ExtractErr method to extract the error from the result.
 type DeleteResult struct {
 	gophercloud.ErrResult
+}
+
+// UpgradeResult is the response from an Upgrade request.
+// Use the Extract method to retrieve the upgraded node group.
+type UpgradeResult struct {
+	commonResult
+}
+
+func (r UpgradeResult) Extract() (string, error) {
+	var s struct {
+		UUID string
+	}
+	err := r.ExtractInto(&s)
+	return s.UUID, err
+}
+
+type Autoscale struct {
+	CaEnable                 bool   `json:"ca_enable" required:"true"`
+	CaImage                  string `json:"ca_image,omitempty"`
+	CaMaxNodeCount           int    `json:"ca_max_node_count,omitempty"`
+	CaMinNodeCount           int    `json:"ca_min_node_count,omitempty"`
+	CaScaleDownEnable        bool   `json:"ca_scale_down_enable,omitempty"`
+	CaScaleDownUnneededTime  int    `json:"ca_scale_down_unneeded_time,omitempty"`
+	CaScaleDownUtilThresh    int    `json:"ca_scale_down_util_thresh,omitempty"`
+	CaScaleDownDelayAfterAdd int    `json:"ca_scale_down_delay_after_add,omitempty"`
+	Clusterautoscale         string `json:"clusterautoscale,omitempty"`
+}
+
+// GetAutoscaleResult is the response from a GetAutoscale request.
+// Use the Extract method to extract from the result.
+type GetAutoscaleResult struct {
+	commonResult
+}
+
+// SetAutoscaleResult is the response from a SetAutoscale request.
+// Use the Extract method to extract from the result.
+type SetAutoscaleResult struct {
+	commonResult
+}
+
+func (r GetAutoscaleResult) Extract() (*Autoscale, error) {
+	var s Autoscale
+	err := r.ExtractInto(&s)
+	return &s, err
+}
+
+func (r SetAutoscaleResult) Extract() (string, error) {
+	var s struct {
+		UUID string
+	}
+	err := r.ExtractInto(&s)
+	return s.UUID, err
 }
 
 // NodeGroup is the API representation of a Magnum node group.

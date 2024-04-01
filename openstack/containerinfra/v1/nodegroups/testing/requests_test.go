@@ -3,7 +3,7 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/containerinfra/v1/nodegroups"
 	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 	fake "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
@@ -362,4 +362,53 @@ func TestDeleteNodeGroupDefault(t *testing.T) {
 	err := nodegroups.Delete(sc, clusterUUID, nodeGroup2UUID).ExtractErr()
 	_, isBadRequest := err.(gophercloud.ErrDefault400)
 	th.AssertEquals(t, true, isBadRequest)
+}
+
+func TestGetNodeGroupAutoscale(t *testing.T) {
+	th.SetupHTTP()
+	defer th.TeardownHTTP()
+
+	handleGetNodeGroupAutoscaleSuccess(t)
+
+	sc := fake.ServiceClient()
+	sc.Endpoint = sc.Endpoint + "v1/"
+
+	as, err := nodegroups.GetAutoscale(sc, clusterUUID, nodeGroup1UUID).Extract()
+	th.AssertNoErr(t, err)
+	th.AssertDeepEquals(t, expectedNodeGroupAutoscale, *as)
+}
+
+func TestSetNodeGroupAutoscale(t *testing.T) {
+	th.SetupHTTP()
+	defer th.TeardownHTTP()
+
+	handleSetNodeGroupAutoscaleSuccess(t)
+
+	sc := fake.ServiceClient()
+	sc.Endpoint = sc.Endpoint + "v1/"
+
+	/*
+		setAutoscaleOpts := nodegroups.SetAutoscaleOpts{
+			CaEnable:                 "true",
+			CaMaxNodeCount:           "10",
+			CaMinNodeCount:           "2",
+			CaScaleDownDelayAfterAdd: "10",
+			CaScaleDownEnable:        "true",
+			CaScaleDownUnneededTime:  "10",
+			CaScaleDownUtilThresh:    "50",
+		}
+	*/
+	setAutoscaleOpts := nodegroups.SetAutoscaleOpts{
+		CaEnable:                 true,
+		CaMaxNodeCount:           10,
+		CaMinNodeCount:           2,
+		CaScaleDownDelayAfterAdd: 10,
+		CaScaleDownEnable:        true,
+		CaScaleDownUnneededTime:  10,
+		CaScaleDownUtilThresh:    50,
+	}
+
+	actual, err := nodegroups.SetAutoscale(sc, clusterUUID, nodeGroup1UUID, setAutoscaleOpts).Extract()
+	th.AssertNoErr(t, err)
+	th.AssertDeepEquals(t, nodeGroup1UUID, actual)
 }

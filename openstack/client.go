@@ -7,7 +7,7 @@ import (
 
 	cblog "github.com/cloud-barista/cb-log"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	tokens2 "github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v2/tokens"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/extensions/ec2tokens"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/identity/v3/extensions/oauth1"
@@ -23,10 +23,6 @@ const (
 	// v3 represents Keystone v3.
 	// The version can be anything from v3 to v3.x.
 	v3 = "v3"
-
-	// Added
-	K8S_KR1_Endpoint = "https://kr1-api-kubernetes.infrastructure.cloud.toast.com/v1/"   // Caution : Need to Add '/v1/' at the end of the endpoint
-	K8S_KR2_Endpoint = "https://kr2-api-kubernetes.infrastructure.cloud.toast.com/v1/"  // Caution : Need to Add '/v1/' at the end of the endpoint
 )
 
 func init() {
@@ -361,22 +357,15 @@ func NewIdentityV3(client *gophercloud.ProviderClient, eo gophercloud.EndpointOp
 func initClientOpts(client *gophercloud.ProviderClient, eo gophercloud.EndpointOpts, clientType string) (*gophercloud.ServiceClient, error) {
 	sc := new(gophercloud.ServiceClient)
 	eo.ApplyDefaults(clientType)
+	url, err := client.EndpointLocator(eo)
+	if err != nil {
+		cblogger.Infof("err=%v\n", err)
+		return sc, err
+	}
 	sc.ProviderClient = client
+	sc.Endpoint = url
 	sc.Type = clientType
 
-	var url string
-	if !strings.EqualFold(clientType, "kubernetes") {			// Added .
-		var err error
-		url, err = client.EndpointLocator(eo)
-		if err != nil {
-			return sc, err
-		}
-	} else if strings.EqualFold(eo.Region, "KR1") {
-		url = K8S_KR1_Endpoint
-	} else if strings.EqualFold(eo.Region, "KR2") {
-		url = K8S_KR2_Endpoint
-	}
-	sc.Endpoint = url
 	cblogger.Infof("\n# sc.Endpoint : [%s] : [%s]", sc.Type, sc.Endpoint)
 	cblogger.Info("\n\n")
 
@@ -512,7 +501,8 @@ func NewKeyManagerV1(client *gophercloud.ProviderClient, eo gophercloud.Endpoint
 // NewContainerInfraV1 creates a ServiceClient that may be used with the v1 container infra management
 // package.
 func NewContainerInfraV1(client *gophercloud.ProviderClient, eo gophercloud.EndpointOpts) (*gophercloud.ServiceClient, error) {
-	return initClientOpts(client, eo, "kubernetes")  // Modified 
+	sc, err := initClientOpts(client, eo, "container-infra")
+	return sc, err
 }
 
 // NewWorkflowV2 creates a ServiceClient that may be used with the v2 workflow management package.

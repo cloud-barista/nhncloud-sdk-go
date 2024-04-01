@@ -1,7 +1,7 @@
 package flavors
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 func getURL(client *gophercloud.ServiceClient, id string) string {
@@ -9,6 +9,10 @@ func getURL(client *gophercloud.ServiceClient, id string) string {
 }
 
 func listURL(client *gophercloud.ServiceClient) string {
+	return client.ServiceURL("flavors")
+}
+
+func listDetailURL(client *gophercloud.ServiceClient) string {
 	return client.ServiceURL("flavors", "detail")
 }
 
