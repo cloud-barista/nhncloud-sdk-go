@@ -8,16 +8,16 @@
 //
 // Modified by ETRI, 2024.02
 
-package subnets
+package vpcsubnets
 
-import "github.com/cloud-barista/nhncloud-sdk-go"
+import gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 
 func resourceURL(c *gophercloud.ServiceClient, id string) string {
 	return c.ServiceURL("vpcsubnets", id) // Modified
 }
 
 func rootURL(c *gophercloud.ServiceClient) string {
-	return c.ServiceURL("vpcsubnets")	// Modified
+	return c.ServiceURL("vpcsubnets") // Modified
 }
 
 func listURL(c *gophercloud.ServiceClient) string {

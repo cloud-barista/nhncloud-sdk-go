@@ -132,4 +132,4 @@ Example to Delete a Subnet
 		panic(err)
 	}
 */
-package subnets
+package vpcsubnets
