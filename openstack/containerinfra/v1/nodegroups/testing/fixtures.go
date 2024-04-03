@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/containerinfra/v1/nodegroups"
 	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 	fake "github.com/cloud-barista/nhncloud-sdk-go/testhelper/client"
@@ -728,3 +728,57 @@ var nodeGroupDeleteDefaultResponse = `
     }
   ]
 }`
+
+var expectedNodeGroupAutoscale = nodegroups.Autoscale{
+	CaEnable:                 true,
+	CaImage:                  "k8s.gcr.io/autoscaling/cluster-autoscaler:v1.19.0",
+	CaMaxNodeCount:           10,
+	CaMinNodeCount:           2,
+	CaScaleDownDelayAfterAdd: 10,
+	CaScaleDownEnable:        true,
+	CaScaleDownUnneededTime:  10,
+	CaScaleDownUtilThresh:    50,
+	Clusterautoscale:         "nodegroupfeature",
+}
+
+var GetNodeGroupAutoscaleResponse = fmt.Sprintf(`
+{
+  "ca_enable": true,
+  "ca_image": "k8s.gcr.io/autoscaling/cluster-autoscaler:v1.19.0",
+  "ca_max_node_count": 10,
+  "ca_min_node_count": 2,
+  "ca_scale_down_delay_after_add": 10,
+  "ca_scale_down_enable": true,
+  "ca_scale_down_unneeded_time": 10,
+  "ca_scale_down_util_thresh": 50,
+  "clusterautoscale": "nodegroupfeature"
+}`)
+
+func handleGetNodeGroupAutoscaleSuccess(t *testing.T) {
+	th.Mux.HandleFunc("/v1/clusters/"+clusterUUID+"/nodegroups/"+nodeGroup1UUID+"/autoscale", func(w http.ResponseWriter, r *http.Request) {
+		th.TestMethod(t, r, http.MethodGet)
+		th.TestHeader(t, r, "X-Auth-Token", fake.TokenID)
+
+		w.Header().Add("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+
+		fmt.Fprint(w, GetNodeGroupAutoscaleResponse)
+	})
+}
+
+var SetNodeGroupAutoscaleResponse = fmt.Sprintf(`
+{
+  "uuid": "%s"
+}`, nodeGroup1UUID)
+
+func handleSetNodeGroupAutoscaleSuccess(t *testing.T) {
+	th.Mux.HandleFunc("/v1/clusters/"+clusterUUID+"/nodegroups/"+nodeGroup1UUID+"/autoscale", func(w http.ResponseWriter, r *http.Request) {
+		th.TestMethod(t, r, http.MethodPost)
+		th.TestHeader(t, r, "X-Auth-Token", fake.TokenID)
+
+		w.Header().Add("Content-Type", "application/json")
+		w.WriteHeader(http.StatusAccepted)
+
+		fmt.Fprint(w, SetNodeGroupAutoscaleResponse)
+	})
+}

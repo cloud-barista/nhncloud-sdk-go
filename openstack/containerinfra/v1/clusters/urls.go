@@ -1,7 +1,7 @@
 package clusters
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 )
 
 var apiName = "clusters"
@@ -44,4 +44,8 @@ func upgradeURL(client *gophercloud.ServiceClient, id string) string {
 
 func resizeURL(client *gophercloud.ServiceClient, id string) string {
 	return client.ServiceURL("clusters", id, "actions/resize")
+}
+
+func configURL(client *gophercloud.ServiceClient, id string) string {
+	return client.ServiceURL("clusters", id, "config")
 }

@@ -3,7 +3,7 @@ package testing
 import (
 	"testing"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/containerinfra/v1/clusters"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
@@ -230,4 +230,17 @@ func TestResizeCluster(t *testing.T) {
 	th.AssertNoErr(t, err)
 
 	th.AssertDeepEquals(t, clusterUUID, actual)
+}
+
+func TestGetConfigCluster(t *testing.T) {
+	th.SetupHTTP()
+	defer th.TeardownHTTP()
+
+	HandleGetConfigClusterSuccessfully(t)
+
+	sc := fake.ServiceClient()
+	sc.Endpoint = sc.Endpoint + "v1/"
+	actual, err := clusters.GetConfig(sc, "746e779a-751a-456b-a3e9-c883d734946f").Extract()
+	th.AssertNoErr(t, err)
+	th.AssertDeepEquals(t, ExpectedClusterConfig, actual)
 }

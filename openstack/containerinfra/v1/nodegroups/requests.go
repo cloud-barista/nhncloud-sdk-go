@@ -1,7 +1,7 @@
 package nodegroups
 
 import (
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -158,6 +158,84 @@ func Update(client *gophercloud.ServiceClient, clusterID string, nodeGroupID str
 // Delete makes a request to the Magnum API to delete a node group.
 func Delete(client *gophercloud.ServiceClient, clusterID, nodeGroupID string) (r DeleteResult) {
 	resp, err := client.Delete(deleteURL(client, clusterID, nodeGroupID), nil)
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}
+
+// GetAutoscale makes a request to the Magnum API to retrieve a node group's autoscale
+// with the given ID/name belonging to the given cluster.
+func GetAutoscale(client *gophercloud.ServiceClient, clusterID, nodeGroupID string) (r GetAutoscaleResult) {
+	resp, err := client.Get(autoscaleURL(client, clusterID, nodeGroupID), &r.Body, &gophercloud.RequestOpts{OkCodes: []int{200}})
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}
+
+// SetAutoscaleOptsBuilder allows extensions to add additional parameters to the
+// SetAutoscale request.
+type SetAutoscaleOptsBuilder interface {
+	ToNodeGroupSetAutoscaleMap() (map[string]interface{}, error)
+}
+
+// https://docs.nhncloud.com/ko/Container/NKS/ko/public-api/#_54
+// SetAutoscaleOpts params
+type SetAutoscaleOpts struct {
+	CaEnable                 *bool `json:"ca_enable" required:"true"`
+	CaMaxNodeCount           int   `json:"ca_max_node_count,omitempty"`
+	CaMinNodeCount           int   `json:"ca_min_node_count,omitempty"`
+	CaScaleDownEnable        *bool `json:"ca_scale_down_enable,omitempty"`
+	CaScaleDownUnneededTime  int   `json:"ca_scale_down_unneeded_time,omitempty"`
+	CaScaleDownUtilThresh    int   `json:"ca_scale_down_util_thresh,omitempty"`
+	CaScaleDownDelayAfterAdd int   `json:"ca_scale_down_delay_after_add,omitempty"`
+}
+
+// ToNodeGroupSetAutoscaleMap constructs a request body from SetAutoscaleOpts.
+func (opts SetAutoscaleOpts) ToNodeGroupSetAutoscaleMap() (map[string]interface{}, error) {
+	return gophercloud.BuildRequestBody(opts, "")
+}
+
+// SetAutoscale is to set autoscale configuration of an existing cluster.
+func SetAutoscale(client *gophercloud.ServiceClient, clusterID string, nodeGroupID string, opts SetAutoscaleOptsBuilder) (r SetAutoscaleResult) {
+	b, err := opts.ToNodeGroupSetAutoscaleMap()
+	if err != nil {
+		r.Err = err
+		return
+	}
+	resp, err := client.Post(autoscaleURL(client, clusterID, nodeGroupID), b, &r.Body, &gophercloud.RequestOpts{
+		OkCodes: []int{200, 202},
+	})
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}
+
+// UpgradeOptsBuilder allows extensions to add additional parameters to the
+// Upgrade request.
+type UpgradeOptsBuilder interface {
+	ToNodeGroupUpgradeMap() (map[string]interface{}, error)
+}
+
+// https://docs.nhncloud.com/ko/Container/NKS/ko/public-api/#_57
+// UpgradeOpts params
+type UpgradeOpts struct {
+	Version                string `json:"version" required:"true"`
+	NumBufferNodes         int    `json:"num_buffer_nodes,omitempty"`
+	NumMaxUnavailableNodes int    `json:"num_max_unavailable_nodes,omitempty"`
+}
+
+// ToNodeGroupUpgradeMap constructs a request body from UpgradeOpts.
+func (opts UpgradeOpts) ToNodeGroupUpgradeMap() (map[string]interface{}, error) {
+	return gophercloud.BuildRequestBody(opts, "")
+}
+
+// Upgrade is to upgrade a nodegroups of an existing cluster.
+func Upgrade(client *gophercloud.ServiceClient, clusterID string, nodeGroupID string, opts UpgradeOptsBuilder) (r UpgradeResult) {
+	b, err := opts.ToNodeGroupUpgradeMap()
+	if err != nil {
+		r.Err = err
+		return
+	}
+	resp, err := client.Post(upgradeURL(client, clusterID, nodeGroupID), b, &r.Body, &gophercloud.RequestOpts{
+		OkCodes: []int{200, 202},
+	})
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
 }
