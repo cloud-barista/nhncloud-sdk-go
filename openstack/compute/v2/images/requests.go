@@ -1,10 +1,9 @@
 package images
 
 import (
-	"log"
 	"strings"
-	
-	"github.com/cloud-barista/nhncloud-sdk-go"
+
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -45,11 +44,11 @@ func (opts ListOpts) ToImageListQuery() (string, error) {
 	return q.String(), err
 }
 
-// List enumerates the available images. // $$$ Added 
+// List enumerates the available images. // $$$ Added
 func List(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 
 	urlBefore := listURL(client)
-	
+
 	//Check!!
 	// log.Println("\n### URL in ListDetail : ", urlBefore)
 
@@ -60,7 +59,7 @@ func List(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pa
 	url := strings.Replace(urlBefore, "/images/", "/images", -1)
 
 	//Check!!
-	log.Println("\n### List Query URL : ", url)
+	//log.Println("\n### List Query URL : ", url)
 
 	if opts != nil {
 		query, err := opts.ToImageListQuery()
@@ -69,7 +68,7 @@ func List(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pa
 		}
 		url += query
 	}
-	
+
 	return pagination.NewPager(client, url, func(r pagination.PageResult) pagination.Page {
 		return ImagePage{pagination.LinkedPageBase{PageResult: r}}
 	})
@@ -77,11 +76,11 @@ func List(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pa
 
 // ListDetail enumerates the available images.
 func ListDetail(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
-	
+
 	url := listDetailURL(client)
 
 	//To Check!!
-	log.Println("\n### List Detail Query URL : ", url) // Added 
+	//log.Println("\n### List Detail Query URL : ", url) // Added
 
 	if opts != nil {
 		query, err := opts.ToImageListQuery()
@@ -100,11 +99,11 @@ func ListDetail(client *gophercloud.ServiceClient, opts ListOptsBuilder) paginat
 func Get(client *gophercloud.ServiceClient, id string) (r GetResult) {
 
 	//Check!!
-	url := getURL(client, id)  // Modified 
-	log.Println("\n### Get Query URL : ", url)
+	url := getURL(client, id) // Modified
+	//log.Println("\n### Get Query URL : ", url)
 
 	// resp, err := client.Get(getURL(client, id), &r.Body, nil)
-	resp, err := client.Get(url, &r.Body, nil)  // Modified 
+	resp, err := client.Get(url, &r.Body, nil) // Modified
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
 }
