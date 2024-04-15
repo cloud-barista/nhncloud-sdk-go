@@ -1,8 +1,6 @@
 package flavors
 
 import (
-	"log"
-
 	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
@@ -88,7 +86,7 @@ func List(client *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pa
 	url := listURL(client)
 
 	// //Check!!
-	log.Println("\n### List Query URL : ", url)
+	//log.Println("\n### List Query URL : ", url)
 
 	if opts != nil {
 		query, err := opts.ToFlavorListQuery()
@@ -107,7 +105,7 @@ func ListDetail(client *gophercloud.ServiceClient, opts ListOptsBuilder) paginat
 	url := listDetailURL(client)
 
 	// //Check!!
-	log.Println("\n### List Detail Query URL : ", url)
+	//log.Println("\n### List Detail Query URL : ", url)
 
 	if opts != nil {
 		query, err := opts.ToFlavorListQuery()
