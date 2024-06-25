@@ -106,3 +106,18 @@ type ImageDateQuery struct {
 	Date   time.Time
 	Filter ImageDateFilter
 }
+
+// ImageNhncloudProduct: 이미지의 인프라 서비스 종류
+// https://docs.nhncloud.com/ko/Compute/Image/ko/public-api/#_2
+type ImageNhncloudProduct string
+
+const (
+	// Instance 서비스 이미지
+	ImageNhncloudProductCompute ImageNhncloudProduct = "compute"
+
+	// GPU Instance 서비스 이미지
+	ImageNhncloudProductGpu ImageNhncloudProduct = "gpu"
+
+	// NHN Kubernetes 서비스 이미지
+	ImageNhncloudProductContainer ImageNhncloudProduct = "container"
+)

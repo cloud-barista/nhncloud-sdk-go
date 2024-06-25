@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/cloud-barista/nhncloud-sdk-go"
+	gophercloud "github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -60,6 +60,10 @@ type ListOpts struct {
 
 	// SizeMax filters on the size_max image property.
 	SizeMax int64 `q:"size_max"`
+
+	// NhncloudProduct filters on the nhncloud_product image property.
+	// It can be 'compute', 'gpu', and 'conatiner'
+	NhncloudProduct ImageNhncloudProduct `q:"nhncloud_product"`
 
 	// Sort sorts the results using the new style of sorting. See the OpenStack
 	// Image API reference for the exact syntax.
