@@ -366,7 +366,7 @@ func initClientOpts(client *gophercloud.ProviderClient, eo gophercloud.EndpointO
 	sc.Endpoint = url
 	sc.Type = clientType
 
-	cblogger.Infof("\n# sc.Endpoint : [%s] : [%s]", sc.Type, sc.Endpoint)
+	cblogger.Infof("\n# ServiceClient Type and Endpoint : [%s] : [%s]", sc.Type, sc.Endpoint)
 	cblogger.Info("\n\n")
 
 	return sc, nil
