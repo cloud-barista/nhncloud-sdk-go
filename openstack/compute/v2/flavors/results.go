@@ -40,35 +40,52 @@ func (r commonResult) Extract() (*Flavor, error) {
 	return s.Flavor, err
 }
 
+// Link represents the structure of a link in the flavor data
+type Link struct {											// Added
+	Href 		string `json:"href"`
+	Rel  		string `json:"rel"`
+}
+
+// ExtraSpecs represents the extra specifications of a flavor
+type ExtraSpecs struct {									// Added
+	FlavorType 	string `json:"flavor_type"`
+}
+
 // Flavor represent (virtual) hardware configurations for server resources
 // in a region.
-type Flavor struct {
+type Flavor struct {										// Modified
 	// ID is the flavor's unique ID.
-	ID string `json:"id"`
-
-	// Disk is the amount of root disk, measured in GB.
-	Disk int `json:"disk"`
-
-	// RAM is the amount of memory, measured in MB.
-	RAM int `json:"ram"`
+	ID 			string `json:"id"`
 
 	// Name is the name of the flavor.
-	Name string `json:"name"`
+	Name 		string `json:"name"`
 
-	// RxTxFactor describes bandwidth alterations of the flavor.
-	RxTxFactor float64 `json:"rxtx_factor"`
+	Links       []Link `json:"links"`
 
-	// Swap is the amount of swap space, measured in MB.
-	Swap int `json:"-"`
+	// RAM is the amount of memory, measured in MB.
+	RAM 		int `json:"ram"`
+
+	Disabled    bool `json:"OS-FLV-DISABLED:disabled"`
 
 	// VCPUs indicates how many (virtual) CPUs are available for this flavor.
-	VCPUs int `json:"vcpus"`
+	VCPUs 		int `json:"vcpus"`
+
+	ExtraSpecs  ExtraSpecs `json:"extra_specs"`
+
+	// Swap is the amount of swap space, measured in MB.
+	Swap 		int `json:"-"`
 
 	// IsPublic indicates whether the flavor is public.
-	IsPublic bool `json:"os-flavor-access:is_public"`
+	IsPublic 	bool `json:"os-flavor-access:is_public"`
 
+	// RxTxFactor describes bandwidth alterations of the flavor.
+	RxTxFactor 	float64 `json:"rxtx_factor"`
+	
 	// Ephemeral is the amount of ephemeral disk space, measured in GB.
-	Ephemeral int `json:"OS-FLV-EXT-DATA:ephemeral"`
+	Ephemeral 	int `json:"OS-FLV-EXT-DATA:ephemeral"`
+
+	// Disk is the amount of root disk, measured in GB.
+	Disk 		int `json:"disk"`
 }
 
 func (r *Flavor) UnmarshalJSON(b []byte) error {
