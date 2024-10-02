@@ -49,3 +49,7 @@ func resizeURL(client *gophercloud.ServiceClient, id string) string {
 func configURL(client *gophercloud.ServiceClient, id string) string {
 	return client.ServiceURL("clusters", id, "config")
 }
+
+func supportsURL(client *gophercloud.ServiceClient) string {
+	return client.ServiceURL("supports")
+}

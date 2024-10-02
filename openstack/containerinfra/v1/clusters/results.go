@@ -54,6 +54,11 @@ type ConfigResult struct {
 	commonResult
 }
 
+// SupportsResult is the response of a get supports operation.
+type SupportsResult struct {
+	commonResult
+}
+
 func (r CreateResult) Extract() (string, error) {
 	var s struct {
 		UUID string
@@ -92,6 +97,22 @@ func (r ConfigResult) Extract() (string, error) {
 	}
 	err := r.ExtractInto(&s)
 	return s.Config, err
+}
+
+type Supports struct {
+	SupportedK8s       map[string]bool `json:"supported_k8s"`
+	SupportedEventType EventType       `json:"supported_event_type"`
+}
+
+type EventType struct {
+	ClusterEvents   map[string]string `json:"cluster_events"`
+	NodegroupEvents map[string]string `json:"nodegroup_events"`
+}
+
+func (r SupportsResult) Extract() (*Supports, error) {
+	var s Supports
+	err := r.ExtractInto(&s)
+	return &s, err
 }
 
 type Cluster struct {

@@ -239,3 +239,10 @@ func GetConfig(client *gophercloud.ServiceClient, id string) (r ConfigResult) {
 	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
 	return
 }
+
+// GetSupports retrieves a list of supported Kubernetes versions.
+func GetSupports(client *gophercloud.ServiceClient) (r SupportsResult) {
+	resp, err := client.Get(supportsURL(client), &r.Body, &gophercloud.RequestOpts{OkCodes: []int{200}})
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}
