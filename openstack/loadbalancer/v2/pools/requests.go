@@ -12,7 +12,7 @@ package pools
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-go"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/monitors"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/monitors"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -90,10 +90,14 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {												// Modified 
+type CreateOpts struct {												// Modified
 	// The Listener on which the members of the pool will be associated with.
 	// Note: one of LoadbalancerID or ListenerID must be provided.
-	ListenerID string `json:"listener_id" required:"true"`
+	ListenerID string `json:"listener_id,omitempty"`
+
+	// The load balancer on which to provision this pool.
+	// Note: one of LoadbalancerID or ListenerID must be provided.
+	LoadbalancerID string `json:"loadbalancer_id,omitempty"`
 
 	// The algorithm used to distribute load between the members of the pool. The
 	// current specification supports LBMethodRoundRobin, LBMethodLeastConnections
@@ -108,12 +112,16 @@ type CreateOpts struct {												// Modified
 	// Human-readable description for the pool.
 	Description string `json:"description,omitempty"`
 
+	// ProjectID is the UUID of the project who owns the Pool.
+	// Only administrative users can specify a project UUID other than their own.
+	ProjectID string `json:"project_id,omitempty"`
+
 	// The administrative state of the Pool. A valid value is true (UP)
 	// or false (DOWN).
 	AdminStateUp bool `json:"admin_state_up,omitempty"`
 
 	// Member's port for receiving. Deliver traffic to this port. The default value is -1.
-	MemberPort int `json:"member_port,omitempty"`	  					// Added 
+	MemberPort int `json:"member_port,omitempty"`	  					// Added
 
 	// Persistence is the session persistence of the pool.
 	// Omit this field to prevent session persistence.
@@ -121,6 +129,14 @@ type CreateOpts struct {												// Modified
 
 	// Name of the pool.
 	Name string `json:"name,omitempty"`
+
+	// A list of Member objects to be created during pool creation.
+	Members []BatchUpdateMemberOpts `json:"members,omitempty"`
+
+	// Monitor is the health monitor object which will be created and associated
+	// with the pool during creation. This is only possible when creating a
+	// fully populated Loadbalancer.
+	Monitor *monitors.CreateOpts `json:"healthmonitor,omitempty"`
 }
 
 // ToPoolCreateMap builds a request body from CreateOpts.
@@ -259,12 +275,15 @@ type CreateMemberOptsBuilder interface {
 
 // CreateMemberOpts is the common options struct used in this package's CreateMember
 // operation.
-type CreateMemberOpts struct {									// Modified 
+type CreateMemberOpts struct {									// Modified
+	// Name of the Member.
+	Name string `json:"name,omitempty"`
+
 	// A positive integer value that indicates the relative portion of traffic
 	// that this member should receive from the pool. For example, a member with
 	// a weight of 10 receives five times as much traffic as a member with a
 	// weight of 2.
-	Weight int `json:"weight,omitempty"`
+	Weight *int `json:"weight,omitempty"`
 
 	// The administrative state of the Pool. A valid value is true (UP)
 	// or false (DOWN).
@@ -279,6 +298,9 @@ type CreateMemberOpts struct {									// Modified
 
 	// The port on which to listen for client traffic.
 	ProtocolPort int `json:"protocol_port" required:"true"`
+
+	// The project ID of the Member.
+	ProjectID string `json:"project_id,omitempty"`
 }
 
 // ToMemberCreateMap builds a request body from CreateMemberOpts.
@@ -314,6 +336,9 @@ type UpdateMemberOptsBuilder interface {
 // UpdateMemberOpts is the common options struct used in this package's Update
 // operation.
 type UpdateMemberOpts struct {
+	// Name of the Member.
+	Name *string `json:"name,omitempty"`
+
 	// A positive integer value that indicates the relative portion of traffic
 	// that this member should receive from the pool. For example, a member with
 	// a weight of 10 receives five times as much traffic as a member with a

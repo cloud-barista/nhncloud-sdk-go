@@ -163,7 +163,19 @@ type CreateOpts struct { // Modified
 	// server.
 	Metadata map[string]string `json:"metadata,omitempty"`
 
+	// AdminPass sets the root user password. If not set, a randomly-generated
+	// password will be created and returned in the response.
+	AdminPass string `json:"adminPass,omitempty"`
+
+	// Personality includes files to inject into the server at launch.
+	// Create will base64-encode file contents for you.
+	Personality Personality `json:"personality,omitempty"`
+
 	KeyName string `json:"key_name,omitempty"` // Added
+
+	// Tags is a set of tags assigned to the server.
+	// Requires microversion 2.52 or later.
+	Tags []string `json:"tags,omitempty"`
 
 	// Min specifies Minimum number of servers to launch.
 	Min int `json:"min_count,omitempty"`

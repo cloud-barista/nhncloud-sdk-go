@@ -19,3 +19,11 @@ func rootURL(c *gophercloud.ServiceClient) string {
 func listURL(c *gophercloud.ServiceClient) string {
 	return rootURL(c)
 }
+
+func resourceURL(c *gophercloud.ServiceClient, id string) string {
+	return c.ServiceURL("subnets", id)
+}
+
+func createURL(c *gophercloud.ServiceClient) string {
+	return rootURL(c)
+}

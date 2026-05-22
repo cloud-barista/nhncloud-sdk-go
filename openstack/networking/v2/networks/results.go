@@ -20,6 +20,30 @@ func (r commonResult) ExtractInto(v interface{}) error {
 	return r.Result.ExtractIntoStructPtr(v, "network")
 }
 
+// CreateResult represents the result of a create operation. Call its Extract
+// method to interpret it as a Network.
+type CreateResult struct {
+	commonResult
+}
+
+// GetResult represents the result of a get operation. Call its Extract
+// method to interpret it as a Network.
+type GetResult struct {
+	commonResult
+}
+
+// UpdateResult represents the result of an update operation. Call its Extract
+// method to interpret it as a Network.
+type UpdateResult struct {
+	commonResult
+}
+
+// DeleteResult represents the result of a delete operation. Call its
+// ExtractErr method to determine if the request succeeded or failed.
+type DeleteResult struct {
+	gophercloud.ErrResult
+}
+
 // https://docs.nhncloud.com/ko/Network/VPC/ko/public-api-compat/#_2
 // Network represents, well, a network.
 type Network struct {
@@ -57,6 +81,9 @@ type Network struct {
 
 	// Human-readable name for the network. Might not be unique.
 	Name string `json:"name"`
+
+	// Description is a human-readable description for the resource.
+	Description string `json:"description"`
 }
 
 // NetworkPage is the page returned by a pager when traversing over a

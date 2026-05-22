@@ -12,12 +12,12 @@ package loadbalancers
 
 import (
 	"encoding/json"
-	// "time"
+	"time"
 
 	"github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/listeners"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 )
 
 type IpACLGroup struct {  // .
@@ -37,7 +37,10 @@ type LoadBalancer struct {										// Modified
 
 	// Owner of the LoadBalancer.
 	TenantID 			string `json:"tenant_id"`  				// Added .
-	
+
+	// The project ID of the LoadBalancer.
+	ProjectID 			string `json:"project_id"`
+
 	// The name of the provider.
 	Provider 			string `json:"provider"`
 
@@ -46,6 +49,9 @@ type LoadBalancer struct {										// Modified
 
 	// Listeners are the listeners related to this Loadbalancer.
 	Listeners 			[]listeners.Listener `json:"listeners"`
+
+	// Pools are the pools related to this Loadbalancer.
+	Pools 				[]pools.Pool `json:"pools"`
 
 	// The IP address of the Loadbalancer.
 	VipAddress 			string `json:"vip_address"`
@@ -56,7 +62,11 @@ type LoadBalancer struct {										// Modified
 	// The UUID of the subnet on which to allocate the virtual IP for the
 	// Loadbalancer address.
 	VipSubnetID 		string `json:"vip_subnet_id"`
-	
+
+	// The UUID of the network on which to allocate the virtual IP for the
+	// Loadbalancer address.
+	VipNetworkID 		string `json:"vip_network_id"`
+
 	// The unique ID for the LoadBalancer.
 	ID 					string `json:"id"`
 
@@ -72,6 +82,21 @@ type LoadBalancer struct {										// Modified
 	IpACLAction 		string `json:"ipacl_action"` 			//  Action	of IP ACL Groups : null, DENY or ALLOW
 
 	LoadBalancerType 	string `json:"loadbalancer_type"`
+
+	// The UTC date and timestamp when the resource was created.
+	CreatedAt 			time.Time `json:"-"`
+
+	// The UTC date and timestamp when the resource was last updated.
+	UpdatedAt 			time.Time `json:"-"`
+
+	// The ID of the flavor.
+	FlavorID 			string `json:"flavor_id"`
+
+	// A list of simple strings assigned to the resource.
+	Tags 				[]string `json:"tags"`
+
+	// The availability zone of the LoadBalancer.
+	AvailabilityZone 	string `json:"availability_zone"`
 }
 
 func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
@@ -80,17 +105,23 @@ func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
 	// Support for older neutron time format
 	var s1 struct {
 		tmp
+		CreatedAt gophercloud.JSONRFC3339NoZ `json:"created_at"`
+		UpdatedAt gophercloud.JSONRFC3339NoZ `json:"updated_at"`
 	}
 
 	err := json.Unmarshal(b, &s1)
 	if err == nil {
 		*r = LoadBalancer(s1.tmp)
+		r.CreatedAt = time.Time(s1.CreatedAt)
+		r.UpdatedAt = time.Time(s1.UpdatedAt)
 		return nil
 	}
 
 	// Support for newer neutron time format
 	var s2 struct {
 		tmp
+		CreatedAt gophercloud.JSONRFC3339Milli `json:"created_at"`
+		UpdatedAt gophercloud.JSONRFC3339Milli `json:"updated_at"`
 	}
 
 	err = json.Unmarshal(b, &s2)
@@ -99,6 +130,8 @@ func (r *LoadBalancer) UnmarshalJSON(b []byte) error {
 	}
 
 	*r = LoadBalancer(s2.tmp)
+	r.CreatedAt = time.Time(s2.CreatedAt)
+	r.UpdatedAt = time.Time(s2.UpdatedAt)
 	return nil
 }
 

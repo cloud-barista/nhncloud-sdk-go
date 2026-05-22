@@ -19,9 +19,15 @@ type CreateOptsBuilder interface {
 }
 
 // CreateOpts specifies volume attachment creation or import parameters.
-type CreateOpts struct {										// Modified 
+type CreateOpts struct {
 	// VolumeID is the ID of the volume to attach to the instance.
 	VolumeID string `json:"volumeId" required:"true"`
+
+	// Tag is a device role tag to apply to the volume.
+	Tag string `json:"tag,omitempty"`
+
+	// DeleteOnTermination specifies whether or not to delete the volume when the server is destroyed.
+	DeleteOnTermination bool `json:"delete_on_termination,omitempty"`
 }
 
 // ToVolumeAttachmentCreateMap constructs a request body from CreateOpts.

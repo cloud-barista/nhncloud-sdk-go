@@ -37,6 +37,9 @@ type CreateOpts struct {													// Modified
 	// the ID of the existing volume snapshot
 	SnapshotID string `json:"snapshot_id,omitempty"`
 
+	// the ID of the image from which you want to create the volume.
+	ImageID string `json:"imageRef,omitempty"`
+
 	// One or more metadata key and value pairs to associate with the volume
 	Metadata map[string]string `json:"metadata,omitempty"`
 }

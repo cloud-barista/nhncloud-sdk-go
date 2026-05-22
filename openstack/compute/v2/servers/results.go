@@ -215,6 +215,9 @@ type Server struct {																// Modified
 	// Metadata includes a list of all user-specified key-value pairs attached
 	// to the server.
 	Metadata map[string]string `json:"metadata"`
+
+	// Tags is a set of tags assigned to the server.
+	Tags *[]string `json:"tags"`
 }
 
 type AttachedVolume struct {

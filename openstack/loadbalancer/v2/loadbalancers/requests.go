@@ -12,9 +12,8 @@ package loadbalancers
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/listeners"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/listeners"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 )
 
 // ListOptsBuilder allows extensions to add additional parameters to the
@@ -75,7 +74,7 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {   											// Modified 
+type CreateOpts struct {   											// Modified
 	// Human-readable name for the Loadbalancer. Does not have to be unique.
 	Name 				string `json:"name,omitempty"`
 
@@ -90,11 +89,30 @@ type CreateOpts struct {   											// Modified
 	// The IP address of the Loadbalancer.
 	VipAddress 		 	string `json:"vip_address,omitempty"`
 
+	// The UUID of the port associated with the IP address.
+	VipPortID 		 	string `json:"vip_port_id,omitempty"`
+
 	// The administrative state of the Loadbalancer. A valid value is true (UP)
 	// or false (DOWN).
-	AdminStateUp 	 	bool `json:"admin_state_up,omitempty"`
-	
+	AdminStateUp 	 	*bool `json:"admin_state_up,omitempty"`
+
+	// The name of the provider.
+	Provider 		 	string `json:"provider,omitempty"`
+
+	// The ID of the flavor.
+	FlavorID 		 	string `json:"flavor_id,omitempty"`
+
 	LoadBalancerType 	string `json:"loadbalancer_type,omitempty"`	// 'shared' or 'dedicated'. (Added )
+
+	// Listeners is a slice of listeners.CreateOpts which allows a set
+	// of listeners to be created at the same time the loadbalancer is created.
+	//
+	// This is only possible to use when creating a fully populated
+	// Loadbalancer.
+	Listeners 			[]listeners.CreateOpts `json:"listeners,omitempty"`
+
+	// A list of simple strings assigned to the resource.
+	Tags 				[]string `json:"tags,omitempty"`
 }
 
 // ToLoadBalancerCreateMap builds a request body from CreateOpts.
@@ -132,7 +150,7 @@ type UpdateOptsBuilder interface {
 
 // UpdateOpts is the common options struct used in this package's Update
 // operation.
-type UpdateOpts struct {										// Modified 
+type UpdateOpts struct {										// Modified
 	// Human-readable name for the Loadbalancer. Does not have to be unique.
 	Name *string `json:"name,omitempty"`
 
@@ -142,6 +160,9 @@ type UpdateOpts struct {										// Modified
 	// The administrative state of the Loadbalancer. A valid value is true (UP)
 	// or false (DOWN).
 	AdminStateUp *bool `json:"admin_state_up,omitempty"`
+
+	// A list of simple strings assigned to the resource.
+	Tags *[]string `json:"tags,omitempty"`
 }
 
 // ToLoadBalancerUpdateMap builds a request body from UpdateOpts.

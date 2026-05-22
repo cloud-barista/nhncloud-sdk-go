@@ -93,9 +93,16 @@ type CreateOptsBuilder interface {
 
 // CreateOpts is the common options struct used in this package's Create
 // operation.
-type CreateOpts struct {												// Modified 
+type CreateOpts struct {												// Modified
 	// The Pool to Monitor.
-	PoolID string `json:"pool_id" required:"true"`
+	PoolID string `json:"pool_id,omitempty"`
+
+	// Human-readable name for the Monitor. Does not have to be unique.
+	Name string `json:"name,omitempty"`
+
+	// ProjectID is the UUID of the project who owns the Monitor.
+	// Only administrative users can specify a project UUID other than their own.
+	ProjectID string `json:"project_id,omitempty"`
 
 	// The administrative state of the Monitor. A valid value is true (UP)
 	// or false (DOWN).
@@ -130,7 +137,11 @@ type CreateOpts struct {												// Modified
 	// sent by the load balancer to verify the member state.
 	Type string `json:"type" required:"true"`
 
-	HostHeader string `json:"host_header,omitempty"`		 		// Added 
+	HostHeader string `json:"host_header,omitempty"`		 		// Added
+
+	// Number of permissible ping failures before changing the member's
+	// status to ERROR. Must be a number between 1 and 10.
+	MaxRetriesDown int `json:"max_retries_down,omitempty"`
 }
 
 // ToMonitorCreateMap builds a request body from CreateOpts.

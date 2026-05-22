@@ -71,9 +71,11 @@ type CreateOptsBuilder interface {
 // CreateOpts contains all the values needed to create a new floating IP
 // resource. The only required fields are FloatingNetworkID and PortID which
 // refer to the external network and internal port respectively.
-type CreateOpts struct {										// Modified 
+type CreateOpts struct {										// Modified
 	FloatingNetworkID string `json:"floating_network_id" required:"true"`
+	Description       string `json:"description,omitempty"`
 	PortID            string `json:"port_id,omitempty"`
+	FixedIP           string `json:"fixed_ip_address,omitempty"`
 }
 
 // ToFloatingIPCreateMap allows CreateOpts to satisfy the CreateOptsBuilder

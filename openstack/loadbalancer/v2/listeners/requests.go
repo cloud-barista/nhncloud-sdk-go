@@ -12,9 +12,9 @@ package listeners
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-go"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/l7policies"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/l7policies"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 )
 
 // Type Protocol represents a listener protocol.
@@ -99,27 +99,34 @@ type CreateOptsBuilder interface {
 }
 
 // CreateOpts represents options for creating a listener.
-type CreateOpts struct {   									// Modified 
+type CreateOpts struct {   									// Modified
 	// The protocol - can either be TCP, SCTP, HTTP, HTTPS or TERMINATED_HTTPS.
 	Protocol 				Protocol `json:"protocol" required:"true"`
 
 	// Human-readable description for the Listener.
 	Description 			string `json:"description,omitempty"`
-	
+
 	// Human-readable name for the Listener. Does not have to be unique.
 	Name 					string `json:"name,omitempty"`
 
 	// The load balancer on which to provision this listener.
 	LoadbalancerID 			string `json:"loadbalancer_id" required:"true"`
 
+	// ProjectID is the UUID of the project who owns the Listener.
+	// Only administrative users can specify a project UUID other than their own.
+	ProjectID 			   	string `json:"project_id,omitempty"`
+
 	// The administrative state of the Listener. A valid value is true (UP)
 	// or false (DOWN).
-	AdminStateUp 		   	bool `json:"admin_state_up,omitempty"`
+	AdminStateUp 		   	*bool `json:"admin_state_up,omitempty"`
 
 	// The maximum number of connections allowed for the Listener.
 	ConnLimit 			   	int `json:"connection_limit,omitempty"`
 
 	KeepAliveTimeout 	   	int `json:"keepalive_timeout,omitempty"`
+
+	// The UUID of the default pool. Must have compatible protocol with listener.
+	DefaultPoolID 		   	string `json:"default_pool_id,omitempty"`
 
 	// A reference to a Barbican container of TLS secrets.
 	DefaultTlsContainerRef 	string `json:"default_tls_container_ref,omitempty"`
@@ -129,6 +136,26 @@ type CreateOpts struct {   									// Modified
 
 	// The port on which to listen for client traffic.
 	ProtocolPort 		   	int `json:"protocol_port" required:"true"`
+
+	// A dictionary of optional headers to insert into the request before
+	// it is sent to the backend member.
+	InsertHeaders 		   	map[string]string `json:"insert_headers,omitempty"`
+
+	// A list of TLS protocol versions to be used by the listener.
+	TLSVersions 		   	[]TLSVersion `json:"tls_versions,omitempty"`
+
+	// A list of CIDRs that are permitted to connect to this listener.
+	AllowedCIDRs 		   	[]string `json:"allowed_cidrs,omitempty"`
+
+	// DefaultPool is a pool object which will be created and associated with
+	// the listener during creation. This is only possible when creating a
+	// fully populated Loadbalancer.
+	DefaultPool 		   	*pools.CreateOpts `json:"default_pool,omitempty"`
+
+	// L7Policies is a slice of l7 policy objects which will be created and
+	// associated with the listener during creation. This is only possible
+	// when creating a fully populated Loadbalancer.
+	L7Policies 			   	[]l7policies.CreateOpts `json:"l7policies,omitempty"`
 }
 
 // ToListenerCreateMap builds a request body from CreateOpts.
@@ -168,7 +195,7 @@ type UpdateOptsBuilder interface {
 }
 
 // UpdateOpts represents options for updating a Listener.
-type UpdateOpts struct {													// Modified 
+type UpdateOpts struct {													// Modified
 	// Human-readable description for the Listener.
 	Description *string `json:"description,omitempty"`
 
@@ -183,13 +210,35 @@ type UpdateOpts struct {													// Modified
 	ConnLimit *int `json:"connection_limit,omitempty"`
 
 	// Frontend client inactivity timeout in milliseconds
-	KeepAliveTimeout *int `json:"keepalive_timeout,omitempty"`				// Added 
+	KeepAliveTimeout *int `json:"keepalive_timeout,omitempty"`				// Added
+
+	// The UUID of the default pool. Must have compatible protocol with listener.
+	DefaultPoolID *string `json:"default_pool_id,omitempty"`
 
 	// A reference to a Barbican container of TLS secrets.
 	DefaultTlsContainerRef *string `json:"default_tls_container_ref,omitempty"`
 
 	// A list of references to TLS secrets.
 	SniContainerRefs *[]string `json:"sni_container_refs,omitempty"`
+
+	// Frontend client inactivity timeout in milliseconds.
+	TimeoutClientData *int `json:"timeout_client_data,omitempty"`
+
+	// Backend member inactivity timeout in milliseconds.
+	TimeoutMemberData *int `json:"timeout_member_data,omitempty"`
+
+	// Backend member connection timeout in milliseconds.
+	TimeoutMemberConnect *int `json:"timeout_member_connect,omitempty"`
+
+	// Time, in milliseconds, to wait for additional TCP packets for content inspection.
+	TimeoutTCPInspect *int `json:"timeout_tcp_inspect,omitempty"`
+
+	// A dictionary of optional headers to insert into the request before
+	// it is sent to the backend member.
+	InsertHeaders *map[string]string `json:"insert_headers,omitempty"`
+
+	// A list of TLS protocol versions to be used by the listener.
+	TLSVersions *[]TLSVersion `json:"tls_versions,omitempty"`
 }
 
 // ToListenerUpdateMap builds a request body from UpdateOpts.

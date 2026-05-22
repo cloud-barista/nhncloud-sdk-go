@@ -5,14 +5,13 @@ import (
 
 	"github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/mtu"
+	mtuext "github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/mtu"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
 	th "github.com/cloud-barista/nhncloud-sdk-go/testhelper"
 )
 
 type NetworkMTU struct {
 	networks.Network
-	mtu.NetworkMTUExt
 }
 
 // CreateNetworkWithMTU will create a network with custom MTU. An error will be
@@ -33,7 +32,7 @@ func CreateNetworkWithMTU(t *testing.T, client *gophercloud.ServiceClient, netwo
 	}
 
 	if *networkMTU > 0 {
-		createOpts = mtu.CreateOptsExt{
+		createOpts = mtuext.CreateOptsExt{
 			CreateOptsBuilder: createOpts,
 			MTU:               *networkMTU,
 		}

@@ -65,3 +65,105 @@ func List(c *gophercloud.ServiceClient, opts ListOptsBuilder) pagination.Pager {
 		return SubnetPage{pagination.LinkedPageBase{PageResult: r}}
 	})
 }
+
+// CreateOptsBuilder allows extensions to add additional parameters to the
+// Create request.
+type CreateOptsBuilder interface {
+	ToSubnetCreateMap() (map[string]interface{}, error)
+}
+
+// CreateOpts represents options used to create a subnet.
+type CreateOpts struct {
+	// NetworkID is the UUID of the network the subnet will be associated with.
+	NetworkID string `json:"network_id" required:"true"`
+
+	// CIDR is the address CIDR of the subnet.
+	CIDR string `json:"cidr,omitempty"`
+
+	// Name is a human-readable name of the subnet.
+	Name string `json:"name,omitempty"`
+
+	// Description of the subnet.
+	Description string `json:"description,omitempty"`
+
+	// AllocationPools are IP Address pools that will be available for DHCP.
+	AllocationPools []AllocationPool `json:"allocation_pools,omitempty"`
+
+	// GatewayIP sets gateway information for the subnet. Setting to nil will
+	// cause a default gateway to automatically be created. Setting to an empty
+	// string will cause the subnet to be created with no gateway. Setting to
+	// an explicit address will set that address as the gateway.
+	GatewayIP *string `json:"gateway_ip,omitempty"`
+
+	// IPVersion is the IP version for the subnet.
+	IPVersion gophercloud.IPVersion `json:"ip_version,omitempty"`
+
+	// EnableDHCP will either enable to disable the DHCP service.
+	EnableDHCP *bool `json:"enable_dhcp,omitempty"`
+
+	// DNSNameservers are the nameservers to be set via DHCP.
+	DNSNameservers []string `json:"dns_nameservers,omitempty"`
+
+	// HostRoutes are any static host routes to be set via DHCP.
+	HostRoutes []HostRoute `json:"host_routes,omitempty"`
+
+	// The IPv6 address modes specifies mechanisms for assigning IPv6 IP addresses.
+	IPv6AddressMode string `json:"ipv6_address_mode,omitempty"`
+
+	// The IPv6 router advertisement specifies whether the networking service
+	// should transmit ICMPv6 packets.
+	IPv6RAMode string `json:"ipv6_ra_mode,omitempty"`
+
+	// SubnetPoolID is the id of the subnet pool that subnet should be associated to.
+	SubnetPoolID string `json:"subnetpool_id,omitempty"`
+
+	// TenantID is the project owner of the subnet.
+	TenantID string `json:"tenant_id,omitempty"`
+
+	// ProjectID is the project owner of the subnet.
+	ProjectID string `json:"project_id,omitempty"`
+
+	// Prefixlen is used when allocating a subnet from a subnet pool.
+	Prefixlen int `json:"prefixlen,omitempty"`
+}
+
+// ToSubnetCreateMap builds a request body from CreateOpts.
+func (opts CreateOpts) ToSubnetCreateMap() (map[string]interface{}, error) {
+	b, err := gophercloud.BuildRequestBody(opts, "subnet")
+	if err != nil {
+		return nil, err
+	}
+
+	if m := b["subnet"].(map[string]interface{}); m["gateway_ip"] == "" {
+		m["gateway_ip"] = nil
+	}
+
+	return b, nil
+}
+
+// Create accepts a CreateOpts struct and creates a new subnet using the values
+// provided.
+func Create(c *gophercloud.ServiceClient, opts CreateOptsBuilder) (r CreateResult) {
+	b, err := opts.ToSubnetCreateMap()
+	if err != nil {
+		r.Err = err
+		return
+	}
+	resp, err := c.Post(createURL(c), b, &r.Body, nil)
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}
+
+// Get retrieves a specific subnet based on its unique ID.
+func Get(c *gophercloud.ServiceClient, id string) (r GetResult) {
+	resp, err := c.Get(resourceURL(c, id), &r.Body, nil)
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}
+
+// Delete accepts a unique ID and deletes the subnet associated with it.
+func Delete(c *gophercloud.ServiceClient, id string) (r DeleteResult) {
+	resp, err := c.Delete(resourceURL(c, id), nil)
+	_, r.Header, r.Err = gophercloud.ParseResponse(resp, err)
+	return
+}

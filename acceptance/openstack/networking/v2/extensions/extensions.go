@@ -5,7 +5,6 @@ import (
 
 	"github.com/cloud-barista/nhncloud-sdk-go"
 	"github.com/cloud-barista/nhncloud-sdk-go/acceptance/tools"
-	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/external"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/security/groups"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/extensions/security/rules"
 	"github.com/cloud-barista/nhncloud-sdk-go/openstack/networking/v2/networks"
@@ -24,15 +23,11 @@ func CreateExternalNetwork(t *testing.T, client *gophercloud.ServiceClient) (*ne
 	adminStateUp := true
 	isExternal := true
 
-	networkCreateOpts := networks.CreateOpts{
-		Name:         networkName,
-		Description:  networkDescription,
-		AdminStateUp: &adminStateUp,
-	}
-
-	createOpts := external.CreateOptsExt{
-		CreateOptsBuilder: networkCreateOpts,
-		External:          &isExternal,
+	createOpts := networks.CreateOpts{
+		Name:           networkName,
+		Description:    networkDescription,
+		AdminStateUp:   &adminStateUp,
+		RouterExternal: &isExternal,
 	}
 
 	network, err := networks.Create(client, createOpts).Extract()

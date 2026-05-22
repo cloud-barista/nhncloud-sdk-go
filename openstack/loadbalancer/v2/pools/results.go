@@ -12,10 +12,10 @@ package pools
 
 import (
 	"encoding/json"
-	// "time"
+	"time"
 
 	"github.com/cloud-barista/nhncloud-sdk-go"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/monitors"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/monitors"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -84,6 +84,9 @@ type Pool struct {																// Modified
 	// The ID of associated health monitor.
 	MonitorID string `json:"healthmonitor_id"`
 
+	// A list of load balancer IDs.
+	Loadbalancers []LoadBalancerID `json:"loadbalancers"`
+
 	// A list of listeners objects IDs.
 	Listeners []ListenerID `json:"listeners"` //[]map[string]interface{}
 
@@ -95,6 +98,19 @@ type Pool struct {																// Modified
 
 	// Pool name. Does not have to be unique.
 	Name string `json:"name"`
+
+	// The project ID of the Pool.
+	ProjectID string `json:"project_id"`
+
+	// The provider name of the Pool.
+	Provider string `json:"provider"`
+
+	// The provisioning status of the Pool.
+	// This value is ACTIVE, PENDING_* or ERROR.
+	ProvisioningStatus string `json:"provisioning_status"`
+
+	// The health monitor associated with this pool.
+	Monitor monitors.Monitor `json:"healthmonitor"`
 }
 
 // PoolPage is the page returned by a pager when traversing over a
@@ -172,7 +188,10 @@ type DeleteResult struct {
 }
 
 // Member represents the application running on a backend server.
-type Member struct {										// Modified 
+type Member struct {										// Modified
+	// Name of the Member.
+	Name string `json:"name"`
+
 	// Weight of Member.
 	Weight int `json:"weight"`
 
@@ -183,7 +202,10 @@ type Member struct {										// Modified
 	SubnetID string `json:"subnet_id"`
 
 	// Owner of the Pool.
-	TenantID string `json:"tenant_id"`						// Added 
+	TenantID string `json:"tenant_id"`						// Added
+
+	// The project ID of the Member.
+	ProjectID string `json:"project_id"`
 
 	// The IP address of the Member.
 	Address string `json:"address"`
@@ -194,8 +216,27 @@ type Member struct {										// Modified
 	// The unique ID for the Member.
 	ID string `json:"id"`
 
-	// The operating status of the member
+	// The operating status of the member.
 	OperatingStatus string `json:"operating_status"`
+
+	// The provisioning status of the member.
+	ProvisioningStatus string `json:"provisioning_status"`
+
+	// The UTC date and timestamp when the resource was created.
+	CreatedAt time.Time `json:"-"`
+
+	// The UTC date and timestamp when the resource was last updated.
+	UpdatedAt time.Time `json:"-"`
+
+	// Is the member a backup? Backup members only receive traffic when all
+	// non-backup members are down.
+	Backup bool `json:"backup"`
+
+	// An alternate IP address used for health monitoring a backend member.
+	MonitorAddress string `json:"monitor_address"`
+
+	// An alternate protocol port used for health monitoring a backend member.
+	MonitorPort int `json:"monitor_port"`
 }
 
 // MemberPage is the page returned by a pager when traversing over a
@@ -251,8 +292,8 @@ func (r *Member) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	*r = Member(s.tmp)
-	// r.CreatedAt = time.Time(s.CreatedAt)
-	// r.UpdatedAt = time.Time(s.UpdatedAt)
+	r.CreatedAt = time.Time(s.CreatedAt)
+	r.UpdatedAt = time.Time(s.UpdatedAt)
 	return nil
 }
 

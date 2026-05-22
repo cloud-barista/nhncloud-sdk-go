@@ -58,6 +58,8 @@ type AvailabilityZone struct {
 	// The availability zone name
 	ZoneName  string    `json:"zoneName"`
 	ZoneState ZoneState `json:"zoneState"`
+	// Hosts is a map of hosts in the availability zone.
+	Hosts Hosts `json:"hosts"`
 }
 
 type AvailabilityZonePage struct {

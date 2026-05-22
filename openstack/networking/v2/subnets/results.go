@@ -28,6 +28,24 @@ func (r commonResult) Extract() (*Subnet, error) {
 	return s.Subnet, err
 }
 
+// CreateResult represents the result of a create operation. Call its Extract
+// method to interpret it as a Subnet.
+type CreateResult struct {
+	commonResult
+}
+
+// GetResult represents the result of a get operation. Call its Extract
+// method to interpret it as a Subnet.
+type GetResult struct {
+	commonResult
+}
+
+// DeleteResult represents the result of a delete operation. Call its
+// ExtractErr method to determine if the request succeeded or failed.
+type DeleteResult struct {
+	gophercloud.ErrResult
+}
+
 // AllocationPool represents a sub-range of cidr available for dynamic
 // allocation to ports, e.g. {Start: "10.0.0.2", End: "10.0.0.254"}
 type AllocationPool struct {
@@ -45,6 +63,9 @@ type HostRoute struct {
 type Subnet struct {
 	// Human-readable name for the subnet. Might not be unique.
 	Name string `json:"name"`
+
+	// Description is a human-readable description for the resource.
+	Description string `json:"description"`
 
 	// Specifies whether DHCP is enabled for this subnet or not.
 	EnableDHCP bool `json:"enable_dhcp"`

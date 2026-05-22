@@ -12,8 +12,8 @@ package listeners
 
 import (
 	"github.com/cloud-barista/nhncloud-sdk-go"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/l7policies"
-	// "github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/l7policies"
+	"github.com/cloud-barista/nhncloud-sdk-go/openstack/loadbalancer/v2/pools"
 	"github.com/cloud-barista/nhncloud-sdk-go/pagination"
 )
 
@@ -42,7 +42,10 @@ type Listener struct {
 	Loadbalancers 			[]LoadBalancerID `json:"loadbalancers"`
 
 	// Owner of the LoadBalancer.
-	TenantID 				string `json:"tenant_id"`  					// Modified 
+	TenantID 				string `json:"tenant_id"`  					// Modified
+
+	// The project ID of the Listener.
+	ProjectID 				string `json:"project_id"`
 
 	// The administrative state of the Listener. A valid value is true (UP) or false (DOWN).
 	AdminStateUp 			bool `json:"admin_state_up"`
@@ -66,6 +69,37 @@ type Listener struct {
 
 	// The unique ID for the Listener.
 	ID 						string `json:"id"`
+
+	// A list of CIDRs that are permitted to connect to this listener.
+	AllowedCIDRs 			[]string `json:"allowed_cidrs"`
+
+	// A list of TLS protocol versions to be used by the listener.
+	TLSVersions 			[]string `json:"tls_versions"`
+
+	// Frontend client inactivity timeout in milliseconds.
+	TimeoutClientData 		int `json:"timeout_client_data"`
+
+	// Backend member inactivity timeout in milliseconds.
+	TimeoutMemberData 		int `json:"timeout_member_data"`
+
+	// Backend member connection timeout in milliseconds.
+	TimeoutMemberConnect 	int `json:"timeout_member_connect"`
+
+	// Time, in milliseconds, to wait for additional TCP packets for content inspection.
+	TimeoutTCPInspect 		int `json:"timeout_tcp_inspect"`
+
+	// A dictionary of optional headers to insert into the request before
+	// it is sent to the backend member.
+	InsertHeaders 			map[string]string `json:"insert_headers"`
+
+	// The provisioning status of the Listener.
+	ProvisioningStatus 		string `json:"provisioning_status"`
+
+	// A list of L7 policy objects associated with the listener.
+	L7Policies 				[]l7policies.L7Policy `json:"l7policies"`
+
+	// A list of pool objects associated with the listener.
+	Pools 					[]pools.Pool `json:"pools"`
 }
 
 type Stats struct {

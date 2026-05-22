@@ -52,6 +52,9 @@ type FloatingIP struct {									// Modified
 
 	// ID is the unique identifier for the floating IP instance.
 	ID string `json:"id"`
+
+	// Description for the floating IP instance.
+	Description string `json:"description"`
 }
 
 func (r *FloatingIP) UnmarshalJSON(b []byte) error {		// Modified 

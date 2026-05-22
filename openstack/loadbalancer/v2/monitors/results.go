@@ -76,7 +76,21 @@ type Monitor struct {											// Modified
 	// The unique ID for the Monitor.
 	ID string `json:"id"`
 
-	HostHeader string `json:"host_header"`						// Added 
+	// The Name of the Monitor.
+	Name string `json:"name"`
+
+	// The project ID of the Monitor.
+	ProjectID string `json:"project_id"`
+
+	// Number of permissible ping failures before changing the member's
+	// status to ERROR. Must be a number between 1 and 10.
+	MaxRetriesDown int `json:"max_retries_down"`
+
+	HostHeader string `json:"host_header"`						// Added
+
+	// The provisioning status of the Monitor.
+	// This value is ACTIVE, PENDING_* or ERROR.
+	ProvisioningStatus string `json:"provisioning_status"`
 }
 
 // MonitorPage is the page returned by a pager when traversing over a
