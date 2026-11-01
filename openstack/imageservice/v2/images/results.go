@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
+	"strconv"
 	"strings"
 	"time"
 
@@ -103,6 +104,7 @@ func (r *Image) UnmarshalJSON(b []byte) error {
 	var s struct {
 		tmp
 		SizeBytes                   interface{} `json:"size"`
+		Hidden                      interface{} `json:"os_hidden"`
 		OpenStackImageImportMethods string      `json:"openstack-image-import-methods"`
 		OpenStackImageStoreIDs      string      `json:"openstack-image-store-ids"`
 	}
@@ -121,6 +123,23 @@ func (r *Image) UnmarshalJSON(b []byte) error {
 		r.SizeBytes = int64(t)
 	default:
 		return fmt.Errorf("Unknown type for SizeBytes: %v (value: %v)", reflect.TypeOf(t), t)
+	}
+
+	// Some regions (e.g. NHN Cloud kr2) return os_hidden as a JSON string
+	// instead of a bool; accept both.
+	switch v := s.Hidden.(type) {
+	case nil:
+		r.Hidden = false
+	case bool:
+		r.Hidden = v
+	case string:
+		b, err := strconv.ParseBool(v)
+		if err != nil {
+			return fmt.Errorf("invalid os_hidden value %q: %w", v, err)
+		}
+		r.Hidden = b
+	default:
+		return fmt.Errorf("Unknown type for os_hidden: %v (value: %v)", reflect.TypeOf(v), v)
 	}
 
 	// Bundle all other fields into Properties
