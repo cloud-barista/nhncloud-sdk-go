@@ -355,21 +355,21 @@ func NewIdentityV3(client *gophercloud.ProviderClient, eo gophercloud.EndpointOp
 }
 
 func initClientOpts(client *gophercloud.ProviderClient, eo gophercloud.EndpointOpts, clientType string) (*gophercloud.ServiceClient, error) {
-	cblogger.Infof("# ServiceClient Type : [%s]", clientType)
+	cblogger.Debugf("# ServiceClient Type : [%s]", clientType)
 
 	sc := new(gophercloud.ServiceClient)
 	eo.ApplyDefaults(clientType)
 	url, err := client.EndpointLocator(eo)
 	if err != nil {
-		cblogger.Infof("err=%v\n", err)
+		cblogger.Debugf("No endpoint for the ClientType [%s]: %v", clientType, err)
 		return sc, err
 	}
 	sc.ProviderClient = client
 	sc.Endpoint = url
 	sc.Type = clientType
 
-	cblogger.Infof("# Endpoint for the ClientType: [%s]\n", sc.Endpoint)
-	
+	cblogger.Debugf("# Endpoint for the ClientType: [%s]", sc.Endpoint)
+
 	return sc, nil
 }
 
